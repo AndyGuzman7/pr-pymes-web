@@ -1,0 +1,7 @@
+#details-total{
+    position: relative;
+}
+#details-total-child{
+    position: absolute;
+    right: 0;
+}
