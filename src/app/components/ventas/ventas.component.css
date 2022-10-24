@@ -1,7 +1,36 @@
-#details-total{
-    position: relative;
+#button-option-sale{
+    color: rgb(127, 127, 127);
+    background: none;
+    border: none;
 }
-#details-total-child{
+#button-option-sale:hover{
+    color: rgb(187, 246, 243);
+}
+#button-option-list-sale{
+    background: none;
+    border-radius: 20px;
+    color: rgb(23,138,191);
+    border: 1px solid;
+    font-size: 12px;
+    width: 160px;
+    height: 25px;
+}
+#button-option-list-sale-delete, #button-option-list-sale-update{
+    background: rgb(23,138,191);
+    border-radius: 20px;
+    border: 1px solid;
+    color: white;
+    border-color: rgb(23,138,191);
+    margin-left: 5px;
+    font-size: 12px;
+    width: 160px;
+    height: 25px;
+}
+#button-option-list-sale-delete{
+    
     position: absolute;
-    right: 0;
+    right: 0%;
+}
+#options-buttons{
+    position: relative;
 }

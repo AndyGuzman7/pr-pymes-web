@@ -2,7 +2,7 @@
     <div class="row justify-content-md-center">
         
 
-        <div class="col col-lg">
+        <div id="list-products" class="col col-lg">
             <h2 >Carro de compras</h2>
             <table class="table " >
                 <thead>
@@ -19,24 +19,49 @@
                         </th >
                         <th scope="col">
                             Subtotal
-
                         </th>
                         <th>
-                            {{titulo}}
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>
+                            <div>
+                                <h6> <b> Nombre Producto </b></h6>
+                            </div>
+                            Foto y contenido del producto
+                        </td>
+                        <td>15 bs</td>
+                        <td>2</td>
+                        <td>30 bs</td>
+                        <td>
+                            
+                            <button id="button-option-sale" class="bi bi-x-circle"></button> <br>
+                            <button id="button-option-sale" class="bi bi-pencil-square"></button>
+                        </td>
                       </tr>
+                    <tr>
+                        <td>Foto y contenido del producto</td>
+                        <td>35 Bs.</td>
+                        <td>2</td>
+                        <td>70 Bs.</td>
+                        <td>
+                            
+                            <button id="button-option-sale" class="bi bi-x-circle"></button> <br>
+                            <button id="button-option-sale" class="bi bi-pencil-square"></button>
+                        </td>
+                    </tr>
                 </tbody>
                 <tfoot>
 
                 </tfoot>
             </table>
+            <div id="options-buttons" >
+                <button id="button-option-list-sale">Seguir comprando</button>
+                <button id="button-option-list-sale-delete">Borrar el carro de compra</button>
+                <button id="button-option-list-sale-update">Actualizar el carrito</button>
+            </div>
             
 
         </div>
