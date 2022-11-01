@@ -32,6 +32,7 @@ header {
 
 .nav__list{
     display: flex !important;
+    margin-top: 12px;
   }
 
 .nav__item {
@@ -51,7 +52,6 @@ header {
 }
 
 .nav__item .register__link{
-    /*display: flex;*/
     padding-left: 2.6rem !important;
   
   }
@@ -150,10 +150,18 @@ header {
     transition: all 0.3s ease;
 }
 
-@media screen and (min-width:721px) and (max-width: 768px)  {
+@media screen and (min-width:721px) and (max-width: 868px)  {
     .megamenu {
         flex-wrap: wrap !important;
         justify-content: start;
+    }
+    .nav__item .register__link{
+        padding-left: 0 !important;
+    }
+    .nav__list{
+        display: flex !important;
+        align-items: center;
+        margin-top: 12px;
     }
 }
 
@@ -170,6 +178,9 @@ header {
     }
     .dropdown:hover .megamenu {
         height: 100%;
+    }
+    .nav__item .register__link{
+        padding-left: 0 !important;
     }
     
     .nav__list {
