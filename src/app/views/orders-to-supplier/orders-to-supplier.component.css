@@ -5,6 +5,9 @@ table {
 th{
     width: 20%;
 }
+span{
+    color: #170F49;
+}
 .body{
     display: flex;
     justify-content: center;
@@ -19,4 +22,18 @@ th{
     width: 50%;
     max-width: 300;
     text-align: center;
+    border-radius:20px;
+}
+
+.agregar{
+    text-align: right;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.pointer{
+    cursor: pointer;
+}
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
 }

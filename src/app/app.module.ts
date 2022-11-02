@@ -25,6 +25,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatIconModule} from '@angular/material/icon';
 import { OrdersToSupplierComponent } from './views/orders-to-supplier/orders-to-supplier.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -57,7 +58,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatTableModule,
     MatIconModule,
     MatTooltipModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSelectModule
   ],
   providers: [
     LoadScriptsService
