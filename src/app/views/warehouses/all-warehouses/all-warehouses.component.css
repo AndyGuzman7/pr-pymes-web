@@ -1,0 +1,17 @@
+.content {
+    padding: 30px;
+    margin-top: 50px;
+}
+.card-warehouse{
+    background: #F4FAFF;
+}
+
+.header-card{
+    font-weight: bolder;
+    font-size: 25px;
+    color: #0A457F;
+    margin-bottom: 15px;
+}
+.content > mat-card {
+    width: 200px;
+}
