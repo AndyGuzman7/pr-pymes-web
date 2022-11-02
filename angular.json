@@ -25,7 +25,12 @@
             "styles": [
               "src/custom-theme.scss",
               "src/styles.css",
+<<<<<<< HEAD
               "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+=======
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+
+>>>>>>> 10689563eab5f32fb2c760e8c390c381ccb9f50e
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.slim.min.js",
