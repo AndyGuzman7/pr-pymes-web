@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 * {
-    margin: 0 !important;
-    padding: 0 !important;
     box-sizing: border-box;
+    list-style: none;
+	outline: none;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -16,5 +16,6 @@ li {
 }
 body{
     background-color: #f0f0f0;
+    position: relative;
 }
 
