@@ -19,6 +19,11 @@ import { PasswordRecoveryComponent } from './views/recovery_password/password-re
 import { UpdatePasswordComponent } from './views/recovery_password/update-password/update-password.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { AllWarehousesComponent } from './views/warehouses/all-warehouses/all-warehouses.component';
+
+import { MatCardModule} from '@angular/material/card';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatIconModule} from '@angular/material/icon';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +33,8 @@ import { AllWarehousesComponent } from './views/warehouses/all-warehouses/all-wa
     RegisterComponent,
     PasswordRecoveryComponent,
     UpdatePasswordComponent,
-    AllWarehousesComponent
+    AllWarehousesComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,13 @@ import { AllWarehousesComponent } from './views/warehouses/all-warehouses/all-wa
     MatFormFieldModule,
     FormsModule,
     MatToolbarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule,
+    FlexLayoutModule,
+    MatInputModule,
+    MatButtonModule,
+    MatTableModule,
+    MatIconModule
   ],
   providers: [
     LoadScriptsService
