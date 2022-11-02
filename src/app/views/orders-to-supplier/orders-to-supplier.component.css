@@ -1,0 +1,22 @@
+table {
+    align-items: center;
+    width: 100%;
+}
+th{
+    width: 20%;
+}
+.body{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    background-color: #f5f5f5;
+}
+.toolbar{
+    margin-top: 10%;
+}
+.container{
+    width: 50%;
+    max-width: 300;
+    text-align: center;
+}

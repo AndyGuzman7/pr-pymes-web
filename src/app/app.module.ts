@@ -23,6 +23,9 @@ import { AllWarehousesComponent } from './views/warehouses/all-warehouses/all-wa
 import { MatCardModule} from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatIconModule} from '@angular/material/icon';
+import { OrdersToSupplierComponent } from './views/orders-to-supplier/orders-to-supplier.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +37,7 @@ import {MatIconModule} from '@angular/material/icon';
     PasswordRecoveryComponent,
     UpdatePasswordComponent,
     AllWarehousesComponent,
+    OrdersToSupplierComponent,
 
   ],
   imports: [
@@ -50,7 +54,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatInputModule,
     MatButtonModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule,
+    
   ],
   providers: [
     LoadScriptsService
