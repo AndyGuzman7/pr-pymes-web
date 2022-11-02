@@ -1,15 +1,15 @@
 <div class="container">
-    <mat-toolbar>
+    <mat-toolbar >
         <span> Mis Proveedores</span>
         <button mat-raised-button color="primary">AGREGAR</button>
     </mat-toolbar>
-    
+    <br>
     <div class="body">
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
     
             <!-- Position Column -->
             <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef> identificador </th>
+                <th mat-header-cell *matHeaderCellDef color="primary"> identificador </th>
                 <td mat-cell *matCellDef="let element"> {{element.id}} </td>
               </ng-container>
             <ng-container matColumnDef="nombre">
