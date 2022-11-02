@@ -15,13 +15,6 @@ export class PasswordRecoveryComponent implements OnInit {
 
   displayStyle = "none";
   
-  openPopup() {
-    this.displayStyle = "block";
-  }
-  closePopup() {
-    this.displayStyle = "none";
-  }
-  
   constructor() { }
   onSubmit(form: any) {
     console.log(form.value);
