@@ -19,12 +19,13 @@ import { PasswordRecoveryComponent } from './views/recovery_password/password-re
 import { UpdatePasswordComponent } from './views/recovery_password/update-password/update-password.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { AllWarehousesComponent } from './views/warehouses/all-warehouses/all-warehouses.component';
-
+import {MatGridListModule} from '@angular/material/grid-list';
 import { MatCardModule} from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatIconModule} from '@angular/material/icon';
 import { OrdersToSupplierComponent } from './views/orders-to-supplier/orders-to-supplier.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 
 @NgModule({
@@ -56,7 +57,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatTableModule,
     MatIconModule,
     MatTooltipModule,
-    
+    MatGridListModule
   ],
   providers: [
     LoadScriptsService
