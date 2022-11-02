@@ -1,21 +1,12 @@
-:root{
-	--primary: #6b59d3;
-	--secondary: #bfc0c0;
-	--white: #fff;
-	--text-clr: #5b6475;
-	--header-clr: #25273d;
-	--next-btn-hover: #8577d2;
-	--back-btn-hover: #8b8c8c;
-}
-
-
 .wrapper{
 	width: 750px !important;
 	max-width: 100% !important;
-	background: #00AEE1;
+	background: #FFFFFF;
+	border: 1px solid #EFF0F7;
+	box-shadow: 0px 5px 16px rgba(8, 15, 52, 0.06);
 	margin: 100px auto 0 !important;
 	padding: 50px !important;
-	border-radius: 5px;
+	border-radius: 34px;
 }
 
 .wrapper .headerNum{
