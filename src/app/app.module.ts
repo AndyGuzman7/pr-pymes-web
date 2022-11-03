@@ -23,6 +23,7 @@ import { AllWarehousesComponent } from './views/warehouses/all-warehouses/all-wa
 import { MatCardModule} from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatIconModule} from '@angular/material/icon';
+import { RegisterBusinessComponent } from './views/register-business/register-business.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {MatIconModule} from '@angular/material/icon';
     PasswordRecoveryComponent,
     UpdatePasswordComponent,
     AllWarehousesComponent,
+    RegisterBusinessComponent,
 
   ],
   imports: [
