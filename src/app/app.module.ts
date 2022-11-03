@@ -26,7 +26,10 @@ import {MatIconModule} from '@angular/material/icon';
 import { OrdersToSupplierComponent } from './views/orders-to-supplier/orders-to-supplier.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
-
+import { JournalComponent } from './views/journal/journal.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
+import { SeePurchasesComponent } from './views/see-purchases/see-purchases.component';
 
 
 @NgModule({
@@ -40,6 +43,8 @@ import {MatSelectModule} from '@angular/material/select';
     UpdatePasswordComponent,
     AllWarehousesComponent,
     OrdersToSupplierComponent,
+    JournalComponent,
+    SeePurchasesComponent,
 
   ],
   imports: [
@@ -59,7 +64,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatIconModule,
     MatTooltipModule,
     MatGridListModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [
     LoadScriptsService

@@ -1,7 +1,6 @@
 <div class="container">
     <mat-toolbar class="toolbar">
-        <span> Mis Proveedores</span>
-        
+        <span> Mis Proveedores</span>  
     </mat-toolbar>
     <div class="agregar">
       <button mat-raised-button color="primary" class="btn" >AGREGAR</button>
@@ -11,8 +10,7 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="buscar" #input autocomplete="off">
     </mat-form-field>
     <div class="body">
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">    
             <!-- Position Column -->
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef> identificador </th>
@@ -58,7 +56,4 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
       </div>
-  
-  
-  
 </div>

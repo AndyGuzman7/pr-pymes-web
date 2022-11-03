@@ -1,0 +1,37 @@
+import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
+
+export interface Journal {
+  account: string;
+  should: number;
+  haber: number;
+ 
+}
+
+@Component({
+  selector: 'app-journal',
+  templateUrl: './journal.component.html',
+  styleUrls: ['./journal.component.css']
+})
+export class JournalComponent implements OnInit {
+  ELEMENT_DATA: Journal[] = [
+    {account: '15648-5645', should: 456,haber:1000 },
+    {account: '15656-5645', should: 300,haber:800 },
+    {account: '15656-5645', should: 300,haber:800 },
+ 
+  ];
+  displayedColumns: string[] = ['account','should', 'haber'];
+  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+  
+  constructor(private _snackBar: MatSnackBar) {}
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
+  
+
+  ngOnInit(): void {
+  }
+
+}
