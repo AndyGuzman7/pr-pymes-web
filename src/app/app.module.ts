@@ -30,6 +30,7 @@ import { JournalComponent } from './views/journal/journal.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import { SeePurchasesComponent } from './views/see-purchases/see-purchases.component';
+import { SeeSalesJournalComponent } from './views/see-sales-journal/see-sales-journal.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { SeePurchasesComponent } from './views/see-purchases/see-purchases.compo
     OrdersToSupplierComponent,
     JournalComponent,
     SeePurchasesComponent,
+    SeeSalesJournalComponent,
 
   ],
   imports: [
