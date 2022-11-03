@@ -1,6 +1,5 @@
-
 <div class="container">
-    <mat-toolbar>
+    <mat-toolbar class="toolbar">
         <span class="fill-remaining-space"></span>
         <span>Registrar Libro Diario</span>
         <span class="fill-remaining-space"></span>
@@ -8,22 +7,27 @@
     <form>
        <mat-grid-list cols="6" rowHeight="100px">
             <mat-grid-tile [colspan]="1" [rowspan]="1">  
-                <mat-label>Comprobante: </mat-label>       
+                <mat-label class="mat-label">Comprobante: </mat-label>       
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
-                <input matInput autocomplete="off">
+                <input  class="form-control" name="comprobante" placeholder="comprobante">
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
                 <mat-label>Fecha:</mat-label>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
-                <input matInput autocomplete="off"  >
+                <input  class="form-control" name="Fecha" placeholder="fecha">             
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
                 <mat-label>Tipo:</mat-label>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
-                <input matInput autocomplete="off"  >
+                <mat-form-field appearance="fill">
+                    <select matNativeControl required>
+                      <option value="haber">HABER</option>
+                      <option value="debe">DEBE</option> 
+                    </select>
+                </mat-form-field>         
             </mat-grid-tile>           
        </mat-grid-list>
        <mat-grid-list cols="6" rowHeight="100px">
@@ -31,18 +35,18 @@
                 <mat-label>Razón social:</mat-label>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="2" [rowspan]="1">
-                <input matInput autocomplete="off"  >
+                <input  class="form-control" name="razonSocial" placeholder="Razón social">             
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
                 <mat-label>Glosa:</mat-label>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="2" [rowspan]="1">
-                <input matInput autocomplete="off"  >
+                <input  class="form-control" name="glosa" placeholder="Glosa">             
             </mat-grid-tile>  
        </mat-grid-list>
+       
     </form>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
-    
         <!-- Cuenta Column -->
         <ng-container matColumnDef="account">
             <th mat-header-cell *matHeaderCellDef> Cuenta </th>
@@ -60,22 +64,35 @@
         </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>    
+    </table> 
+      
     <mat-grid-list cols="15" rowHeight="100px">
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-            <button mat-raised-button color="primary" class="width"> Registrar </button>   
+        <mat-grid-tile [colspan]="2" [rowspan]="1" >
+            <button mat-raised-button  class="width" style="color: #02890F;"> Registrar </button>   
         </mat-grid-tile>
     
         <mat-grid-tile [colspan]="2" [rowspan]="1">
-            <button mat-raised-button color="primary" > Cancelar </button>   
+            <button mat-raised-button style="color: #E71205;" > Cancelar </button>   
         </mat-grid-tile>
 
-        <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
             <mat-label>Total:</mat-label>
         </mat-grid-tile>
     
-        <mat-grid-tile [colspan]="5" [rowspan]="1">
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
             <mat-label>Bs</mat-label>
         </mat-grid-tile>
-   </mat-grid-list>   
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+            <button mat-raised-button color="primary" class="width"> + </button>   
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2" [rowspan]="1" >
+            <button mat-raised-button style="color: #170F49;"> Ver Compras </button>   
+        </mat-grid-tile>
+    
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <button mat-raised-button style="color: #170F49;" > Ver Ventas </button>   
+        </mat-grid-tile>
+   </mat-grid-list>
+ 
     </div>

@@ -31,6 +31,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import { SeePurchasesComponent } from './views/see-purchases/see-purchases.component';
 import { SeeSalesJournalComponent } from './views/see-sales-journal/see-sales-journal.component';
+import { ReportsJournalComponent } from './views/reports-journal/reports-journal.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { ModalTypeJComponent } from './views/modal-type-j/modal-type-j.component';
 
 
 @NgModule({
@@ -47,6 +50,8 @@ import { SeeSalesJournalComponent } from './views/see-sales-journal/see-sales-jo
     JournalComponent,
     SeePurchasesComponent,
     SeeSalesJournalComponent,
+    ReportsJournalComponent,
+    ModalTypeJComponent,
 
   ],
   imports: [
@@ -68,7 +73,8 @@ import { SeeSalesJournalComponent } from './views/see-sales-journal/see-sales-jo
     MatGridListModule,
     MatSelectModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule
   ],
   providers: [
     LoadScriptsService
