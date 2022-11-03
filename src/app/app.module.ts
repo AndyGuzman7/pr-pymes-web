@@ -24,6 +24,7 @@ import { MatCardModule} from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatIconModule} from '@angular/material/icon';
 import { RegisterBusinessComponent } from './views/register-business/register-business.component';
+import { SelectRegisterComponent } from './views/select-register/select-register.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { RegisterBusinessComponent } from './views/register-business/register-bu
     UpdatePasswordComponent,
     AllWarehousesComponent,
     RegisterBusinessComponent,
+    SelectRegisterComponent,
 
   ],
   imports: [
