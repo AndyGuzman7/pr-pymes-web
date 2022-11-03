@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { LoadScriptsService } from 'src/app/load-scripts.service';
 
+
 @Component({
   selector: 'app-register-business',
   templateUrl: './register-business.component.html',
@@ -16,9 +17,12 @@ export class RegisterBusinessComponent implements OnInit {
 
   
   selectedCategories: string[];
-  categories: any[] = [];
   categoriesList = [
-    'Belleza y moda', 'Comida', 'Educativo', 'Online o digitales', 'Salud y bienestar',
+    {id: 1, name: 'Belleza y moda'},
+    {id: 2, name: 'Comida'},
+    {id: 3, name: 'Educativo'},
+    {id: 4, name: 'Online o digitales'},
+    {id: 5, name: 'Salud y bienestar'}
   ];
   
 
@@ -30,9 +34,6 @@ export class RegisterBusinessComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.categoriesList.forEach((c, i) => {
-        this.categories.push({ id: i, name: c });
-    });
   }
 
 }
