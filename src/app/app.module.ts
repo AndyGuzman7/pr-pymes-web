@@ -27,6 +27,7 @@ import { RegisterBusinessComponent } from './views/register-business/register-bu
 import { SelectRegisterComponent } from './views/select-register/select-register.component';
 
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ListProductsComponent } from './views/warehouses/list-products/list-products.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     AllWarehousesComponent,
     RegisterBusinessComponent,
     SelectRegisterComponent,
+    ListProductsComponent,
 
   ],
   imports: [
