@@ -5,7 +5,11 @@ export class Venta {
     idVenta: number;
     fechaCreacion: string;
     fechaActualizacion: string;
+
+    //array de la tabla detalles venta
     detallesVentas: DetalleVenta[] = [];
+
+    //tabla cliente
     cliente: Cliente;
     idUsuario: number;
     total: number;

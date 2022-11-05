@@ -5,7 +5,9 @@ export class DetalleVenta {
     precioVenta: number;
     fechaCreacion: string;
     fechaActualizacion: string;
-
+	
+	//tabla venta
+	venta: Venta;
 	cantidad: number;
 	subTotal: number;
 	descuento: number;

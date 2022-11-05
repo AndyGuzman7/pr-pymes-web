@@ -4,6 +4,7 @@ export class Cliente {
     nombre: string;
     apellidos: string;
     fechaCreacion: string;
+    status: number;
     fechaActualizacion: string;
     correo: string;  
 }
