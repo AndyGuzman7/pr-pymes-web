@@ -1,4 +1,5 @@
-<div class="container">
+<script type="text/javascript" src="../../../assets/script.js"></script>
+<div class="principal">
     <div class="row justify-content-md-center">
         
 
@@ -48,10 +49,23 @@
 
                 </tfoot>
             </table>
-            <div id="options-buttons" >
-                <button id="button-option-list-sale">Seguir comprando</button>
-                <button id="button-option-list-sale-delete">Borrar el carro de compra</button>
-                <button id="button-option-list-sale-update">Actualizar el carrito</button>
+            
+            <div class="container"  >
+                <div class="row " id="options-buttons">
+                    <div class="col col-lg-2">
+                        <button id="button-option-list-sale">Seguir comprando</button>
+
+                    </div>
+                    <div class="col-md-auto">
+                        <button  id="button-option-list-sale-update">Actualizar el carrito</button>
+
+                    </div>
+                    <div class="col">
+                        <button id="button-option-list-sale-delete">Borrar el carro de compra</button>
+
+                    </div>
+                </div>
+                
             </div>
             
 
@@ -67,59 +81,68 @@
 			
             <br>
             <div>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Total Productos</th>
-                            <th>{{data.length}}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr id="accordion">
-               
-                            <table style="background-color: rgb(207,229,237);" class="table table-bordered"  >
-                                <thead>
-                                    <tr>
-                                        <th>Producto</th>
-                                        <th>Precio</th>
-                                        <th>Cant.</th>
-                                        <th>Subt.</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let item of data">
-                                        <td>
-                                            <div>
-                                                <h6><b> {{item.producto}}</b></h6>
-                                            </div>
-                                            
-                                        </td>
-                                        <td>
-                                            {{item.precio}}
-                                        </td>
-                                        <td>{{item.cantidad}}</td>
-                                        <td>{{item.subtotal}}</td>
-                                        
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </tr>     
-                    </tbody>
-                    <tfoot  style="background-color: rgb(207,229,237);" >
-                        <tr>
-                            <p><b>Total :</b> <strong>110bs</strong></p>
-                        </tr>
-                    </tfoot>
+                <div id="total-products">
+                    <div id="total">
+                        Total Productos
+                        
+                    </div>
+                    <div id="number">
+                        {{data.length}}
+                    </div>
+                </div>
+                
+                <button class="accordion">Ver mas detalle </button>
+                
+                <div class="panel" >
                     
-                </table>
-            
-                <!-- <div id="details-total" style="background-color: rgb(207,229,237);">
+                    <div >
+                        <table  id="table-detail">
+                            <thead>
+                                
+                            </thead>
+                            <tbody>
+                                <tr >
                     
-                    <h6 id="details-total-child">110bs</h6>
-                </div> -->
+                                    <table style="background-color: rgb(207,229,237);"  id="table-detail" >
+                                        <thead>
+                                            <tr>
+                                                <th>Producto</th>
+                                                <th>Precio</th>
+                                                <th>Cant.</th>
+                                                <th>Subt.</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of data">
+                                                <td>
+                                                    <div>
+                                                        <h6> {{item.producto}}</h6>
+                                                    </div>
+                                                    
+                                                </td>
+                                                <td>
+                                                    {{item.precio}}
+                                                </td>
+                                                <td>{{item.cantidad}}</td>
+                                                <td>{{item.subtotal}}</td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </tr>     
+                            </tbody>
+                            <tfoot  style="margin: 50px;" >
+                                <tr>
+                                    <p><b>Total :</b> <strong>110bs</strong></p>
+                                </tr>
+                            </tfoot>
+                            
+                        </table>
+                    </div>
+                </div>
             </div>
             <div style="padding: 10px" >
-                <button type="button" class="btn btn-info btn-lg " style="width:100%"><strong class="text-white">Vender</strong></button>
+                <button type="button" id="btn-sale" style="width:100%">Vender</button>
             </div>
             
         </div>
