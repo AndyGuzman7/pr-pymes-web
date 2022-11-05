@@ -25,33 +25,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor="let item of data">
                         <td>
                             <div>
-                                <h6> <b> Nombre Producto </b></h6>
+                                <h6><b> {{item.producto}}</b></h6>
                             </div>
-                            Foto y contenido del producto
+                            <p>{{item.descripcion}}</p>
                         </td>
-                        <td>15 bs</td>
-                        <td>2</td>
-                        <td>30 bs</td>
                         <td>
-                            
-                            <button id="button-option-sale" class="bi bi-x-circle"></button> <br>
-                            <button id="button-option-sale" class="bi bi-pencil-square"></button>
+                            {{item.precio}}
                         </td>
-                      </tr>
-                    <tr>
-                        <td>Foto y contenido del producto</td>
-                        <td>35 Bs.</td>
-                        <td>2</td>
-                        <td>70 Bs.</td>
+                        <td>{{item.cantidad}}</td>
+                        <td>{{item.subtotal}}</td>
                         <td>
-                            
-                            <button id="button-option-sale" class="bi bi-x-circle"></button> <br>
+                            <button id="button-option-sale" (click)="deleteOneProductList(item.idProducto)" class="bi bi-x-circle"></button> <br>
                             <button id="button-option-sale" class="bi bi-pencil-square"></button>
                         </td>
                     </tr>
+                    
                 </tbody>
                 <tfoot>
 
@@ -80,7 +71,7 @@
                     <thead>
                         <tr>
                             <th>Total Productos</th>
-                            <th>3</th>
+                            <th>{{data.length}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -96,17 +87,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th>Carne 1kg</th>
-                                        <th>30 BS</th>
-                                        <th>x2</th>
-                                        <th>60 BS</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Coca-cola</th>
-                                        <th>10 BS</th>
-                                        <th>x5</th>
-                                        <th>50 BS</th>
+                                    <tr *ngFor="let item of data">
+                                        <td>
+                                            <div>
+                                                <h6><b> {{item.producto}}</b></h6>
+                                            </div>
+                                            
+                                        </td>
+                                        <td>
+                                            {{item.precio}}
+                                        </td>
+                                        <td>{{item.cantidad}}</td>
+                                        <td>{{item.subtotal}}</td>
+                                        
                                     </tr>
                                 </tbody>
                             </table>
