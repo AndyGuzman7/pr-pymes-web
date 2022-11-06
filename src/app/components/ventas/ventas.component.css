@@ -1,5 +1,6 @@
 .principal{
     padding: 3%;
+    margin-top: 30px;
 }
 #button-option-sale{
     color: rgb(127, 127, 127);
@@ -115,6 +116,28 @@ div.panel.show {
     opacity: 1;
     max-height: 500px;
 }
-div.panel{
-    border-top: 1px;
+#form-ci{
+    margin-bottom: 10px;
+}
+#icon-add{
+    background-color: #777;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+#btn-addClient{
+    color: aqua;
+    background-color: rgb(23,138,191);
+    border-radius: 5px;
+    border: none;
+    right: 0%;
+    position: absolute;
+    font-size: 20px;
+    
+}
+#btn-addClient:hover,#btn-sale:hover,#button-option-list-sale-delete:hover, #button-option-list-sale-update:hover{
+    background-color: rgb(42, 167, 225);
+}
+#button-option-list-sale:hover{
+    background-color: rgb(236, 236, 236);
 }

@@ -29,7 +29,7 @@
                     <tr *ngFor="let item of data">
                         <td>
                             <div>
-                                <h6><b> {{item.producto}}</b></h6>
+                                <h4><b> {{item.producto}}</b></h4>
                             </div>
                             <p>{{item.descripcion}}</p>
                         </td>
@@ -71,11 +71,21 @@
 
         </div>
         <div style="background-color: rgb(245,248,251) ;" class="col-lg-3">
-            <h4>Resumen</h4>
+            <h3>Resumen</h3>
             <div class="col-lg-20">
-                <strong>CI:</strong> <strong> 5436423 </strong>
-                <br>
-                <strong>Cliente:</strong> <strong> JUAN PEREZ </strong>
+                <form action="">
+                    <div id="form-ci">
+                        <strong><label class="text-input" for="txtCi">CI: </label></strong>
+                        <input class="form-control" type="text" id="txtCi" value="4827328">
+                    </div>
+                    <div id="form-name">
+                        <strong><label class="text-input" for="txtFullName">Cliente: </label></strong>
+                        <input class="form-control" type="text" id="txtFullName" value="Juan Perez">
+                    </div>
+                </form>
+            </div>
+            <div id="icon-add">
+                <button id="btn-addClient" class="bi bi-person-plus"></button>
             </div>
         
 			
@@ -96,7 +106,7 @@
                 <div class="panel" >
                     
                     <div >
-                        <table  id="table-detail">
+                        <table id="table-detail">
                             <thead>
                                 
                             </thead>
@@ -116,7 +126,7 @@
                                             <tr *ngFor="let item of data">
                                                 <td>
                                                     <div>
-                                                        <h6> {{item.producto}}</h6>
+                                                        <h4> {{item.producto}}</h4>
                                                     </div>
                                                     
                                                 </td>
