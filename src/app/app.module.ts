@@ -24,9 +24,13 @@ import { MatCardModule} from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatIconModule} from '@angular/material/icon';
 import { RegisterBusinessComponent } from './views/register-business/register-business.component';
-import { VentasComponent } from './views/ventas/ventas.component';
-import { Venta } from './models/venta';
-import { Ventas2Component } from './views/ventas2/ventas2.component';
+
+import { SelectRegisterComponent } from './views/select-register/select-register.component';
+
+import { NgSelectModule } from '@ng-select/ng-select';
+import { ListProductsComponent } from './views/warehouses/list-products/list-products.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,8 +42,9 @@ import { Ventas2Component } from './views/ventas2/ventas2.component';
     UpdatePasswordComponent,
     AllWarehousesComponent,
     RegisterBusinessComponent,
-    VentasComponent,
-    Ventas2Component
+
+    SelectRegisterComponent,
+    ListProductsComponent,
 
   ],
   imports: [
@@ -56,7 +61,8 @@ import { Ventas2Component } from './views/ventas2/ventas2.component';
     MatInputModule,
     MatButtonModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    NgSelectModule
   ],
   providers: [
     LoadScriptsService
