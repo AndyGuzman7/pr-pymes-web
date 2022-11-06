@@ -141,3 +141,7 @@ div.panel.show {
 #button-option-list-sale:hover{
     background-color: rgb(236, 236, 236);
 }
+
+#modal-style{
+    padding: 20px;
+}

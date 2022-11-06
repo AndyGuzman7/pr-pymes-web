@@ -7,4 +7,5 @@ export class Producto {
     cantidad:number;
     precio:number;
     subtotal: number;
+    total?:number;
 }

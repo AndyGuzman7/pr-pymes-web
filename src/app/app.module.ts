@@ -29,7 +29,8 @@ import { SelectRegisterComponent } from './views/select-register/select-register
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ListProductsComponent } from './views/warehouses/list-products/list-products.component';
 import { VentasComponent } from './components/ventas/ventas.component';
-
+import { JQueryStyleEventEmitter } from 'rxjs/internal/observable/fromEvent';
+//import {jquery} from './jquery';
 
 @NgModule({
   declarations: [

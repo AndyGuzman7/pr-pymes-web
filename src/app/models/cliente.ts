@@ -3,9 +3,9 @@ export class Cliente {
     nitCi: string;
     nombre: string;
     apellidos: string;
-    fechaCreacion: string;
-    status: number;
-    fechaActualizacion: string;
-    correo: string;  
+    fechaCreacion?: string;
+    status?: number;
+    fechaActualizacion?: string;
+    correo?: string;  
 }
  
