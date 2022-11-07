@@ -29,6 +29,9 @@ import { SelectRegisterComponent } from './views/select-register/select-register
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ListProductsComponent } from './views/warehouses/list-products/list-products.component';
 
+import {MatDialogModule} from '@angular/material/dialog';
+import { RegisterProductComponent } from './views/warehouses/register-product/register-product.component';
+
 
 @NgModule({
   declarations: [
@@ -43,6 +46,8 @@ import { ListProductsComponent } from './views/warehouses/list-products/list-pro
     RegisterBusinessComponent,
     SelectRegisterComponent,
     ListProductsComponent,
+    RegisterProductComponent,
+  
 
   ],
   imports: [
@@ -60,7 +65,8 @@ import { ListProductsComponent } from './views/warehouses/list-products/list-pro
     MatButtonModule,
     MatTableModule,
     MatIconModule,
-    NgSelectModule
+    NgSelectModule,
+    MatDialogModule
   ],
   providers: [
     LoadScriptsService
