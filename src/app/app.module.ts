@@ -31,6 +31,8 @@ import { ListProductsComponent } from './views/warehouses/list-products/list-pro
 import { VentasComponent } from './components/ventas/ventas.component';
 import { ModuloVentasComponent } from './components/modulo-ventas/modulo-ventas.component';
 import { JQueryStyleEventEmitter } from 'rxjs/internal/observable/fromEvent';
+import {HttpClientModule} from '@angular/common/http';
+import {MatAutocompleteModule} from '@angular/material/autocomplete'
 //import {jquery} from './jquery';
 
 @NgModule({
@@ -66,7 +68,9 @@ import { JQueryStyleEventEmitter } from 'rxjs/internal/observable/fromEvent';
     MatButtonModule,
     MatTableModule,
     MatIconModule,
-    NgSelectModule
+    NgSelectModule,
+    HttpClientModule,
+    MatAutocompleteModule
   ],
   providers: [
     LoadScriptsService

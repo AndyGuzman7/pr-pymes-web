@@ -33,16 +33,16 @@
                             <p>{{item.producto.descripcion}}</p>
                         </td>
                         <td>
-                            {{item.precio}}
+                            {{item.producto.precio}}
                         </td>
                         <td>
                             {{item.cantidad}}
-                            <button id="button-option-sale" (click)="addCountProduct(item.idProducto)" class="">+</button> 
-                            <button id="button-option-sale" class="bi">-</button>
+                            <button id="button-option-sale" (click)="addCountProduct(item.producto.idProducto)" class="">+</button> 
+                            <button id="button-option-sale" (click)="removeCountProduct(item.producto.idProducto)" class="bi">-</button>
                         </td>
-                        <td>{{item.subtotal}}</td>
+                        <td>{{item.subTotal}}</td>
                         <td>
-                            <button id="button-option-sale" (click)="deleteOneProductList(item.idProducto)" class="bi bi-x-circle"></button> <br>
+                            <button id="button-option-sale" (click)="deleteOneProductList(item.idDetalleVenta)" class="bi bi-x-circle"></button> <br>
                             <button id="button-option-sale" class="bi bi-pencil-square"></button>
                         </td>
                     </tr>
@@ -184,6 +184,17 @@
             <div style="padding: 10px" >
                 <button type="button"  (click)="deleteOneProductList(1)" id="btn-sale" style="width:100%">Vender</button>
             </div>
+            <form class="example-form">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Assignee</mat-label>
+                  <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                      {{option.name}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </form>
             
         </div>
 </div>

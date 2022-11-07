@@ -15,13 +15,28 @@ export class DetalleVenta {
 
 	constructor(producto:Producto)
 	{
-		this.cantidad = 0;
-		this.subTotal = 0;
-		this._descuento = 0;
 		this._producto = producto;
 		this._idProducto = producto.idProducto;
+		this._precioVenta = producto.precio;
 		this._status = 1;
 		this._descuento = 0.0;
+		this._cantidad = 1;
+		this._subTotal = this._precioVenta;
+	}
+
+	public addCantidad()
+	{
+		this.cantidad++;
+		this.subTotal = this.cantidad * this.precioVenta;
+	}
+
+	public removeCantidad()
+	{
+		if(this.cantidad > 1)
+		{
+			this.cantidad--;
+			this.subTotal = this.cantidad * this.precioVenta;
+		}
 	}
 
 	public get producto()

@@ -7,6 +7,11 @@ import { VentaService } from 'src/app/services/venta.service';
 import {Venta} from 'src/app/models/venta'
 import {Router} from '@angular/router';
 import { DetalleVenta } from 'src/app/models/detalle-venta';
+import { ClienteService } from 'src/app/services/cliente.service';
+
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 declare var js;
 @Component({
   selector: 'app-ventas',
@@ -20,7 +25,7 @@ export class VentasComponent implements OnInit {
 
 
   ventas: Venta[];
-  constructor(private _LoadScripts:LoadScriptsService, private service: VentaService, private router:Router) { 
+  constructor(private serviceVenta: VentaService, private serviceCliente: ClienteService, private _LoadScripts:LoadScriptsService , private router:Router) { 
     _LoadScripts.Load(["accordion"]);
   }
   
@@ -28,11 +33,7 @@ export class VentasComponent implements OnInit {
   
 
 
-  ngOnInit(): void {
-    //console.table(this.producto1);
-    
-    
-  }
+ 
   
   producto1 : Producto = {
     idProducto: 1,
@@ -69,11 +70,14 @@ export class VentasComponent implements OnInit {
 
   public addCountProduct(id:number)
   {
-    this.listaProductos.find((item) => item.idProducto !== id).cantidad++;
+    let product = this.listaProductos.find((item) => item.producto.idProducto == id);
+    product.addCantidad();
   }
   public removeCountProduct(id:number)
   {
-    this.listaProductos.find((item) => item.idProducto !== id).cantidad--;
+    let product = this.listaProductos.find((item) => item.producto.idProducto == id);
+    product.removeCantidad();
+    
   }
 
   public salesProducts() {
@@ -88,18 +92,11 @@ export class VentasComponent implements OnInit {
   }
 
 
-  productos = [
-    this.producto1,
-    this.producto2,
-    this.producto3
-  ]
-  data = Object.values(this.productos)
-  
   public getProducts(){
     var total = 0;
-    this.data.forEach(element => {
+    this.listaProductos.forEach(element => {
       
-      total = total + (element.cantidad * element.precio)
+      total = total + (element.cantidad * element.producto.precio)
     });
     return total;
   }
@@ -107,7 +104,7 @@ export class VentasComponent implements OnInit {
   
   
   public deleteOneProductList (id: number) {
-    this.data = this.data.filter((item) => item.idProducto !== id)
+    this.listaProductos = this.listaProductos.filter((item) => item.idProducto !== id)
     this.totalVenta = this.getProducts();
   }
   client1 : Cliente = {
@@ -127,10 +124,40 @@ export class VentasComponent implements OnInit {
     this.client1.apellidos = apellido;
     this.client1.nitCi = nit;
     this.client1.correo = correo;
-    console.log(this.client1);
+
+    this.serviceCliente.createCliente(this.client1).subscribe(res => {
+      console.log(res)
+    })
   };
   
+/** this.service.selectVenta().subscribe(ventas =>{
+      this.ventas = ventas;
+    }) */
+    myControl = new FormControl<string | User>('');
+    options: User[] = [{name: 'Mary'}, {name: 'Shelley'}, {name: 'Igor'}];
+    filteredOptions: Observable<User[]>;
+  
+    ngOnInit() {
+      this.filteredOptions = this.myControl.valueChanges.pipe(
+        startWith(''),
+        map(value => {
+          const name = typeof value === 'string' ? value : value?.name;
+          return name ? this._filter(name as string) : this.options.slice();
+        }),
+      );
+    }
+  
+    displayFn(user: User): string {
+      return user && user.name ? user.name : '';
+    }
+  
+    private _filter(name: string): User[] {
+      const filterValue = name.toLowerCase();
+      console.log(name)
+      return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
+    }
 
-
-
+}
+export interface User {
+  name: string;
 }
