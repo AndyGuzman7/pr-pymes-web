@@ -26,17 +26,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of data">
+                    <tr *ngFor="let item of listaProductos">
                         <td>
                             <div>
-                                <h6><b> {{item.producto}}</b></h6>
+                                <h6><b> {{item.producto.nombre}}</b></h6>
                             </div>
-                            <p>{{item.descripcion}}</p>
+                            <p>{{item.producto.descripcion}}</p>
                         </td>
                         <td>
                             {{item.precio}}
                         </td>
-                        <td>{{item.cantidad}}</td>
+                        <td>
+                            {{item.cantidad}}
+                            <button id="button-option-sale" (click)="addCountProduct(item.idProducto)" class="">+</button> 
+                            <button id="button-option-sale" class="bi">-</button>
+                        </td>
                         <td>{{item.subtotal}}</td>
                         <td>
                             <button id="button-option-sale" (click)="deleteOneProductList(item.idProducto)" class="bi bi-x-circle"></button> <br>
@@ -87,7 +91,7 @@
                         
                     </div>
                     <div id="number">
-                        {{data.length}}
+                        {{listaProductos.length}}
                     </div>
                 </div>
                 
@@ -113,7 +117,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let item of data">
+                                            <tr *ngFor="let item of listaProductos">
                                                 <td>
                                                     <div>
                                                         <h6> {{item.producto}}</h6>
@@ -142,7 +146,7 @@
                 </div>
             </div>
             <div style="padding: 10px" >
-                <button type="button" id="btn-sale" style="width:100%">Vender</button>
+                <button type="button"  (click)="deleteOneProductList(1)" id="btn-sale" style="width:100%">Vender</button>
             </div>
             
         </div>
