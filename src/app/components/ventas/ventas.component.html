@@ -1,4 +1,3 @@
-<script type="text/javascript" src="../../../assets/script.js"></script>
 <div class="principal">
     <div class="row justify-content-md-center">
         
@@ -75,12 +74,49 @@
 
         </div>
         <div style="background-color: rgb(245,248,251) ;" class="col-lg-3">
-            <h4>Resumen</h4>
+            <h3>Resumen</h3>
             <div class="col-lg-20">
-                <strong>CI:</strong> <strong> 5436423 </strong>
-                <br>
-                <strong>Cliente:</strong> <strong> JUAN PEREZ </strong>
+                <form action="">
+                    <div id="form-ci">
+                        <strong><label class="text-input" for="txtCi">CI: </label></strong>
+                        <input class="form-control" type="text" id="txtCi" value="4827328">
+                    </div>
+                    <div id="form-name">
+                        <strong><label class="text-input" for="txtFullName">Cliente: </label></strong>
+                        <input class="form-control" type="text" id="txtFullName" value="Juan Perez">
+                    </div>
+                </form>
             </div>
+            <div id="icon-add">
+                <button data-target="#modalRegister" data-toggle="modal" id="btn-addClient" class="bi bi-person-plus"></button>
+            </div>
+            <div id="modalRegister" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content" style="padding: 10px;">
+                        <form action="">
+                            <div class="form-group">
+                                <label class="text-input" for="Nombre">Nombre</label>
+                                <input type="text" class="form-control input-register" id="Nombre" placeholder="Nombre">
+                                <label class="text-input" for="Apellido">Apellido</label>
+                                <input type="text" class="form-control input-register" id="Apellido" placeholder="Apellido">
+                                <label class="text-input" for="NIT">Nit</label>
+                                <input type="text" class="form-control input-register" id="NIT" placeholder="NIT">
+                                <label class="text-input" for="Correo">Correo electrónico</label>
+                                <input type="email" class="form-control input-register" id="Correo" placeholder="Correo electrónico">
+                            </div>
+                            <div style="margin-top: 10px ;" >
+                                <button type="button" id="btnRegister" (click)="RegisterClient()" class="btn btn-primary" style="width:100%">Registrar</button>
+                            </div>
+                            <div style="margin-top: 10px ;" >
+                                <button type="button" id="btnCloseModal" class="btn btn-danger" style="width:100%">Cancelar</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            
         
 			
             <br>
@@ -100,7 +136,7 @@
                 <div class="panel" >
                     
                     <div >
-                        <table  id="table-detail">
+                        <table id="table-detail">
                             <thead>
                                 
                             </thead>
@@ -120,7 +156,7 @@
                                             <tr *ngFor="let item of listaProductos">
                                                 <td>
                                                     <div>
-                                                        <h6> {{item.producto}}</h6>
+                                                        <h4> {{item.producto}}</h4>
                                                     </div>
                                                     
                                                 </td>
@@ -128,16 +164,16 @@
                                                     {{item.precio}}
                                                 </td>
                                                 <td>{{item.cantidad}}</td>
-                                                <td>{{item.subtotal}}</td>
+                                                <td>{{item.cantidad * item.precio}}</td>
                                                 
                                             </tr>
                                         </tbody>
                                     </table>
                                 </tr>     
                             </tbody>
-                            <tfoot  style="margin: 50px;" >
+                            <tfoot style="margin: 50px;" >
                                 <tr>
-                                    <p><b>Total :</b> <strong>110bs</strong></p>
+                                    <p><b>Total :</b> <strong> {{totalVenta}}</strong></p>
                                 </tr>
                             </tfoot>
                             

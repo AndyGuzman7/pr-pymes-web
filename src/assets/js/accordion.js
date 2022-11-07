@@ -8,3 +8,13 @@ for (i = 0; i < acc.length; i++) {
         this.nextElementSibling.classList.toggle("show");
   }
 }
+
+$("#btn-addClient").click(() => {
+  $("#modalRegister").modal('show');
+})
+$('#modalRegister').modal({backdrop: 'static', keyboard: false})
+
+$("#btnCloseModal").click(() => {
+  
+  $("#modalRegister").modal('toggle');
+})
