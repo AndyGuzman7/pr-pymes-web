@@ -1,0 +1,25 @@
+.header-h{
+    width: 100%;
+    background-color: #00AEE1;
+    height: 300px;
+    margin-top: 42px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.header-h h1{
+    color: #fff;
+    font-size: x-large;
+    margin-bottom: 40px;
+
+}
+
+.content-h{
+    display: -webkit-inline-box;
+}
+
+.input-search{
+    width: 70%;
+}

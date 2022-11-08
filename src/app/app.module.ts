@@ -31,6 +31,7 @@ import { ListProductsComponent } from './views/warehouses/list-products/list-pro
 
 import {MatDialogModule} from '@angular/material/dialog';
 import { RegisterProductComponent } from './views/warehouses/register-product/register-product.component';
+import { HomeComponent } from './views/portal/home/home.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { RegisterProductComponent } from './views/warehouses/register-product/re
     SelectRegisterComponent,
     ListProductsComponent,
     RegisterProductComponent,
+    HomeComponent,
   
 
   ],
