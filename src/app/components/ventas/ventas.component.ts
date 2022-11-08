@@ -12,6 +12,7 @@ import { ClienteService } from 'src/app/services/cliente.service';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { ItemsList } from '@ng-select/ng-select/lib/items-list';
 declare var js;
 @Component({
   selector: 'app-ventas',
@@ -114,18 +115,21 @@ export class VentasComponent implements OnInit {
     new DetalleVenta(this.producto7),
   ]
 
-  public selectOneProductList(id: number){
-    this.listaProductosBuscador = this.listaProductosBuscador.filter((item) => item.idProducto !== id)
-    this.totalVenta = this.getProducts();
-    console.log(id)
-  }
-
 
   listaProductos = [
     new DetalleVenta(this.producto1),
     new DetalleVenta(this.producto2),
     new DetalleVenta(this.producto3),
   ]  
+
+  public selectOneProductList(detalleventa : DetalleVenta){
+    this.listaProductosBuscador = this.listaProductosBuscador.filter((item) => item !== detalleventa)
+    this.listaProductos.push(detalleventa)
+    this.totalVenta = this.getProducts();
+
+    
+
+  }
 
   public addCountProduct(id:number)
   {
@@ -156,7 +160,7 @@ export class VentasComponent implements OnInit {
     this.listaProductos.forEach(element => {
       
       total = total + (element.cantidad * element.producto.precio)
-    });
+    }); 
     return total;
   }
   totalVenta = this.getProducts();
@@ -165,6 +169,7 @@ export class VentasComponent implements OnInit {
     this.listaProductos = this.listaProductos.filter((item) => item.idProducto !== id)
     this.totalVenta = this.getProducts();
   }
+
   client1 : Cliente = {
     idCliente : 1,
     nitCi : '',
@@ -172,7 +177,10 @@ export class VentasComponent implements OnInit {
     apellidos: '',
     correo: ''
   }
-  
+
+
+
+
   public RegisterClient(){
     const nombre = (document.getElementById('Nombre') as HTMLInputElement).value;
     const apellido = (document.getElementById('Apellido') as HTMLInputElement).value;

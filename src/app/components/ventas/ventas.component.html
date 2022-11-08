@@ -86,6 +86,10 @@
                                             Descripcion
                                         </th>
                                         <th scope="col">
+                                            Cantidad
+                                        </th>
+
+                                        <th scope="col">
                                             Precio
                                         
                                         </th >
@@ -100,10 +104,13 @@
                                             {{item.producto.descripcion}}
                                         </td>
                                         <td>
+                                            {{item.producto.cantidad}}
+                                        </td>
+                                        <td>
                                             {{item.producto.precio}}
                                         </td>
                                         <td>
-                                            <button id="button-option-sale" (click)="selectOneProductList(item.producto.idProducto)" class="bi bi-bookmark-check-fill"></button>
+                                            <button id="button-option-sale" (click)="selectOneProductList(item)" class="bi bi-bookmark-check-fill"></button>
                                         </td>
                                     </tr>
                                 
