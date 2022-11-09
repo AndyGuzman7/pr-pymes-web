@@ -34,6 +34,7 @@ import { SeeSalesJournalComponent } from './views/see-sales-journal/see-sales-jo
 import { ReportsJournalComponent } from './views/reports-journal/reports-journal.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ModalTypeJComponent } from './views/modal-type-j/modal-type-j.component';
+import { NewAccountJournalComponent } from './views/new-account-journal/new-account-journal.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { ModalTypeJComponent } from './views/modal-type-j/modal-type-j.component
     SeeSalesJournalComponent,
     ReportsJournalComponent,
     ModalTypeJComponent,
+    NewAccountJournalComponent,
 
   ],
   imports: [
