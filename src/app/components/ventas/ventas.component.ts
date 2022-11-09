@@ -21,7 +21,7 @@ declare var js;
 
 export class VentasComponent implements OnInit {
   public titulo: string = 'Listado de ventas';
-
+  cliente : Cliente = new Cliente();
 
 
   ventas: Venta[];
@@ -107,32 +107,27 @@ export class VentasComponent implements OnInit {
     this.listaProductos = this.listaProductos.filter((item) => item.idProducto !== id)
     this.totalVenta = this.getProducts();
   }
-  client1 : Cliente = {
-    idCliente : 1,
-    nitCi : '',
-    nombre: '',
-    apellidos: '',
-    correo: ''
-  }
-  
-  public RegisterClient(){
-    const nombre = (document.getElementById('Nombre') as HTMLInputElement).value;
-    const apellido = (document.getElementById('Apellido') as HTMLInputElement).value;
-    const nit = (document.getElementById('NIT') as HTMLInputElement).value;
-    const correo = (document.getElementById('Correo') as HTMLInputElement).value;
-    this.client1.nombre = nombre;
-    this.client1.apellidos = apellido;
-    this.client1.nitCi = nit;
-    this.client1.correo = correo;
 
-    this.serviceCliente.createCliente(this.client1).subscribe(res => {
+
+  
+  public RegisterClient(): void{
+    const nombre = (document.getElementById('nombre') as HTMLInputElement).value;
+    const apellido = (document.getElementById('apellidos') as HTMLInputElement).value;
+    const nit = (document.getElementById('nitCi') as HTMLInputElement).value;
+    const correo = (document.getElementById('correo') as HTMLInputElement).value;
+    let cliente2 = new Cliente();
+    
+    cliente2.nombre = nombre;
+    cliente2.apellidos = apellido;
+    cliente2.nitCi = nit;
+    cliente2.correo = correo;
+    console.log(cliente2.nombre)
+    this.serviceCliente.createCliente(cliente2).subscribe(res => {
       console.log(res)
     })
   };
   
-/** this.service.selectVenta().subscribe(ventas =>{
-      this.ventas = ventas;
-    }) */
+
     myControl = new FormControl<string | User>('');
     options: User[] = [{name: 'Mary'}, {name: 'Shelley'}, {name: 'Igor'}];
     filteredOptions: Observable<User[]>;
@@ -153,7 +148,7 @@ export class VentasComponent implements OnInit {
   
     private _filter(name: string): User[] {
       const filterValue = name.toLowerCase();
-      console.log(name)
+      //this.serviceCliente.
       return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
     }
 

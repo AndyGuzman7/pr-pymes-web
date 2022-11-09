@@ -77,6 +77,15 @@
             <h3>Resumen</h3>
             <div class="col-lg-20">
                 <form action="">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Buscar cliente</mat-label>
+                        <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{option.name}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
                     <div id="form-ci">
                         <strong><label class="text-input" for="txtCi">CI: </label></strong>
                         <input class="form-control" type="text" id="txtCi" value="4827328">
@@ -95,14 +104,24 @@
                     <div class="modal-content" style="padding: 10px;">
                         <form action="">
                             <div class="form-group">
-                                <label class="text-input" for="Nombre">Nombre</label>
-                                <input type="text" class="form-control input-register" id="Nombre" placeholder="Nombre">
-                                <label class="text-input" for="Apellido">Apellido</label>
-                                <input type="text" class="form-control input-register" id="Apellido" placeholder="Apellido">
-                                <label class="text-input" for="NIT">Nit</label>
-                                <input type="text" class="form-control input-register" id="NIT" placeholder="NIT">
-                                <label class="text-input" for="Correo">Correo electrónico</label>
-                                <input type="email" class="form-control input-register" id="Correo" placeholder="Correo electrónico">
+                                <label class="text-input" for="nombre">Nombre</label>
+                                <input type="text" class="form-control input-register" name="nombre"  id="nombre" placeholder="Nombre" [(ngModel)]="cliente.nombre">
+                                
+                            </div>
+                            <div>
+                                <label class="text-input" for="apellido">Apellido</label>
+                                <input type="text" class="form-control input-register" name="apellidos"  id="apellidos" placeholder="Apellido"  [(ngModel)]="cliente.apellidos">
+                               
+                            </div>
+                            <div>
+                                <label class="text-input" for="nitCi">Nit</label>
+                                <input type="text" class="form-control input-register" name="nitCi"  id="nitCi" placeholder="NIT" [(ngModel)]="cliente.nitCi">
+                                
+                            </div>
+                            <div>
+                                <label class="text-input" for="correo">Correo electrónico</label>
+                                <input type="email" class="form-control input-register" name="correo" name="correo" placeholder="Correo electrónico" [(ngModel)]="cliente.correo">
+                                
                             </div>
                             <div style="margin-top: 10px ;" >
                                 <button type="button" id="btnRegister" (click)="RegisterClient()" class="btn btn-primary" style="width:100%">Registrar</button>
