@@ -1,0 +1,126 @@
+<div class="container">
+    <div class="row justify-content-md-center">
+        
+
+        <div id="list-products" class="col col-lg">
+            <h2 >Carro de compras</h2>
+            <table class="table " >
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            Producto
+                        </th>
+                        <th scope="col">
+                            Precio
+                        </th>
+                        <th scope="col">
+                            Cantidad
+                        
+                        </th >
+                        <th scope="col">
+                            Subtotal
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div>
+                                <h6> <b> Nombre Producto </b></h6>
+                            </div>
+                            Foto y contenido del producto
+                        </td>
+                        <td>15 bs</td>
+                        <td>2</td>
+                        <td>30 bs</td>
+                        <td>
+                            
+                            <button id="button-option-sale" class="bi bi-x-circle"></button> <br>
+                            <button id="button-option-sale" class="bi bi-pencil-square"></button>
+                        </td>
+                      </tr>
+                    <tr>
+                        <td>Foto y contenido del producto</td>
+                        <td>35 Bs.</td>
+                        <td>2</td>
+                        <td>70 Bs.</td>
+                        <td>
+                            
+                            <button id="button-option-sale" class="bi bi-x-circle"></button> <br>
+                            <button id="button-option-sale" class="bi bi-pencil-square"></button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+            </table>
+            <div id="options-buttons" >
+                <button id="button-option-list-sale">Seguir comprando</button>
+                <button id="button-option-list-sale-delete">Borrar el carro de compra</button>
+                <button id="button-option-list-sale-update">Actualizar el carrito</button>
+            </div>
+            
+
+        </div>
+        <div style="background-color: rgb(245,248,251) ;" class="col-lg-3">
+            <h4>Resumen</h4>
+            <div class="col-lg-20">
+                <strong>CI:</strong> <strong> 5436423 </strong>
+                <br>
+                <strong>Cliente:</strong> <strong> JUAN PEREZ </strong>
+            </div>
+        
+			
+            <br>
+            <div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Total Productos</th>
+                            <th>3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <table  mat-table[dataSource]="dataSource" style="background-color: rgb(207,229,237);" class="table table-bordered"  >
+                            <ng-container matColumnDef="id">
+                                <th mat-header-cell *matHeaderCellDef hidden="true"> id </th>
+                                <td mat-cell *matCellDef="let element" hidden="true"> {{element.id}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="producto">
+                                <th mat-header-cell *matHeaderCellDef> producto </th>
+                                <td mat-cell *matCellDef="let element"> {{element.producto}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="cantidad">
+                                <th mat-header-cell *matHeaderCellDef>cantidad</th>
+                                <td mat-cell *matCellDef="let element"> {{element.cantidad}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="subtotal">
+                                <th mat-header-cell *matHeaderCellDef> subtotal </th>
+                                <td mat-cell *matCellDef="let element"> {{element.subtotal}} </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                    </tbody>
+                    <tfoot  style="background-color: rgb(207,229,237);" >
+                        <tr>
+                            <p><b>Total :</b> <strong>110bs</strong></p>
+                        </tr>
+                    </tfoot>
+                    
+                </table>
+        
+            </div>
+            <div style="padding: 10px" >
+                <button type="button" class="btn btn-info btn-lg " style="width:100%"><strong class="text-white">Vender</strong></button>
+            </div>
+            
+        </div>
+</div>
+

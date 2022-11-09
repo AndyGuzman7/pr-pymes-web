@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RegisterBusinessComponent } from './views/register-business/register-business.component';
-import { RegisterComponent } from './views/register/register.component';
-import { SelectRegisterComponent } from './views/select-register/select-register.component';
+import { RegisterBusinessComponent } from './views/users/register-business/register-business.component';
+import { RegisterComponent } from './views/users/register/register.component';
+import { SelectRegisterComponent } from './views/users/select-register/select-register.component';
 
 const routes: Routes = [
   {path: 'register_business', component: RegisterBusinessComponent},
