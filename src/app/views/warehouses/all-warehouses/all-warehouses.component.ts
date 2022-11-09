@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadScriptsService } from 'src/app/load-scripts.service';
 
 @Component({
   selector: 'app-all-warehouses',
@@ -39,7 +40,9 @@ export class AllWarehousesComponent implements OnInit {
 
   ];
 
-  constructor() { }
+  constructor(private _LoadScripts:LoadScriptsService) { 
+    _LoadScripts.Load(["warehouse"])
+  }
 
   ngOnInit(): void {
   }
