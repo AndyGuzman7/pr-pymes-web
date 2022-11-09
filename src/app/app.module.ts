@@ -40,6 +40,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { ListProductsComponent } from './views/warehouses/list-products/list-products.component';
 
 import { RegisterProductComponent } from './views/warehouses/register-product/register-product.component';
+import { HomeComponent } from './views/portal/home/home.component';
 import { JournalPrincipalComponent } from './views/journal/journal-principal/journal-principal.component';
 
 
@@ -59,11 +60,12 @@ import { JournalPrincipalComponent } from './views/journal/journal-principal/jou
     ReportsJournalComponent,
     NewAccountJournalComponent,
     RegisterBusinessComponent,
-
     SelectRegisterComponent,
     ListProductsComponent,
     RegisterProductComponent,
-    JournalPrincipalComponent,
+    HomeComponent,
+    JournalPrincipalComponent
+  
 
   ],
   imports: [
