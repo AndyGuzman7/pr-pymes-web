@@ -5,7 +5,7 @@ table {
 th{
     width: 20%;
 }
-
+ 
 .agregar{
     text-align: left;
     margin-top: 5px;
@@ -37,13 +37,13 @@ color:0A457F ;
     background-color: #0A457F;
     border-radius: 5px;
 }
-
-  
+ 
+ 
 .mat-form-field {
     font-size: 14px;
     width: 100%;
 }
-
+ 
 .btn{
     text-align: left;
 }

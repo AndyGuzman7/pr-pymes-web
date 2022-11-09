@@ -7,7 +7,7 @@
     <form>
        <mat-grid-list cols="6" rowHeight="100px">
             <mat-grid-tile [colspan]="1" [rowspan]="1">  
-                <mat-label class="mat-label">Comprobante: </mat-label>       
+                <mat-label class="mat-label">Comprobante: </mat-label>      
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
                 <input  class="form-control" name="comprobante" placeholder="comprobante">
@@ -16,7 +16,7 @@
                 <mat-label>Fecha:</mat-label>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
-                <input  class="form-control" name="Fecha" placeholder="fecha">             
+                <input  class="form-control" name="Fecha" placeholder="fecha">            
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
                 <mat-label>Tipo:</mat-label>
@@ -25,23 +25,23 @@
                 <mat-form-field appearance="fill">
                     <select matNativeControl required>
                       <option value="haber">HABER</option>
-                      <option value="debe">DEBE</option> 
+                      <option value="debe">DEBE</option>
                     </select>
-                </mat-form-field>         
-            </mat-grid-tile>           
+                </mat-form-field>        
+            </mat-grid-tile>          
        </mat-grid-list>
        <mat-grid-list cols="6" rowHeight="100px">
             <mat-grid-tile [colspan]="1" [rowspan]="1">
                 <mat-label>Razón social:</mat-label>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="2" [rowspan]="1">
-                <input  class="form-control" name="razonSocial" placeholder="Razón social">             
+                <input  class="form-control" name="razonSocial" placeholder="Razón social">            
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
                 <mat-label>Glosa:</mat-label>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="2" [rowspan]="1">
-                <input  class="form-control" name="glosa" placeholder="Glosa">             
+                <input  class="form-control" name="glosa" placeholder="Glosa">            
             </mat-grid-tile>  
        </mat-grid-list>
        
@@ -56,7 +56,7 @@
           <th mat-header-cell *matHeaderCellDef> Debe </th>
           <td mat-cell *matCellDef="let element"> {{element.should}} </td>
         </ng-container>
-      
+     
         <!-- Nombre Column -->
         <ng-container matColumnDef="haber">
           <th mat-header-cell *matHeaderCellDef>Haber</th>
@@ -64,34 +64,34 @@
         </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table> 
-      
+    </table>
+     
     <mat-grid-list cols="15" rowHeight="100px">
         <mat-grid-tile [colspan]="2" [rowspan]="1" >
-            <button mat-raised-button  class="width" style="color: #02890F;"> Registrar </button>   
+            <button mat-raised-button  class="width" style="color: #02890F;"> Registrar </button>  
         </mat-grid-tile>
-    
+   
         <mat-grid-tile [colspan]="2" [rowspan]="1">
-            <button mat-raised-button style="color: #E71205;" > Cancelar </button>   
+            <button mat-raised-button style="color: #0A457F;" > Cancelar </button>  
         </mat-grid-tile>
-
+ 
         <mat-grid-tile [colspan]="2" [rowspan]="1">
             <mat-label>Total:</mat-label>
         </mat-grid-tile>
-    
+   
         <mat-grid-tile [colspan]="2" [rowspan]="1">
             <mat-label>Bs</mat-label>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="3" [rowspan]="1">
             <button data-target="#modalJournalType" class="btn btn-submit" style="margin-bottom: 10px;" data-toggle="modal" id="btn-addType" >+</button>
         </mat-grid-tile>
-        
+       
         <mat-grid-tile [colspan]="2" [rowspan]="1" >
-            <button mat-raised-button style="color: #170F49;"> Ver Compras </button>   
+            <button mat-raised-button style="color: #170F49;"> Ver Compras </button>  
         </mat-grid-tile>
-    
+   
         <mat-grid-tile [colspan]="2" [rowspan]="1">
-            <button mat-raised-button style="color: #170F49;" > Ver Ventas </button>   
+            <button mat-raised-button style="color: #170F49;" > Ver Ventas </button>  
         </mat-grid-tile>
    </mat-grid-list>
    <div id="modalJournalType" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -103,7 +103,7 @@
                     <br>
                     <select matNativeControl required>
                         <option value="haber">HABER</option>
-                        <option value="debe">DEBE</option> 
+                        <option value="debe">DEBE</option>
                       </select>
                     <br>
                     <label class="text-input" for="Nombre">Monto</label>
@@ -120,5 +120,4 @@
         </div>
     </div>
 </div>
- 
-    </div>
+ </div>
