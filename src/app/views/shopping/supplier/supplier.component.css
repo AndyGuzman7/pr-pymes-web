@@ -1,5 +1,4 @@
 table {
-    align-items: center;
     width: 100%;
 }
 th{
@@ -11,7 +10,9 @@ th{
     margin-top: 5px;
 }
 span{
-    color: #170F49;
+    color: white;
+    margin-left: 0%;
+
 }
 .pointer{
     cursor: pointer;
@@ -24,12 +25,16 @@ span{
     background-color: #f5f5f5;
 }
 .container{
-    width: 50%;
+    margin-top: 8%;
+    width: 90%;
+    height: auto;
     max-width: 100%;
     border-radius:20px;
 }
 .toolbar{
-    margin-top: 6%;
+    margin-top: 5%;
+    background-color: #68cae9;
+    border-radius: 5PX;
 }
 
   
@@ -40,5 +45,5 @@ span{
 
 .btn{
     text-align: left;
-
+    background-color: #00AEE1;
 }

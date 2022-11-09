@@ -1,13 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator } from '@angular/material/paginator';//Nota:si se desea gargar pocos datos es posible usar esta función de material angular que muestra en la tabla de a 5 filas
 import { MatTableDataSource } from '@angular/material/table';
 
+/*Responsable:Valeria Delgadillo Datos estaticos, realizar clases y métodos según corresponda*/ 
 export interface Supplier {
-  id: number;
-  nombre: string;
-  industria: string;
-  correo: string;
-  direccion: string;
+  name: string;
+  address: string;
+  phone: number;
+  email: string;
+  products: number;
 }
 
 @Component({
@@ -15,17 +16,15 @@ export interface Supplier {
   templateUrl: './supplier.component.html',
   styleUrls: ['./supplier.component.css']
 })
+
 export class SupplierComponent implements OnInit {
   ELEMENT_DATA: Supplier[] = [
-    {id: 1,nombre: 'Jose', industria: 'Venado', correo: '@gmail', direccion: 'H'},
-    {id: 2,nombre: 'Juan', industria: 'Pil', correo: '@gmail', direccion: 'He'},
-    {id: 3,nombre: 'Andrea', industria: 'Eco compras', correo: '@gmail', direccion: 'Li'},
-    {id: 4, nombre: 'Sofia',industria: 'Sofia', correo: '@gmail', direccion: 'Be'},
-    {id: 5,nombre: 'Camila', industria: 'Coboce', correo: '@gmail', direccion: 'B'},
-  
-  
+    {name: 'Jose', address: 'Av.Circunvalacion',phone: 78956423, email: 'Jose@gmail', products: 78},
+    {name: 'Sandra Alcocer', address: 'Av.Circunvalacion',phone: 78956423, email: 'Alcocer@gmail', products: 5},
+    {name: 'Juan Perez', address: 'Av.Circunvalacion',phone: 78956423, email: 'Juan@gmail', products: 9},
+    {name: 'Pedro Candioti', address: 'Av.Circunvalacion',phone: 78956423, email: 'Candioti@gmail', products: 10}, 
   ];
-  displayedColumns: string[] = ['id','nombre', 'industria', 'correo', 'direccion','acciones'];
+  displayedColumns: string[] = ['name','address', 'phone', 'email', 'products','acciones'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   
   constructor() { }
@@ -34,7 +33,8 @@ export class SupplierComponent implements OnInit {
   }
 
   
-  /*filtro para buscar proveedores por letra*/
+  /*filtro para buscar proveedores por letra
+  Agregar metodos si lo ven conveniente*/
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
 
