@@ -36,6 +36,14 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ModalTypeJComponent } from './views/modal-type-j/modal-type-j.component';
 import { NewAccountJournalComponent } from './views/new-account-journal/new-account-journal.component';
 
+import { RegisterBusinessComponent } from './views/register-business/register-business.component';
+import { SelectRegisterComponent } from './views/select-register/select-register.component';
+
+import { NgSelectModule } from '@ng-select/ng-select';
+import { ListProductsComponent } from './views/warehouses/list-products/list-products.component';
+
+import { RegisterProductComponent } from './views/warehouses/register-product/register-product.component';
+
 
 @NgModule({
   declarations: [
@@ -54,6 +62,12 @@ import { NewAccountJournalComponent } from './views/new-account-journal/new-acco
     ReportsJournalComponent,
     ModalTypeJComponent,
     NewAccountJournalComponent,
+
+    RegisterBusinessComponent,
+    SelectRegisterComponent,
+    ListProductsComponent,
+    RegisterProductComponent,
+  
 
   ],
   imports: [
@@ -76,7 +90,10 @@ import { NewAccountJournalComponent } from './views/new-account-journal/new-acco
     MatSelectModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatIconModule,
+    NgSelectModule,
+    MatDialogModule
   ],
   providers: [
     LoadScriptsService

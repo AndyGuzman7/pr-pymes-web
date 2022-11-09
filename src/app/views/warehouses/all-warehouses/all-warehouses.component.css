@@ -4,6 +4,7 @@
 }
 .card-warehouse{
     background: #F4FAFF;
+    padding: 0 !important;
 }
 
 .header-card{
@@ -18,6 +19,8 @@
 }
 .buttons-edit-delete{
     justify-content: right;
+    text-align: right;
+    margin: 5px 5px 0px 0px;
 }
 
 .content-btn{
@@ -29,6 +32,7 @@
 }
 .content-btn button{
     font-size: 13px;
+    margin: 10px;
 }
 
 .btn-submit{
@@ -36,4 +40,8 @@
     background: #0A457F;
     box-shadow: 0px 3px 12px rgba(74, 58, 255, 0.18);
     border-radius: 10px;
+}
+
+.content-card{
+    margin: 5px 15px 10px 15px;
 }

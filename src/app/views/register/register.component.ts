@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LoadScriptsService } from 'src/app/load-scripts.service';
 
 @Component({
   selector: 'app-register',
@@ -9,9 +8,7 @@ import { LoadScriptsService } from 'src/app/load-scripts.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private _LoadScripts:LoadScriptsService) { 
-    _LoadScripts.Load(["register_multistep"]);
-  }
+  
 
   ngOnInit(): void {
   }
