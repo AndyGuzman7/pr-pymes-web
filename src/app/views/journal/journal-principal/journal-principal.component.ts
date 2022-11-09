@@ -10,26 +10,29 @@ export interface Journal {
  
 }
 
+
 @Component({
-  selector: 'app-journal',
-  templateUrl: './journal.component.html',
-  styleUrls: ['./journal.component.css']
+  selector: 'app-journal-principal',
+  templateUrl: './journal-principal.component.html',
+  styleUrls: ['./journal-principal.component.css']
 })
-export class JournalComponent implements OnInit {
+export class JournalPrincipalComponent implements OnInit {
+
   ELEMENT_DATA: Journal[] = [
     {account: '15648-5645', should: 456,haber:1000 },
     {account: '15656-5645', should: 300,haber:800 },
     {account: '15656-5645', should: 300,haber:800 },
  
   ];
+
   displayedColumns: string[] = ['account','should', 'haber'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
-  
-  constructor(private _LoadScripts:LoadScriptsService) { 
+ 
+  constructor(private _LoadScripts:LoadScriptsService) {
     _LoadScripts.Load(["journal_type"])
   }
  
-  
+
 
   ngOnInit(): void {
   }
