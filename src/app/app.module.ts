@@ -60,10 +60,11 @@ import { JournalPrincipalComponent } from './views/journal/journal-principal/jou
     ReportsJournalComponent,
     NewAccountJournalComponent,
     RegisterBusinessComponent,
-
     SelectRegisterComponent,
     ListProductsComponent,
     RegisterProductComponent,
+    HomeComponent,
+    JournalPrincipalComponent
   
 
   ],
