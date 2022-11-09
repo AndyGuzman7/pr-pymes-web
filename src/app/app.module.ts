@@ -19,16 +19,31 @@ import { PasswordRecoveryComponent } from './views/recovery_password/password-re
 import { UpdatePasswordComponent } from './views/recovery_password/update-password/update-password.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { AllWarehousesComponent } from './views/warehouses/all-warehouses/all-warehouses.component';
-
+import {MatGridListModule} from '@angular/material/grid-list';
 import { MatCardModule} from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatIconModule} from '@angular/material/icon';
+import { OrdersToSupplierComponent } from './views/orders-to-supplier/orders-to-supplier.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSelectModule} from '@angular/material/select';
+import { JournalComponent } from './views/journal/journal.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
+import { SeePurchasesComponent } from './views/see-purchases/see-purchases.component';
+import { SeeSalesJournalComponent } from './views/see-sales-journal/see-sales-journal.component';
+import { ReportsJournalComponent } from './views/reports-journal/reports-journal.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { ModalTypeJComponent } from './views/modal-type-j/modal-type-j.component';
+import { NewAccountJournalComponent } from './views/new-account-journal/new-account-journal.component';
+
 import { RegisterBusinessComponent } from './views/register-business/register-business.component';
 
 import { SelectRegisterComponent } from './views/select-register/select-register.component';
 
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ListProductsComponent } from './views/warehouses/list-products/list-products.component';
+
+import { RegisterProductComponent } from './views/warehouses/register-product/register-product.component';
 
 
 @NgModule({
@@ -41,10 +56,20 @@ import { ListProductsComponent } from './views/warehouses/list-products/list-pro
     PasswordRecoveryComponent,
     UpdatePasswordComponent,
     AllWarehousesComponent,
+    OrdersToSupplierComponent,
+    JournalComponent,
+    SeePurchasesComponent,
+    SeeSalesJournalComponent,
+    ReportsJournalComponent,
+    ModalTypeJComponent,
+    NewAccountJournalComponent,
+
     RegisterBusinessComponent,
 
     SelectRegisterComponent,
     ListProductsComponent,
+    RegisterProductComponent,
+  
 
   ],
   imports: [
@@ -62,7 +87,15 @@ import { ListProductsComponent } from './views/warehouses/list-products/list-pro
     MatButtonModule,
     MatTableModule,
     MatIconModule,
-    NgSelectModule
+    MatTooltipModule,
+    MatGridListModule,
+    MatSelectModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatIconModule,
+    NgSelectModule,
+    MatDialogModule
   ],
   providers: [
     LoadScriptsService

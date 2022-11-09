@@ -1,0 +1,59 @@
+<div class="container">
+    <mat-toolbar class="toolbar">
+        <span > Mis pedidos</span>  
+    </mat-toolbar>
+    <div class="agregar">
+      <button mat-raised-button color="primary" class="btn" >AGREGAR</button>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Seleccionar Proveedor</mat-label>
+        <mat-select>
+          <mat-option *ngFor="" [value]="supplier.value">
+            {{supplier.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="body">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> identificador </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+            <!-- Pedido Column -->
+
+            <ng-container matColumnDef="pedido">
+              <th mat-header-cell *matHeaderCellDef> Pedido </th>
+              <td mat-cell *matCellDef="let element"> {{element.pedido}} </td>
+            </ng-container>
+          
+            <!-- Fecha Column -->
+            <ng-container matColumnDef="fecha">
+              <th mat-header-cell *matHeaderCellDef>Fecha</th>
+              <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
+            </ng-container>
+                        
+            <!-- Acciones Column -->
+            <ng-container matColumnDef="acciones">
+              <th mat-header-cell *matHeaderCellDef> Acciones </th>
+              <td mat-cell *matCellDef="let element; let i = index" style="text-align: right;"> 
+                  <a class="pointer" style="color: #170F49" matTooltip="buscar" href="#">
+                    <mat-icon >search</mat-icon>
+                  </a>     
+              </td>
+            </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+  </div>
+  
+  
+  
+</div>
+
+
