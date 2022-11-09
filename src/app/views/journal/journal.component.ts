@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
+import { LoadScriptsService } from 'src/app/load-scripts.service';
 
 export interface Journal {
   account: string;
@@ -24,11 +25,10 @@ export class JournalComponent implements OnInit {
   displayedColumns: string[] = ['account','should', 'haber'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   
-  constructor(private _snackBar: MatSnackBar) {}
-
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+  constructor(private _LoadScripts:LoadScriptsService) { 
+    _LoadScripts.Load(["journal_type"])
   }
+ 
   
 
   ngOnInit(): void {

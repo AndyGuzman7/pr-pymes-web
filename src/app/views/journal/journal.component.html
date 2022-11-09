@@ -83,9 +83,9 @@
             <mat-label>Bs</mat-label>
         </mat-grid-tile>
         <mat-grid-tile [colspan]="3" [rowspan]="1">
-            <button mat-raised-button color="primary" class="width"> + </button>   
+            <button data-target="#modalJournalType" class="btn btn-submit" style="margin-bottom: 10px;" data-toggle="modal" id="btn-addType" >+</button>
         </mat-grid-tile>
-
+        
         <mat-grid-tile [colspan]="2" [rowspan]="1" >
             <button mat-raised-button style="color: #170F49;"> Ver Compras </button>   
         </mat-grid-tile>
@@ -94,5 +94,31 @@
             <button mat-raised-button style="color: #170F49;" > Ver Ventas </button>   
         </mat-grid-tile>
    </mat-grid-list>
+   <div id="modalJournalType" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" style="padding: 10px;">
+            <form action="">
+                <div class="form-group">
+                    <label class="text-input" for="Nombre">Agregar Tipo</label>
+                    <br>
+                    <select matNativeControl required>
+                        <option value="haber">HABER</option>
+                        <option value="debe">DEBE</option> 
+                      </select>
+                    <br>
+                    <label class="text-input" for="Nombre">Monto</label>
+                    <input type="text" class="form-control input-register" id="typeWarehouse" placeholder="Monto">
+                    <br>
+                </div>
+                <div style="margin-top: 10px ;" >
+                    <button type="button" id="btnRegister"  class="btn btn-success" style="width:100%">Agregar</button>
+                </div>
+                <div style="margin-top: 10px ;" >
+                    <button type="button" id="btnCloseModal" class="btn btn-danger" style="width:100%">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
  
     </div>
