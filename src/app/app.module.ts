@@ -42,6 +42,10 @@ import { ListProductsComponent } from './views/warehouses/list-products/list-pro
 import { RegisterProductComponent } from './views/warehouses/register-product/register-product.component';
 import { HomeComponent } from './views/portal/home/home.component';
 import { JournalPrincipalComponent } from './views/journal/journal-principal/journal-principal.component';
+import { SupplierRegistrationComponent } from './views/shopping/supplier-registration/supplier-registration.component';
+import { ManufacturingProductionRegistrationComponent } from './views/shopping/manufacturing-production-registration/manufacturing-production-registration.component';
+import { ProductionInformationDetailComponent } from './views/shopping/production-information-detail/production-information-detail.component';
+import { SupplierManagementComponent } from './views/shopping/supplier-management/supplier-management.component';
 
 
 @NgModule({
@@ -64,7 +68,11 @@ import { JournalPrincipalComponent } from './views/journal/journal-principal/jou
     ListProductsComponent,
     RegisterProductComponent,
     HomeComponent,
-    JournalPrincipalComponent
+    JournalPrincipalComponent,
+    SupplierRegistrationComponent,
+    ManufacturingProductionRegistrationComponent,
+    ProductionInformationDetailComponent,
+    SupplierManagementComponent
   
 
   ],
