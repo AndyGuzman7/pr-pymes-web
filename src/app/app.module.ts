@@ -42,6 +42,7 @@ import { ListProductsComponent } from './views/warehouses/list-products/list-pro
 import { RegisterProductComponent } from './views/warehouses/register-product/register-product.component';
 import { HomeComponent } from './views/portal/home/home.component';
 import { JournalPrincipalComponent } from './views/journal/journal-principal/journal-principal.component';
+import { ManufacturingListComponent } from './views/shopping/manufacturing-list/manufacturing-list.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { JournalPrincipalComponent } from './views/journal/journal-principal/jou
     ListProductsComponent,
     RegisterProductComponent,
     HomeComponent,
-    JournalPrincipalComponent
+    JournalPrincipalComponent,
+    ManufacturingListComponent
   
 
   ],
