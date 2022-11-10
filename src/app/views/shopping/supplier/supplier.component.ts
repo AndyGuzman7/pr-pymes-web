@@ -22,6 +22,8 @@ export class SupplierComponent implements OnInit {
     {name: 'Jose', address: 'Av.Circunvalacion',phone: 78956423, email: 'Jose@gmail', products: 78},
     {name: 'Sandra Alcocer', address: 'Av.Circunvalacion',phone: 78956423, email: 'Alcocer@gmail', products: 5},
     {name: 'Juan Perez', address: 'Av.Circunvalacion',phone: 78956423, email: 'Juan@gmail', products: 9},
+    {name: 'Juan Perez', address: 'Av.Circunvalacion',phone: 78956423, email: 'Juan@gmail', products: 8},
+    {name: 'Juan Perez', address: 'Av.Circunvalacion',phone: 78956423, email: 'Juan@gmail', products: 12},
     {name: 'Pedro Candioti', address: 'Av.Circunvalacion',phone: 78956423, email: 'Candioti@gmail', products: 10}, 
   ];
   displayedColumns: string[] = ['name','address', 'phone', 'email', 'products','acciones'];
