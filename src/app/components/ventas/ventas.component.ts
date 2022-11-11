@@ -3,6 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
 import { Cliente } from 'src/app/models/cliente';
 import {LoadScriptsService} from 'src/app/load-scripts.service'
+import { VentaService } from 'src/app/services/venta.service';
+import {Venta} from 'src/app/models/venta'
+import {Router} from '@angular/router';
+import { DetalleVenta } from 'src/app/models/detalle-venta';
+import { ClienteService } from 'src/app/services/cliente.service';
+
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 declare var js;
 @Component({
   selector: 'app-ventas',
@@ -12,20 +21,19 @@ declare var js;
 
 export class VentasComponent implements OnInit {
   public titulo: string = 'Listado de ventas';
-  constructor(private _LoadScripts:LoadScriptsService) { 
-    _LoadScripts.Load(["accordion"]);   
-    
+  cliente : Cliente = new Cliente();
+
+
+  ventas: Venta[];
+  constructor(private serviceVenta: VentaService, private serviceCliente: ClienteService, private _LoadScripts:LoadScriptsService , private router:Router) { 
+    _LoadScripts.Load(["accordion"]);
   }
   
   
   
 
 
-  ngOnInit(): void {
-    //console.table(this.producto1);
-    
-    
-  }
+ 
   
   producto1 : Producto = {
     idProducto: 1,
@@ -51,18 +59,44 @@ export class VentasComponent implements OnInit {
     precio: 150,
     subtotal: 1
   }
-  productos = [
-    this.producto1,
-    this.producto2,
-    this.producto3
-  ]
-  data = Object.values(this.productos)
+
+  listaProductos = [
+    new DetalleVenta(this.producto1),
+    new DetalleVenta(this.producto2),
+    new DetalleVenta(this.producto3),
+  ]  
   
+
+
+  public addCountProduct(id:number)
+  {
+    let product = this.listaProductos.find((item) => item.producto.idProducto == id);
+    product.addCantidad();
+  }
+  public removeCountProduct(id:number)
+  {
+    let product = this.listaProductos.find((item) => item.producto.idProducto == id);
+    product.removeCantidad();
+    
+  }
+
+  public salesProducts() {
+    //El id de la seccion de usuario
+    let idUsuario = 1;
+    let venta = new Venta();
+    let detalleVentas = [];
+    //detalleVentas.push(new DetalleVenta())
+    
+  
+     //this.service.createVenta()
+  }
+
+
   public getProducts(){
     var total = 0;
-    this.data.forEach(element => {
+    this.listaProductos.forEach(element => {
       
-      total = total + (element.cantidad * element.precio)
+      total = total + (element.cantidad * element.producto.precio)
     });
     return total;
   }
@@ -70,30 +104,55 @@ export class VentasComponent implements OnInit {
   
   
   public deleteOneProductList (id: number) {
-    this.data = this.data.filter((item) => item.idProducto !== id)
+    this.listaProductos = this.listaProductos.filter((item) => item.idProducto !== id)
     this.totalVenta = this.getProducts();
   }
-  client1 : Cliente = {
-    idCliente : 1,
-    nitCi : '',
-    nombre: '',
-    apellidos: '',
-    correo: ''
-  }
+
+
   
-  public RegisterClient(){
-    const nombre = (document.getElementById('Nombre') as HTMLInputElement).value;
-    const apellido = (document.getElementById('Apellido') as HTMLInputElement).value;
-    const nit = (document.getElementById('NIT') as HTMLInputElement).value;
-    const correo = (document.getElementById('Correo') as HTMLInputElement).value;
-    this.client1.nombre = nombre;
-    this.client1.apellidos = apellido;
-    this.client1.nitCi = nit;
-    this.client1.correo = correo;
-    console.log(this.client1);
+  public RegisterClient(): void{
+    const nombre = (document.getElementById('nombre') as HTMLInputElement).value;
+    const apellido = (document.getElementById('apellidos') as HTMLInputElement).value;
+    const nit = (document.getElementById('nitCi') as HTMLInputElement).value;
+    const correo = (document.getElementById('correo') as HTMLInputElement).value;
+    let cliente2 = new Cliente();
+    
+    cliente2.nombre = nombre;
+    cliente2.apellidos = apellido;
+    cliente2.nitCi = nit;
+    cliente2.correo = correo;
+    console.log(cliente2.nombre)
+    this.serviceCliente.createCliente(cliente2).subscribe(res => {
+      console.log(res)
+    })
   };
   
 
+    myControl = new FormControl<string | User>('');
+    options: User[] = [{name: 'Mary'}, {name: 'Shelley'}, {name: 'Igor'}];
+    filteredOptions: Observable<User[]>;
+  
+    ngOnInit() {
+      this.filteredOptions = this.myControl.valueChanges.pipe(
+        startWith(''),
+        map(value => {
+          const name = typeof value === 'string' ? value : value?.name;
+          return name ? this._filter(name as string) : this.options.slice();
+        }),
+      );
+    }
+  
+    displayFn(user: User): string {
+      return user && user.name ? user.name : '';
+    }
+  
+    private _filter(name: string): User[] {
+      const filterValue = name.toLowerCase();
+      //this.serviceCliente.
+      return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
+    }
 
-
+}
+export interface User {
+  name: string;
 }
