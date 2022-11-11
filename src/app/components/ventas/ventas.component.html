@@ -24,7 +24,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of listaProductos">
+                    <tr *ngFor="let item of venta.detallesVentas">
                         <td>
                             <div>
                                 <h6><b> {{item.producto.nombre}}</b></h6>
@@ -41,7 +41,7 @@
                         </td>
                         <td>{{item.subTotal}}</td>
                         <td>
-                            <button id="button-option-sale" (click)="deleteOneProductList(item.idDetalleVenta)" class="bi bi-x-circle"></button> <br>
+                            <button id="button-option-sale" (click)="deleteOneProductList(item.producto.idProducto)" class="bi bi-x-circle"></button> <br>
                             <button id="button-option-sale" class="bi bi-pencil-square"></button>
                         </td>
                     </tr>
@@ -129,6 +129,15 @@
             <h3>Resumen</h3>
             <div class="col-lg-20">
                 <form action="">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Buscar cliente</mat-label>
+                        <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{option.name}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
                     <div id="form-ci">
                         <strong><label class="text-input" for="txtCi">CI: </label></strong>
                         <input class="form-control" type="text" id="txtCi" value="4827328">
@@ -146,26 +155,27 @@
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content" style="padding: 10px;">
                         <form action="" id="formulario"  class="formulario">
-                            <div class="form-group" >
-                                <div >
-                                    <label class="text-input" for="Nombre" id="validarNombre">Nombre</label >
-                                    <input type="text" class="form-control input-register" id="Nombre" name="nombre" placeholder="Nombre">
-                                </div>
-                                <div >
-                                    <label class="text-input" for="Apellido" id="validarApellido">Apellido</label>
-                                    <input type="text" class="form-control input-register" id="Apellido" name="apellido" placeholder="Apellido">
-                                </div>
-                                <div id="validar">
-                                    <label class="text-input" for="NIT" id="validarNit">Nit</label>
-                                    <input type="text" class="form-control input-register" id="NIT" name="nit" placeholder="NIT">
-                                </div>
-                                <div id="validar">
-                                    <label class="text-input" for="Correo" id="validarCorreo">Correo electrónico</label>
-                                    <input type="email" class="form-control input-register" id="Correo" name="correo" placeholder="Correo electrónico">
-                                </div>
+                            <div class="form-group">
+                                <label class="text-input" for="nombre" id="validarNombre">Nombre</label>
+                                <input type="text" class="form-control input-register" name="nombre"  id="nombre" placeholder="Nombre" [(ngModel)]="cliente.nombre">
                             </div>
-                            <div style="margin-top: 10px ;" >
-                                <button type="button" id="btnRegister" (click)="RegisterClient()"  class="btn btn-primary" style="width:100%">Registrar</button>
+                            <div  class="form-group">
+                                <label class="text-input" for="apellido" id="validarApellido">Apellido</label>
+                                <input type="text" class="form-control input-register" name="apellido"  id="apellido" placeholder="Apellido"  [(ngModel)]="cliente.apellidos">
+                               
+                            </div>
+                            <div  class="form-group">
+                                <label class="text-input" for="NIT" id="validarNit">Nit</label>
+                                <input type="text" class="form-control input-register" name="nit"  id="NIT" placeholder="NIT" [(ngModel)]="cliente.nitCi">
+                                
+                            </div>
+                            <div id="validar" class="form-group">
+                                <label class="text-input" for="correo" id="validarCorreo">Correo electrónico</label>
+                                <input type="email" class="form-control input-register" name="correo" name="correo" placeholder="Correo electrónico" [(ngModel)]="cliente.correo">
+                                
+                            </div>
+                            <div id="validar" style="margin-top: 10px ;" >
+                                <button type="submit" id="btnRegister" (click)="RegisterClient()"  class="btn btn-primary" style="width:100%">Registrar</button>
                             </div>
                             <div style="margin-top: 10px ;" >
                                 <button type="button" id="btnCloseModal" class="btn btn-danger" style="width:100%">Cancelar</button>
@@ -187,7 +197,7 @@
                         
                     </div>
                     <div id="number">
-                        {{listaProductos.length}}
+                        {{venta.detallesVentas.length}}
                     </div>
                 </div>
                 
@@ -213,18 +223,18 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let item of listaProductos">
+                                            <tr *ngFor="let item of venta.detallesVentas">
                                                 <td>
                                                     <div>
-                                                        <h4> {{item.producto}}</h4>
+                                                        <h4> {{item.producto.producto}}</h4>
                                                     </div>
                                                     
                                                 </td>
                                                 <td>
-                                                    {{item.precio}}
+                                                    {{item.producto.precio}}
                                                 </td>
                                                 <td>{{item.cantidad}}</td>
-                                                <td>{{item.cantidad * item.precio}}</td>
+                                                <td>{{item.subTotal}}</td>
                                                 
                                             </tr>
                                         </tbody>
@@ -233,7 +243,7 @@
                             </tbody>
                             <tfoot style="margin: 50px;" >
                                 <tr>
-                                    <p><b>Total :</b> <strong> {{totalVenta}}</strong></p>
+                                    <p><b>Total :</b> <strong> {{venta.total}}</strong></p>
                                 </tr>
                             </tfoot>
                             
