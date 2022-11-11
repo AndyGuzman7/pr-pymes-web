@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-export interface Supplier {
-  id: number;
-  pedido: string;
-  fecha: string;
-  
+export interface Orders {
+  referencia: string;
+  proveedor: string;
+  solicitante: string;
+  fechaPedido: string;
+  fechaLlegada: string;
+  baseImponible: string;
+  estado: string;
+  facturado:string;
 }
-const ELEMENT_DATA: Supplier[] = [
-  {id: 1, pedido: 'Pedido por Inicio de mes', fecha: '02/11/2022'},
-  {id: 2, pedido: 'Pedido por Inicio de mes', fecha: '02/11/2022'},
-  {id: 3, pedido: 'Pedido por Inicio de mes', fecha: '02/11/2022'},
+const ELEMENT_DATA: Orders[] = [
+  {referencia: 'Compra 45', proveedor: 'Kriss', solicitante: 'Juan Perez',  fechaPedido:'10-11-2020', fechaLlegada:'15-12-2020', baseImponible:'15', estado:'entregado', facturado:'Si'},
+
 ];
 
 
@@ -18,7 +21,7 @@ const ELEMENT_DATA: Supplier[] = [
   styleUrls: ['./orders-to-supplier.component.css']
 })
 export class OrdersToSupplierComponent implements OnInit {
-  displayedColumns: string[] = ['id','pedido', 'fecha', 'acciones'];
+  displayedColumns: string[] = ['referencia','proveedor','solicitante','fechaPedido','fechaLlegada', 'baseImponible','estado','facturado','acciones'];
   dataSource = ELEMENT_DATA;
 
   constructor() { }
@@ -26,4 +29,5 @@ export class OrdersToSupplierComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
 }

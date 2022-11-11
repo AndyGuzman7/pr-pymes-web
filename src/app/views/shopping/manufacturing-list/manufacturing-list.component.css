@@ -1,5 +1,4 @@
 table {
-    align-items: center;
     width: 98%;
 }
 
@@ -11,20 +10,11 @@ table {
     width: 100%;
 }
 p{
-    font-size: 30px;
+    font-size: 25px;
     color: #170F49;
     text-align: center;
 }
-.width{
-    width: 70%;
-    background-color: #00AEE1;
-    color: white;
-}
-.widthC{
-    width: 70%;
-    background-color: #0A457F;
-    color: white;
-}
+
 th,td{
     font-size: 12px;
 }

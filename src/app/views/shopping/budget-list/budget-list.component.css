@@ -5,6 +5,9 @@ table {
 th{
     width: 8%;
 }
+td{
+    font-size: 12px;
+}
 span{
     color: white;
 }
