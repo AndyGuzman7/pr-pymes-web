@@ -1,3 +1,4 @@
+
 var acc = document.getElementsByClassName("accordion");
 var i;
 
@@ -48,7 +49,6 @@ const inputs = document.querySelectorAll('#formulario input');
 const expresiones = {
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
 	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{1,3}$/,
-  //correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	telefono: /^\d{7,14}$/ // 7 a 14 numeros.
 }
 const validarFormulario = (e) => {
@@ -68,7 +68,7 @@ const validarFormulario = (e) => {
       campos['nit']= true;
     }else{
       ColorNitMal();
-      campos['correo'] = false;
+      campos['nit'] = false;
     }
   break;
   case "apellido":
@@ -77,7 +77,7 @@ const validarFormulario = (e) => {
       campos['apellido']= true;
     }else{
       ColorApellidoMal();
-      campos['correo'] = false;
+      campos['apellido'] = false;
     }
   break;
   case "nombre":
@@ -89,7 +89,7 @@ const validarFormulario = (e) => {
       //document.getElementById('validar').classList.add('formulario__grupo-correcto');
       //alert('El campo de Nombre tiene caracteres indebidos');
       ColorNombreMal();
-      campos['correo'] = false;
+      campos['nombre'] = false;
     }
   break;
   }
@@ -98,14 +98,16 @@ inputs.forEach((input) =>{
   input.addEventListener('keyup',validarFormulario);
   input.addEventListener('blur',validarFormulario);
 });
-
-formulario.addEventListener('button',(e) =>{
+formulario.addEventListener('submit',(e) =>{
   e.preventDefault();
-  if(campos['nombre'] && campos['apellido'] && campos['nit'] , campos['correo']){
+  if(campos.nombre == true && campos.apellido == true && campos.correo == true && campos.nit == true ){
     formulario.reset();
   }
+  else{
+    alert('Campos Incorrectos')
+    console.log(campos.nombre, campos.apellido, campos.correo, campos.nit);
+  }
 });
-
 //#endregion
 
 //#region Colores Validacion
