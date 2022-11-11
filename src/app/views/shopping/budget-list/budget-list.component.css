@@ -46,3 +46,12 @@ span{
     font-size: 14px;
     width: 100%;
 }
+
+.container-all{
+    display: flex;
+    margin-top: 40px;
+}
+.list-suppl{
+    width: 100%;
+    margin: 0px 20px 0px 20px;
+}

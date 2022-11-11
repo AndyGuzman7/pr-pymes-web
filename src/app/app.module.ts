@@ -49,6 +49,8 @@ import { ManufacturingProductionRegistrationComponent } from './views/shopping/m
 import { ProductionInformationDetailComponent } from './views/shopping/production-information-detail/production-information-detail.component';
 import { SupplierManagementComponent } from './views/shopping/supplier-management/supplier-management.component';
 import { OrderToSupplierComponent } from './views/shopping/order-to-supplier/order-to-supplier.component';
+import { BudgetSheetComponent } from './views/shopping/budget-sheet/budget-sheet.component';
+import { SideMenuShoppingComponent } from './components/side-menu-shopping/side-menu-shopping.component';
 import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/new-supplier-order.component';
 
 
@@ -80,7 +82,9 @@ import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/n
     ProductionInformationDetailComponent,
     SupplierManagementComponent,
     OrderToSupplierComponent,
-    NewSupplierOrderComponent
+    NewSupplierOrderComponent,
+    BudgetSheetComponent,
+    SideMenuShoppingComponent
   
 
   ],
