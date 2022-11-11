@@ -51,6 +51,7 @@ import { SupplierManagementComponent } from './views/shopping/supplier-managemen
 import { OrderToSupplierComponent } from './views/shopping/order-to-supplier/order-to-supplier.component';
 import { BudgetSheetComponent } from './views/shopping/budget-sheet/budget-sheet.component';
 import { SideMenuShoppingComponent } from './components/side-menu-shopping/side-menu-shopping.component';
+import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/new-supplier-order.component';
 
 
 @NgModule({
@@ -81,6 +82,7 @@ import { SideMenuShoppingComponent } from './components/side-menu-shopping/side-
     ProductionInformationDetailComponent,
     SupplierManagementComponent,
     OrderToSupplierComponent,
+    NewSupplierOrderComponent,
     BudgetSheetComponent,
     SideMenuShoppingComponent
   
