@@ -37,7 +37,19 @@
 .text-inline{
     display: flex;
 }
-
+.border{
+    justify-content:space-between;
+}
+.p-m{
+    margin-right: 20px;
+    margin-left: 20px;
+    font-weight: 500;
+}
+.p-c{
+    margin-right: 20px;
+    margin-left: 20px;
+    font-weight: 200;
+}
 .line {
     border-top: 1px solid #D9DBE9;
     height: 2px;
@@ -56,4 +68,35 @@
 .tx{
     font-weight: 500;
     letter-spacing: 1px;
+}
+input{
+    border: none;
+    font-size: 10px;
+    margin-left: 4px;   
+}
+
+.btn-c{
+   background-color: #4c8eb7; 
+   color: white;
+   margin-left: 10px;
+   font-size: 12px;
+}
+.cont-none{
+    padding: 10px;
+    margin-bottom: 15px;
+}
+.btn-documents{
+    background-color: #4c8eb7; 
+    color: white;
+    margin-bottom: 5px;
+    width: 100%;
+    text-align: left;
+}
+.btn-modals{
+    width:50%;
+    background-color: #0A457F;
+    color: #fff;
+}
+.r-p{
+    font-size: 20px;
 }

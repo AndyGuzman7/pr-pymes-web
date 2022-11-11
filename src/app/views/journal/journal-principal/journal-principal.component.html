@@ -94,30 +94,25 @@
             <button mat-raised-button style="color: #170F49;" > Ver Ventas </button>  
         </mat-grid-tile>
    </mat-grid-list>
-   <div id="modalJournalType" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<!--Modal Realizar  PEDIDO-->
+<div id="modalJournalType" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content" style="padding: 10px;">
             <form action="">
                 <div class="form-group">
-                    <label class="text-input" for="Nombre">Agregar Tipo</label>
-                    <br>
-                    <select matNativeControl required>
-                        <option value="haber">HABER</option>
-                        <option value="debe">DEBE</option>
-                      </select>
-                    <br>
-                    <label class="text-input" for="Nombre">Monto</label>
-                    <input type="text" class="form-control input-register" id="typeWarehouse" placeholder="Monto">
-                    <br>
+                    <label style="font-size: 25px; " for="Nombre">REALIZAR PEDIDO</label>
+                    <br>                    
+                    <p>¿ESTA SEGURO DE QUERER CONFIRMAR ESTE PEDIDO
+                        EN FECHA DE:</p>
+                    <p>00-00-0000?</p>                   
                 </div>
-                <div style="margin-top: 10px ;" >
-                    <button type="button" id="btnRegister"  class="btn btn-success" style="width:100%">Agregar</button>
-                </div>
-                <div style="margin-top: 10px ;" >
-                    <button type="button" id="btnCloseModal" class="btn btn-danger" style="width:100%">Cancelar</button>
+                <div style="margin-top: 10px;">
+                    <button type="button" id="btnValidate"  class="btn btn-modals">SI</button>
+                    <button type="button" id="btnCloseModal" class="btn btn-modals">NO</button>           
                 </div>
             </form>
         </div>
     </div>
 </div>
+<!--fin modal -->
  </div>

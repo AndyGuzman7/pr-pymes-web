@@ -6,7 +6,6 @@
     background-color: #f5f5f5;
 }
 
-
 .login{
     width: 50%;
     max-width: 200;
@@ -16,4 +15,10 @@
 
 .width{
     width: 100%;
+}
+
+p{
+    font-size: x-large;
+    font-weight: 600;
+    color: #0A457F;
 }
