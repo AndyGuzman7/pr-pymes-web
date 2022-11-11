@@ -142,22 +142,30 @@
             <div id="icon-add">
                 <button data-target="#modalRegister" data-toggle="modal" id="btn-addClient" class="bi bi-person-plus"></button>
             </div>
-            <div id="modalRegister" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div id="modalRegister" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content" style="padding: 10px;">
-                        <form action="">
-                            <div class="form-group">
-                                <label class="text-input" for="Nombre">Nombre</label>
-                                <input type="text" class="form-control input-register" id="Nombre" placeholder="Nombre">
-                                <label class="text-input" for="Apellido">Apellido</label>
-                                <input type="text" class="form-control input-register" id="Apellido" placeholder="Apellido">
-                                <label class="text-input" for="NIT">Nit</label>
-                                <input type="text" class="form-control input-register" id="NIT" placeholder="NIT">
-                                <label class="text-input" for="Correo">Correo electrónico</label>
-                                <input type="email" class="form-control input-register" id="Correo" placeholder="Correo electrónico">
+                        <form action="" id="formulario"  class="formulario">
+                            <div class="form-group" >
+                                <div >
+                                    <label class="text-input" for="Nombre" id="validarNombre">Nombre</label >
+                                    <input type="text" class="form-control input-register" id="Nombre" name="nombre" placeholder="Nombre">
+                                </div>
+                                <div >
+                                    <label class="text-input" for="Apellido" id="validarApellido">Apellido</label>
+                                    <input type="text" class="form-control input-register" id="Apellido" name="apellido" placeholder="Apellido">
+                                </div>
+                                <div id="validar">
+                                    <label class="text-input" for="NIT" id="validarNit">Nit</label>
+                                    <input type="text" class="form-control input-register" id="NIT" name="nit" placeholder="NIT">
+                                </div>
+                                <div id="validar">
+                                    <label class="text-input" for="Correo" id="validarCorreo">Correo electrónico</label>
+                                    <input type="email" class="form-control input-register" id="Correo" name="correo" placeholder="Correo electrónico">
+                                </div>
                             </div>
                             <div style="margin-top: 10px ;" >
-                                <button type="button" id="btnRegister" (click)="RegisterClient()" class="btn btn-primary" style="width:100%">Registrar</button>
+                                <button type="button" id="btnRegister" (click)="RegisterClient()"  class="btn btn-primary" style="width:100%">Registrar</button>
                             </div>
                             <div style="margin-top: 10px ;" >
                                 <button type="button" id="btnCloseModal" class="btn btn-danger" style="width:100%">Cancelar</button>
