@@ -49,6 +49,7 @@ import { ManufacturingProductionRegistrationComponent } from './views/shopping/m
 import { ProductionInformationDetailComponent } from './views/shopping/production-information-detail/production-information-detail.component';
 import { SupplierManagementComponent } from './views/shopping/supplier-management/supplier-management.component';
 import { OrderToSupplierComponent } from './views/shopping/order-to-supplier/order-to-supplier.component';
+import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/new-supplier-order.component';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { OrderToSupplierComponent } from './views/shopping/order-to-supplier/ord
     ManufacturingProductionRegistrationComponent,
     ProductionInformationDetailComponent,
     SupplierManagementComponent,
-    OrderToSupplierComponent
+    OrderToSupplierComponent,
+    NewSupplierOrderComponent
   
 
   ],
