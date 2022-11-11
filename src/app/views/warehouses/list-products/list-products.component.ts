@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadScriptsService } from 'src/app/load-scripts.service';
+
 
 @Component({
   selector: 'app-list-products',
@@ -56,7 +58,9 @@ export class ListProductsComponent implements OnInit {
     },
   ];
 
-  constructor() { }
+  constructor(private _LoadScripts:LoadScriptsService) { 
+    _LoadScripts.Load(["register_section"]);
+  }
 
   ngOnInit(): void {
   }

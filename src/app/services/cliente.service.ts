@@ -8,6 +8,7 @@ import { Cliente } from '../models/cliente';
 })
 export class ClienteService {
 
+
   private baseEndpoint = '/api/ventas/cliente';
   private cabecera: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   constructor(private http: HttpClient) { }
@@ -32,4 +33,5 @@ export class ClienteService {
   public deleteCliente(idCliente: number): Observable<void>{
     return this.http.delete<void>(`${this.baseEndpoint}/${idCliente}`);
   }
+
 }
