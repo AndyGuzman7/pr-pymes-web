@@ -10,7 +10,8 @@ export interface Orders {
   facturado:string;
 }
 const ELEMENT_DATA: Orders[] = [
-  {referencia: '', proveedor: '', solicitante: '', fechaPedido:'', fechaLlegada:'', baseImponible:'', estado:'', facturado:''},
+  {referencia: 'Compra 45', proveedor: 'Kriss', solicitante: 'Juan Perez',  fechaPedido:'10-11-2020', fechaLlegada:'15-12-2020', baseImponible:'15', estado:'entregado', facturado:'Si'},
+
 ];
 
 
@@ -20,7 +21,7 @@ const ELEMENT_DATA: Orders[] = [
   styleUrls: ['./orders-to-supplier.component.css']
 })
 export class OrdersToSupplierComponent implements OnInit {
-  displayedColumns: string[] = ['referencia','proveedor', 'solicitante','fechaPedido','fechaLlegada', 'baseImponible','estado', 'facturado'];
+  displayedColumns: string[] = ['referencia','proveedor','solicitante','fechaPedido','fechaLlegada', 'baseImponible','estado','facturado','acciones'];
   dataSource = ELEMENT_DATA;
 
   constructor() { }
