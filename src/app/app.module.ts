@@ -52,7 +52,8 @@ import { OrderToSupplierComponent } from './views/shopping/order-to-supplier/ord
 import { BudgetSheetComponent } from './views/shopping/budget-sheet/budget-sheet.component';
 import { SideMenuShoppingComponent } from './components/side-menu-shopping/side-menu-shopping.component';
 import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/new-supplier-order.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -85,8 +86,6 @@ import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/n
     NewSupplierOrderComponent,
     BudgetSheetComponent,
     SideMenuShoppingComponent
-  
-
   ],
   imports: [
     BrowserModule,
@@ -110,7 +109,9 @@ import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/n
     MatDialogModule,
     MatDatepickerModule,
     NgSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule,
+    MatPaginatorModule
   ],
   providers: [
     LoadScriptsService
