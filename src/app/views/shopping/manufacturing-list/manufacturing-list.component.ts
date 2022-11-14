@@ -31,7 +31,9 @@ export class ManufacturingListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
 

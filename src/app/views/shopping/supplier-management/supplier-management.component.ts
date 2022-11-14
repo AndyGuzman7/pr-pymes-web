@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { Butget } from 'src/app/models/butget';
+import { Budget } from 'src/app/models/budget';
 import { Supplier } from 'src/app/models/supplier';
 import { SupplierService } from 'src/app/services/supplier.service';
 
@@ -24,7 +24,7 @@ export class SupplierManagementComponent implements OnInit {
   ];
 
   supplider: Supplier;
-  budgets: Butget[];
+  budgets: Budget[];
 
   model: Supplier;
   route: ActivatedRoute;

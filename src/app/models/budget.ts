@@ -1,10 +1,11 @@
 import { Generic } from "./generic";
 
-export class Butget implements Generic {
+export class Budget implements Generic {
     id:number;
     idProveedor:number;
     nombre:string;
     ref_presupuesto:string;
+    ref_proveedor:string;
     base_imponible:number;
     descuentos:number;
     fecha_inicio:Date;

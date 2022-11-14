@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Supplier } from '../models/supplier';
-import { Butget} from '../models/butget';
+import { Budget} from '../models/budget';
 import { CommonService } from './common.service';
 
 @Injectable({
@@ -20,7 +20,7 @@ export class SupplierService extends CommonService<Supplier> {
     return this.http.get<Supplier[]>(`${this.baseEndpoint}/filtrar/${nombre}`);
   }
 
-  public filtrarPresupuestoProveedor(idProveedor: number): Observable<Butget[]>{
-    return this.http.get<Butget[]>(`${this.baseEndpoint}/filtrarPresupuesto/${idProveedor}`);
+  public filtrarPresupuestoProveedor(idProveedor: number): Observable<Budget[]>{
+    return this.http.get<Budget[]>(`${this.baseEndpoint}/filtrarPresupuesto/${idProveedor}`);
   }
 }

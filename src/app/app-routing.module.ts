@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BudgetListComponent } from './views/shopping/budget-list/budget-list.component';
+import { BudgetSheetComponent } from './views/shopping/budget-sheet/budget-sheet.component';
+import { ManufacturingListComponent } from './views/shopping/manufacturing-list/manufacturing-list.component';
+import { ManufacturingProductionRegistrationComponent } from './views/shopping/manufacturing-production-registration/manufacturing-production-registration.component';
+import { ProductionInformationDetailComponent } from './views/shopping/production-information-detail/production-information-detail.component';
 import { SupplierManagementComponent } from './views/shopping/supplier-management/supplier-management.component';
 import { SupplierRegistrationComponent } from './views/shopping/supplier-registration/supplier-registration.component';
 import { SupplierComponent } from './views/shopping/supplier/supplier.component';
@@ -16,7 +21,22 @@ const routes: Routes = [
   {path: 'suppliers', component: SupplierComponent},
   {path: 'suppliers/:id', component: SupplierManagementComponent},
   {path: 'supplier', component: SupplierRegistrationComponent},
-  {path: 'supplier/:id', component: SupplierRegistrationComponent}
+  {path: 'supplier/:id', component: SupplierRegistrationComponent},
+
+  //Production
+  {path: 'manufacturing', component: ManufacturingListComponent},
+  {path: 'manufacturing/:id', component: ProductionInformationDetailComponent},
+  {path: 'manufacture', component: ManufacturingProductionRegistrationComponent},
+  {path: 'manufacture/:id', component: ManufacturingProductionRegistrationComponent},
+
+  //Presupuestos
+  {path: 'budgets', component: BudgetListComponent},
+  //{path: 'budgets/:id', component: },
+  {path: 'budget', component: BudgetSheetComponent},
+  {path: 'budget/:id', component: BudgetSheetComponent},
+
+  //Pedido de compra
+  
 ];
 
 @NgModule({
