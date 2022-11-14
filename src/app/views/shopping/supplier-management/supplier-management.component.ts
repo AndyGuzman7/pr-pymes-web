@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Butget } from 'src/app/models/butget';
+import { Supplier } from 'src/app/models/supplier';
+import { SupplierService } from 'src/app/services/supplier.service';
 
 @Component({
   selector: 'app-supplier-management',
@@ -7,41 +11,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SupplierManagementComponent implements OnInit {
 
-  budgets = [
-    {
-      ref: 'ref 1',
-      base: 'example',
-      discounts: '0',
-      delivery_date: '10/11/2022',
-      conditions: 'Condition 1',
-      type_payment: 'Type',
-      divida: 'example',
-      quotation: '0',
-      state: 'progress'
-    },
-    {
-      ref: 'ref 2',
-      base: 'example',
-      discounts: '0',
-      delivery_date: '10/11/2022',
-      conditions: 'Condition 1',
-      type_payment: 'Type',
-      divida: 'example',
-      quotation: '0',
-      state: 'progress'
-    },
-    {
-      ref: 'ref 3',
-      base: 'example',
-      discounts: '0',
-      delivery_date: '10/11/2022',
-      conditions: 'Condition 1',
-      type_payment: 'Type',
-      divida: 'example',
-      quotation: '0',
-      state: 'progress'
-    },
-  ];
 
   products = [
     {
@@ -51,29 +20,37 @@ export class SupplierManagementComponent implements OnInit {
       iva: '0',
       warehouse: 'Almacen 1',
       category: 'Category'
-    },
-    {
-      title: 'Product 2',
-      code: '0124',
-      unit_price: '15',
-      iva: '0',
-      warehouse: 'Almacen 1',
-      category: 'Category'
-    },
-    {
-      title: 'Product 3',
-      code: '0125',
-      unit_price: '15',
-      iva: '0',
-      warehouse: 'Almacen 1',
-      category: 'Category'
-    },
+    }
   ];
 
-  
-  constructor() { }
+  supplider: Supplier;
+  budgets: Butget[];
 
-  ngOnInit(): void {
+  model: Supplier;
+  route: ActivatedRoute;
+  service: SupplierService;
+  
+  constructor(service: SupplierService, 
+    router: Router, 
+    route: ActivatedRoute) {
+      this.model = new Supplier();
+      this.route = route;
+      this.service = service;
+    }
+
+  ngOnInit(){
+    this.route.paramMap.subscribe(params => {
+      const id: number =+ params.get('id');
+      if(id){
+        this.service.ver(id).subscribe(m => {
+          this.model = m;
+        })
+        this.service.filtrarPresupuestoProveedor(id).subscribe(c => {
+          this.budgets = c;
+        })
+      }
+    })
+    
   }
 
 }
