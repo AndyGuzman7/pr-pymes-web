@@ -2,20 +2,20 @@
     <div class="container"> 
         <div> 
             <p class="header-section"> PROVEEDOR </p> 
-            <p class="link-c"> Nuevo proveedor</p> 
-            <p class="link-c"> Lista de proveedores</p> 
+            <p class="link-c" [routerLink]="['/supplier']"> Nuevo proveedor</p> 
+            <p class="link-c" [routerLink]="['/suppliers']"> Lista de proveedores</p> 
         </div> 
-        <div class="line"></div> 
+        <hr/>
         <div> 
             <p class="header-section"> PRODUCTOS MANUFACTURADOS</p> 
-            <p class="link-c"> Insertar produccion de manufacturado</p> 
-            <p class="link-c"> Listar produccion de manufactura</p> 
+            <p class="link-c" [routerLink]="['/manufacture']"> Insertar produccion de manufactura</p> 
+            <p class="link-c" [routerLink]="['/manufacturing']"> Listado de manufactura</p> 
         </div> 
         <div class="line"></div> 
         <div> 
             <p class="header-section"> PRESUPUESTOS</p> 
-            <p class="link-c"> Nuevo presupuesto</p> 
-            <p class="link-c"> Listado</p> 
+            <p class="link-c" [routerLink]="['/budget']"> Nuevo presupuesto</p> 
+            <p class="link-c" [routerLink]="['/budgets']"> Lista de presupuesto</p> 
         </div> 
         <div class="line"></div> 
         <div> 

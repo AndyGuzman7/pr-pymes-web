@@ -27,7 +27,8 @@ export class BudgetListComponent implements OnInit {
         "descuentos",
         "fechaInicio",
         "presupuestoActual",
-        "estado"
+        "estado",
+        "acciones"
   ];
 
   constructor(private service: BudgetService) { }
