@@ -31,9 +31,16 @@ const routes: Routes = [
 
   //Presupuestos
   {path: 'budgets', component: BudgetListComponent},
-  //{path: 'budgets/:id', component: },
-  {path: 'budget', component: BudgetSheetComponent},
-  {path: 'budget/:id', component: BudgetSheetComponent},
+  //{path: 'budgets/:id', component: null}, /*View presupuesto */
+  /** 
+   * Vista con proveedor seleccionado (Edit/Create)
+   **/
+  {path: 'budget/:idSupplier', component: BudgetSheetComponent},
+  /**
+   * Vista para selecionar o buscar proveedor (Edit/Create)
+   * Crear un modal o similar.
+   */
+  {path: 'budget', component: BudgetSheetComponent}, 
 
   //Pedido de compra
   

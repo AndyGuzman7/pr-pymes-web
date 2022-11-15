@@ -32,8 +32,9 @@ export abstract class CommonFormComponent<E extends Generic, S extends CommonSer
 
   public crear(): void {
     this.service.crear(this.model).subscribe(m => {
+      console.log(this.model);
       console.log(m);
-      Swal.fire('Nuevo:', `${this.nombreModel} ${m.nombre} creado con éxito`, 'success');
+      Swal.fire('Nuevo:', `${this.nombreModel} creado con éxito`, 'success');
       this.router.navigate([this.redirect]);
     }, err => {
       if(err.status === 400){

@@ -1,16 +1,18 @@
 import { Generic } from "./generic";
+import { Supplier } from "./supplier";
 
 export class Budget implements Generic {
     id:number;
     idProveedor:number;
     nombre:string;
-    ref_presupuesto:string;
-    ref_proveedor:string;
-    base_imponible:number;
+    proveedor: Supplier;
+    refPresupuesto:string;
+    refProveedor:string;
+    baseImponible:number;
     descuentos:number;
-    fecha_inicio:Date;
+    fechaInicio:Date;
     presupuesto_actual:number;
     estado:number;
-    update_date:Date;
-    user_update:number;
+    updateDate:Date;
+    userUpdate:number;
 }
