@@ -9,6 +9,7 @@ for (i = 0; i < acc.length; i++) {
   }
 }
 
+//Boton del Modal de Agregar un Cliente
 $("#btn-addClient").click(() => {
   $("#modalRegister").modal('show');
 })
@@ -18,3 +19,17 @@ $("#btnCloseModal").click(() => {
   
   $("#modalRegister").modal('toggle');
 })
+
+
+
+//Boton del Modal de Agregar un Producto
+$("#button-option-list-sale").click(() => {
+  $("#modalRegisterProduct").modal('show');
+})
+$('#modalRegisterProduct').modal({backdrop: 'static', keyboard: false})
+
+$("#btnCloseModalProduct").click(() => {
+  
+  $("#modalRegisterProduct").modal('toggle');
+})
+

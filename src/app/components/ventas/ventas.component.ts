@@ -7,11 +7,12 @@ import { VentaService } from 'src/app/services/venta.service';
 import {Venta} from 'src/app/models/venta'
 import {Router} from '@angular/router';
 import { DetalleVenta } from 'src/app/models/detalle-venta';
-import { ClienteService } from 'src/app/services/cliente.service';
+import { ClienteService } from 'src/app/services/cliente.service'
 
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { ItemsList } from '@ng-select/ng-select/lib/items-list';
 declare var js;
 @Component({
   selector: 'app-ventas',
@@ -60,13 +61,75 @@ export class VentasComponent implements OnInit {
     subtotal: 1
   }
 
+
+  //Items para buscador de Objetos
+  producto4 : Producto = {
+    idProducto: 4,
+    producto: 'Celular Iphone X',
+    descripcion: 'Buena camara, Camara HD',
+    cantidad: 4,
+    precio: 2000,
+    subtotal: 1
+  }
+  producto5 : Producto = {
+    idProducto: 5,
+    producto: 'Botellon de Agua Totto',
+    descripcion: '1 Litro, Color Azul',
+    cantidad: 2,
+    precio: 70,
+    subtotal: 1
+  }
+  producto6 : Producto = {
+    idProducto: 6,
+    producto: 'Gafas de Sol',
+    descripcion: 'Color Negro',
+    cantidad: 3,
+    precio: 200,
+    subtotal: 1
+  }
+  producto7 : Producto = {
+    idProducto: 7,
+    producto: 'Vaso de Vidrio',
+    descripcion: 'Transparente',
+    cantidad: 2,
+    precio: 20,
+    subtotal: 1
+  }
+
+  producto8 : Producto = {
+    idProducto: 8,
+    producto: 'Vaso de Vidrio',
+    descripcion: 'Transparente',
+    cantidad: 2,
+    precio: 20,
+    subtotal: 1
+  }
+//Buscador de Objetos
+  listaProductosPorBuscador =[
+    
+  ]
+  listaProductosBuscador = [
+    new DetalleVenta(this.producto4),
+    new DetalleVenta(this.producto5),
+    new DetalleVenta(this.producto6),
+    new DetalleVenta(this.producto7),
+  ]
+
+
   listaProductos = [
     new DetalleVenta(this.producto1),
     new DetalleVenta(this.producto2),
     new DetalleVenta(this.producto3),
   ]  
-  
 
+  public selectOneProductList(detalleventa : DetalleVenta){
+    this.listaProductosBuscador = this.listaProductosBuscador.filter((item) => item !== detalleventa)
+    this.listaProductos.push(detalleventa)
+    this.totalVenta = this.getProducts();
+
+    
+
+  }
 
   public addCountProduct(id:number)
   {
@@ -90,18 +153,17 @@ export class VentasComponent implements OnInit {
   
      //this.service.createVenta()
   }
-
+  
 
   public getProducts(){
     var total = 0;
     this.listaProductos.forEach(element => {
       
       total = total + (element.cantidad * element.producto.precio)
-    });
+    }); 
     return total;
   }
   totalVenta = this.getProducts();
-  
   
   public deleteOneProductList (id: number) {
     this.listaProductos = this.listaProductos.filter((item) => item.idProducto !== id)
