@@ -6,7 +6,8 @@ import { Venta } from '../models/venta';
   providedIn: 'root'
 })
 export class VentaService {
-  private baseEndpoint = 'http://localhost:8090/api/venta';
+
+  private baseEndpoint = '/api/ventas';
   private cabecera: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   constructor(private http: HttpClient) { }
 
@@ -30,4 +31,5 @@ export class VentaService {
   public deleteVenta(idVenta: number): Observable<void>{
     return this.http.delete<void>(`${this.baseEndpoint}/${idVenta}`);
   }
+
 }

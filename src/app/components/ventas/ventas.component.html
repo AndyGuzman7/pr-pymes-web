@@ -1,7 +1,6 @@
 <div class="principal">
     <div class="row justify-content-md-center">
         
-
         <div id="list-products" class="col col-lg">
             <h2 >Carro de compras</h2>
             <table class="table " >
@@ -25,20 +24,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of data">
+                    <tr *ngFor="let item of venta.detallesVentas">
                         <td>
                             <div>
-                                <h4><b> {{item.producto}}</b></h4>
+                                <h6><b> {{item.producto.nombre}}</b></h6>
                             </div>
-                            <p>{{item.descripcion}}</p>
+                            <p>{{item.producto.descripcion}}</p>
                         </td>
                         <td>
-                            {{item.precio}}
+                            {{item.producto.precio}}
                         </td>
-                        <td>{{item.cantidad}}</td>
-                        <td>{{item.cantidad * item.precio}}</td>
                         <td>
-                            <button id="button-option-sale" (click)="deleteOneProductList(item.idProducto)" class="bi bi-x-circle"></button> <br>
+                            {{item.cantidad}}
+                            <button id="button-option-sale" (click)="addCountProduct(item.producto.idProducto)" class="">+</button> 
+                            <button id="button-option-sale" (click)="removeCountProduct(item.producto.idProducto)" class="bi">-</button>
+                        </td>
+                        <td>{{item.subTotal}}</td>
+                        <td>
+                            <button id="button-option-sale" (click)="deleteOneProductList(item.producto.idProducto)" class="bi bi-x-circle"></button> <br>
                             <button id="button-option-sale" class="bi bi-pencil-square"></button>
                         </td>
                     </tr>
@@ -52,7 +55,7 @@
             <div class="container"  >
                 <div class="row " id="options-buttons">
                     <div class="col col-lg-2">
-                        <button id="button-option-list-sale">Seguir comprando</button>
+                        <button data-target="#modalRegisterProduct" data-toggle="modal" id="button-option-list-sale">Seguir comprando</button>
 
                     </div>
                     <div class="col-md-auto">
@@ -61,18 +64,80 @@
                     </div>
                     <div class="col">
                         <button id="button-option-list-sale-delete">Borrar el carro de compra</button>
-
                     </div>
                 </div>
                 
             </div>
-            
+            <div id="modalRegisterProduct" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content" style="padding: 10px;">
+                        <form action="">
+                            <div class="form-group">
+                                <label class="text-input" id="IDBuscar" for="idProducto">Producto por ID</label>
+                                <input type="text" class="form-control input-register" id="idProducto" placeholder="Buscar Producto por ID">
+                            </div>
+                            <table id="table-detail">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">
+                                            Producto
+                                        </th>
+                                        <th scope="col">
+                                            Descripcion
+                                        </th>
+                                        <th scope="col">
+                                            Cantidad
+                                        </th>
+
+                                        <th scope="col">
+                                            Precio
+                                        
+                                        </th >
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of listaProductosBuscador">
+                                        <td>
+                                            {{item.producto.producto}}
+                                        </td>
+                                        <td>
+                                            {{item.producto.descripcion}}
+                                        </td>
+                                        <td>
+                                            {{item.producto.cantidad}}
+                                        </td>
+                                        <td>
+                                            {{item.producto.precio}}
+                                        </td>
+                                        <td>
+                                            <button id="button-option-sale" (click)="selectOneProductList(item)" class="bi bi-bookmark-check-fill"></button>
+                                        </td>
+                                    </tr>
+                                
+                            </table>
+                            <div style="margin-top: 10px ;" >
+                                <button type="button" id="btnCloseModalProduct" class="btn btn-primary" style="width:100%">Salir</button>
+                            </div>
+    
+                        </form>
+                    </div>
+                </div>
+            </div>
 
         </div>
         <div style="background-color: rgb(245,248,251) ;" class="col-lg-3">
             <h3>Resumen</h3>
             <div class="col-lg-20">
                 <form action="">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Buscar cliente</mat-label>
+                        <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{option.name}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
                     <div id="form-ci">
                         <strong><label class="text-input" for="txtCi">CI: </label></strong>
                         <input class="form-control" type="text" id="txtCi" value="4827328">
@@ -86,22 +151,31 @@
             <div id="icon-add">
                 <button data-target="#modalRegister" data-toggle="modal" id="btn-addClient" class="bi bi-person-plus"></button>
             </div>
-            <div id="modalRegister" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div id="modalRegister" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content" style="padding: 10px;">
-                        <form action="">
+                        <form action="" id="formulario"  class="formulario">
                             <div class="form-group">
-                                <label class="text-input" for="Nombre">Nombre</label>
-                                <input type="text" class="form-control input-register" id="Nombre" placeholder="Nombre">
-                                <label class="text-input" for="Apellido">Apellido</label>
-                                <input type="text" class="form-control input-register" id="Apellido" placeholder="Apellido">
-                                <label class="text-input" for="NIT">Nit</label>
-                                <input type="text" class="form-control input-register" id="NIT" placeholder="NIT">
-                                <label class="text-input" for="Correo">Correo electrónico</label>
-                                <input type="email" class="form-control input-register" id="Correo" placeholder="Correo electrónico">
+                                <label class="text-input" for="nombre" id="validarNombre">Nombre</label>
+                                <input type="text" class="form-control input-register" name="nombre"  id="nombre" placeholder="Nombre" [(ngModel)]="cliente.nombre">
+                            </div>
+                            <div  class="form-group">
+                                <label class="text-input" for="apellido" id="validarApellido">Apellido</label>
+                                <input type="text" class="form-control input-register" name="apellido"  id="apellido" placeholder="Apellido"  [(ngModel)]="cliente.apellidos">
+                               
+                            </div>
+                            <div  class="form-group">
+                                <label class="text-input" for="NIT" id="validarNit">Nit</label>
+                                <input type="text" class="form-control input-register" name="nit"  id="NIT" placeholder="NIT" [(ngModel)]="cliente.nitCi">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label class="text-input" for="correo" id="validarCorreo">Correo electrónico</label>
+                                <input type="email" class="form-control input-register" name="correo" name="correo" placeholder="Correo electrónico" [(ngModel)]="cliente.correo">
+                                
                             </div>
                             <div style="margin-top: 10px ;" >
-                                <button type="button" id="btnRegister" (click)="RegisterClient()" class="btn btn-primary" style="width:100%">Registrar</button>
+                                <button type="submit" id="btnRegister" (click)="RegisterClient()"  class="btn btn-primary" style="width:100%">Registrar</button>
                             </div>
                             <div style="margin-top: 10px ;" >
                                 <button type="button" id="btnCloseModal" class="btn btn-danger" style="width:100%">Cancelar</button>
@@ -123,7 +197,7 @@
                         
                     </div>
                     <div id="number">
-                        {{data.length}}
+                        {{venta.detallesVentas.length}}
                     </div>
                 </div>
                 
@@ -149,18 +223,18 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let item of data">
+                                            <tr *ngFor="let item of venta.detallesVentas">
                                                 <td>
                                                     <div>
-                                                        <h4> {{item.producto}}</h4>
+                                                        <h4> {{item.producto.producto}}</h4>
                                                     </div>
                                                     
                                                 </td>
                                                 <td>
-                                                    {{item.precio}}
+                                                    {{item.producto.precio}}
                                                 </td>
                                                 <td>{{item.cantidad}}</td>
-                                                <td>{{item.cantidad * item.precio}}</td>
+                                                <td>{{item.subTotal}}</td>
                                                 
                                             </tr>
                                         </tbody>
@@ -169,7 +243,7 @@
                             </tbody>
                             <tfoot style="margin: 50px;" >
                                 <tr>
-                                    <p><b>Total :</b> <strong> {{totalVenta}}</strong></p>
+                                    <p><b>Total :</b> <strong> {{venta.total}}</strong></p>
                                 </tr>
                             </tfoot>
                             
@@ -178,8 +252,19 @@
                 </div>
             </div>
             <div style="padding: 10px" >
-                <button type="button" id="btn-sale" style="width:100%">Vender</button>
+                <button type="button"  (click)="deleteOneProductList(1)" id="btn-sale" style="width:100%">Vender</button>
             </div>
+            <form class="example-form">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Assignee</mat-label>
+                  <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                      {{option.name}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </form>
             
         </div>
 </div>

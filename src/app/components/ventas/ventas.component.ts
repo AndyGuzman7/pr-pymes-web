@@ -3,6 +3,16 @@ import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
 import { Cliente } from 'src/app/models/cliente';
 import {LoadScriptsService} from 'src/app/load-scripts.service'
+import { VentaService } from 'src/app/services/venta.service';
+import {Venta} from 'src/app/models/venta'
+import {Router} from '@angular/router';
+import { DetalleVenta } from 'src/app/models/detalle-venta';
+import { ClienteService } from 'src/app/services/cliente.service'
+
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import { ItemsList } from '@ng-select/ng-select/lib/items-list';
 declare var js;
 @Component({
   selector: 'app-ventas',
@@ -12,20 +22,17 @@ declare var js;
 
 export class VentasComponent implements OnInit {
   public titulo: string = 'Listado de ventas';
-  constructor(private _LoadScripts:LoadScriptsService) { 
-    _LoadScripts.Load(["accordion"]);   
-    
+  cliente : Cliente = new Cliente();
+  venta : Venta = new Venta();
+  constructor(private serviceVenta: VentaService, private serviceCliente: ClienteService, private _LoadScripts:LoadScriptsService , private router:Router) { 
+    _LoadScripts.Load(["accordion"]);
   }
   
   
   
 
 
-  ngOnInit(): void {
-    //console.table(this.producto1);
-    
-    
-  }
+ 
   
   producto1 : Producto = {
     idProducto: 1,
@@ -51,49 +58,141 @@ export class VentasComponent implements OnInit {
     precio: 150,
     subtotal: 1
   }
-  productos = [
-    this.producto1,
-    this.producto2,
-    this.producto3
-  ]
-  data = Object.values(this.productos)
-  
-  public getProducts(){
-    var total = 0;
-    this.data.forEach(element => {
-      
-      total = total + (element.cantidad * element.precio)
-    });
-    return total;
+
+
+  //Items para buscador de Objetos
+  producto4 : Producto = {
+    idProducto: 4,
+    producto: 'Celular Iphone X',
+    descripcion: 'Buena camara, Camara HD',
+    cantidad: 4,
+    precio: 2000,
+    subtotal: 1
   }
-  totalVenta = this.getProducts();
-  
+  producto5 : Producto = {
+    idProducto: 5,
+    producto: 'Botellon de Agua Totto',
+    descripcion: '1 Litro, Color Azul',
+    cantidad: 2,
+    precio: 70,
+    subtotal: 1
+  }
+  producto6 : Producto = {
+    idProducto: 6,
+    producto: 'Gafas de Sol',
+    descripcion: 'Color Negro',
+    cantidad: 3,
+    precio: 200,
+    subtotal: 1
+  }
+  producto7 : Producto = {
+    idProducto: 7,
+    producto: 'Vaso de Vidrio',
+    descripcion: 'Transparente',
+    cantidad: 2,
+    precio: 20,
+    subtotal: 1
+  }
+
+  producto8 : Producto = {
+    idProducto: 8,
+    producto: 'Vaso de Vidrio',
+    descripcion: 'Transparente',
+    cantidad: 2,
+    precio: 20,
+    subtotal: 1
+  }
+//Buscador de Objetos
+  listaProductosPorBuscador =[
+    
+  ]
+  listaProductosBuscador = [
+    new DetalleVenta(this.producto4),
+    new DetalleVenta(this.producto5),
+    new DetalleVenta(this.producto6),
+    new DetalleVenta(this.producto7),
+  ]
+
+
+
+
+  public selectOneProductList(detalleventa : DetalleVenta){
+    this.listaProductosBuscador = this.listaProductosBuscador.filter((item) => item !== detalleventa)
+    this.venta.addDetallesVentas(detalleventa)
+  }
+
+  public addCountProduct(id:number)
+  {
+    let product = this.venta.detallesVentas.find((item) => item.producto.idProducto == id);
+    product.addCantidad();
+    this.venta.getTotal();
+  }
+  public removeCountProduct(id:number)
+  {
+    let product = this.venta.detallesVentas.find((item) => item.producto.idProducto == id);
+    product.removeCantidad();
+    this.venta.getTotal();
+    
+  }
+
   
   public deleteOneProductList (id: number) {
-    this.data = this.data.filter((item) => item.idProducto !== id)
-    this.totalVenta = this.getProducts();
+    this.venta.detallesVentas = this.venta.detallesVentas.filter((item) => item.idProducto !== id)
+    this.venta.getTotal();
   }
-  client1 : Cliente = {
-    idCliente : 1,
-    nitCi : '',
-    nombre: '',
-    apellidos: '',
-    correo: ''
-  }
+
+
   
-  public RegisterClient(){
-    const nombre = (document.getElementById('Nombre') as HTMLInputElement).value;
-    const apellido = (document.getElementById('Apellido') as HTMLInputElement).value;
-    const nit = (document.getElementById('NIT') as HTMLInputElement).value;
-    const correo = (document.getElementById('Correo') as HTMLInputElement).value;
-    this.client1.nombre = nombre;
-    this.client1.apellidos = apellido;
-    this.client1.nitCi = nit;
-    this.client1.correo = correo;
-    console.log(this.client1);
+  public RegisterClient(): void{
+    /*const nombre = (document.getElementById('nombre') as HTMLInputElement).value;
+    const apellido = (document.getElementById('apellidos') as HTMLInputElement).value;
+    const nit = (document.getElementById('nitCi') as HTMLInputElement).value;
+    const correo = (document.getElementById('correo') as HTMLInputElement).value;
+    let cliente2 = new Cliente();
+    
+    cliente2.nombre = nombre;
+    cliente2.apellidos = apellido;
+    cliente2.nitCi = nit;
+    cliente2.correo = correo;
+    console.log(cliente2.nombre)
+    this.serviceCliente.createCliente(cliente2).subscribe(res => {
+      console.log(res)
+    })*/
+    console.log("se va a registrar cliente")
   };
   
 
+    myControl = new FormControl<string | User>('');
+    options: User[] = [{name: 'Mary'}, {name: 'Shelley'}, {name: 'Igor'}];
+    filteredOptions: Observable<User[]>;
+  
+    ngOnInit() {
+
+      this.venta.addDetallesVentas(new DetalleVenta(this.producto1));
+      this.venta.addDetallesVentas(new DetalleVenta(this.producto2));
+      this.venta.addDetallesVentas(new DetalleVenta(this.producto3));
 
 
+      this.filteredOptions = this.myControl.valueChanges.pipe(
+        startWith(''),
+        map(value => {
+          const name = typeof value === 'string' ? value : value?.name;
+          return name ? this._filter(name as string) : this.options.slice();
+        }),
+      );
+    }
+  
+    displayFn(user: User): string {
+      return user && user.name ? user.name : '';
+    }
+  
+    private _filter(name: string): User[] {
+      const filterValue = name.toLowerCase();
+      //this.serviceCliente.
+      return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
+    }
+
+}
+export interface User {
+  name: string;
 }
