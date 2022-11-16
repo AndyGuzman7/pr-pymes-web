@@ -38,6 +38,12 @@ import { SelectRegisterComponent } from './views/users/select-register/select-re
 
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ListProductsComponent } from './views/warehouses/list-products/list-products.component';
+import { VentasComponent } from './components/ventas/ventas.component';
+import { ModuloVentasComponent } from './components/modulo-ventas/modulo-ventas.component';
+import { JQueryStyleEventEmitter } from 'rxjs/internal/observable/fromEvent';
+import {HttpClientModule} from '@angular/common/http';
+import {MatAutocompleteModule} from '@angular/material/autocomplete'
+//import {jquery} from './jquery';
 
 import { RegisterProductComponent } from './views/warehouses/register-product/register-product.component';
 import { HomeComponent } from './views/portal/home/home.component';
@@ -57,6 +63,8 @@ import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/n
 @NgModule({
   declarations: [
     AppComponent,
+    VentasComponent,
+    ModuloVentasComponent,
     TopNavBarComponent,
     LoginComponent,
     SupplierComponent,
@@ -72,6 +80,9 @@ import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/n
     RegisterBusinessComponent,
     SelectRegisterComponent,
     ListProductsComponent,
+
+    VentasComponent,
+
     RegisterProductComponent,
     HomeComponent,
     JournalPrincipalComponent,
@@ -82,11 +93,11 @@ import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/n
     ProductionInformationDetailComponent,
     SupplierManagementComponent,
     OrderToSupplierComponent,
+    BudgetSheetComponent,
     NewSupplierOrderComponent,
     BudgetSheetComponent,
     SideMenuShoppingComponent
   
-
   ],
   imports: [
     BrowserModule,
@@ -103,6 +114,11 @@ import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/n
     MatButtonModule,
     MatTableModule,
     MatIconModule,
+
+    NgSelectModule,
+    HttpClientModule,
+    MatAutocompleteModule,
+
     MatTooltipModule,
     MatGridListModule,
     MatSelectModule,
