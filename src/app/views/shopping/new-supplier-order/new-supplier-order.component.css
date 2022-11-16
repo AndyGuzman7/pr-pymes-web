@@ -5,7 +5,7 @@
 }
 
 .cont-header{
-    background-color: #DFE9F2;
+    background-color: #a4d6ef;
     display: flex;
 }
 
@@ -18,17 +18,12 @@
     font-weight: 600;
 }
 
-.header-2{
-    background-color: #DFE9F2;
-    margin: 0;
-    padding: 14px 20px 10px 20px;
-    letter-spacing: 1px;
-}
-
 .content{
     margin-top: 20px;
 }
-
+p{
+    width: 35%;
+}
 .text-c{
     letter-spacing: 1px;
     font-weight: 600;
@@ -60,7 +55,7 @@
 }
 
 .cont{
-    background-color: #DFE9F2;
+    background-color: #d6e4f095;
     padding: 10px;
     margin-bottom: 15px;
 }
@@ -71,32 +66,18 @@
 }
 input{
     border: none;
-    font-size: 10px;
-    margin-left: 4px;   
+    font-size: 12px;
+    margin-left: 4px; 
+    margin-right: 10px;
+    width: 65%;
 }
-
 .btn-c{
-   background-color: #4c8eb7; 
-   color: white;
-   margin-left: 10px;
-   font-size: 12px;
-}
-.cont-none{
-    padding: 10px;
-    margin-bottom: 15px;
-}
-.btn-documents{
     background-color: #4c8eb7; 
     color: white;
-    margin-bottom: 5px;
+    margin-left: 10px;
+    font-size: 12px;
+}
+table{
     width: 100%;
-    text-align: left;
-}
-.btn-modals{
-    width:50%;
-    background-color: #0A457F;
-    color: #fff;
-}
-.r-p{
-    font-size: 20px;
+    font-size: 12px;
 }
