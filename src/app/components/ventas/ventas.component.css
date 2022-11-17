@@ -126,7 +126,7 @@ div.panel.show {
     margin-bottom: 30px;
 }
 #btn-addClient{
-    color: aqua;
+    color: rgb(255, 255, 255);
     background-color: rgb(23,138,191);
     border-radius: 5px;
     border: none;
@@ -135,7 +135,15 @@ div.panel.show {
     font-size: 20px;
     
 }
-#btn-addClient:hover,#btn-sale:hover,#button-option-list-sale-delete:hover, #button-option-list-sale-update:hover{
+#btnFindClient{
+    color: rgb(255, 255, 255);
+    background-color: rgb(23,138,191);
+    border-radius: 5px;
+    border: none;
+    font-size: 13px;
+    
+}
+#btn-addClient:hover,#btn-sale:hover,#button-option-list-sale-delete:hover, #button-option-list-sale-update:hover, #btnFindClient:hover{
     background-color: rgb(42, 167, 225);
 }
 #button-option-list-sale:hover{

@@ -27,7 +27,7 @@
                     <tr *ngFor="let item of venta.detallesVentas">
                         <td>
                             <div>
-                                <h6><b> {{item.producto.nombre}}</b></h6>
+                                <h4><b> {{item.producto.producto}}</b></h4>
                             </div>
                             <p>{{item.producto.descripcion}}</p>
                         </td>
@@ -42,7 +42,7 @@
                         <td>{{item.subTotal}}</td>
                         <td>
                             <button id="button-option-sale" (click)="deleteOneProductList(item.producto.idProducto)" class="bi bi-x-circle"></button> <br>
-                            <button id="button-option-sale" class="bi bi-pencil-square"></button>
+                            
                         </td>
                     </tr>
                     
@@ -130,22 +130,24 @@
             <div class="col-lg-20">
                 <form action="">
                     <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Buscar cliente</mat-label>
-                        <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                        <mat-label>CI/NIT</mat-label>
+                        <input #txtCi type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{option.nombre}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Cliente</mat-label>
+                        <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" [readonly]="true" value="{{clienteEncontrado?.nombre  }}">
                         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
                           <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                             {{option.name}}
                           </mat-option>
                         </mat-autocomplete>
                       </mat-form-field>
-                    <div id="form-ci">
-                        <strong><label class="text-input" for="txtCi">CI: </label></strong>
-                        <input class="form-control" type="text" id="txtCi" value="4827328">
-                    </div>
-                    <div id="form-name">
-                        <strong><label class="text-input" for="txtFullName">Cliente: </label></strong>
-                        <input class="form-control" type="text" id="txtFullName" value="Juan Perez">
-                    </div>
+                    <input id="btnFindClient" type="submit" (click)="findClientByCi(txtCi.value)" >
                 </form>
             </div>
             <div id="icon-add">
@@ -254,17 +256,7 @@
             <div style="padding: 10px" >
                 <button type="button"  (click)="deleteOneProductList(1)" id="btn-sale" style="width:100%">Vender</button>
             </div>
-            <form class="example-form">
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>Assignee</mat-label>
-                  <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
-                  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                      {{option.name}}
-                    </mat-option>
-                  </mat-autocomplete>
-                </mat-form-field>
-              </form>
+            
             
         </div>
 </div>

@@ -22,7 +22,8 @@ declare var js;
 
 export class VentasComponent implements OnInit {
   public titulo: string = 'Listado de ventas';
-  cliente : Cliente = new Cliente();
+  public cliente: Cliente = new Cliente();
+  public clienteEncontrado: Cliente = new Cliente();
   venta : Venta = new Venta();
   constructor(private serviceVenta: VentaService, private serviceCliente: ClienteService, private _LoadScripts:LoadScriptsService , private router:Router) { 
     _LoadScripts.Load(["accordion"]);
@@ -30,7 +31,7 @@ export class VentasComponent implements OnInit {
   
   
   
-
+  /**/
 
  
   
@@ -113,6 +114,15 @@ export class VentasComponent implements OnInit {
     new DetalleVenta(this.producto7),
   ]
 
+  cliente1 : Cliente = new Cliente(1,"11111","Carlos","Severich")
+  cliente2 : Cliente = new Cliente(2,"22222","Juan","Perez")
+  cliente3 : Cliente = new Cliente(2,"33333","Orlando","Marquez")
+  listaClient = [
+    this.cliente1,
+    this.cliente2,
+    this.cliente3
+  ]
+
 
 
 
@@ -134,12 +144,47 @@ export class VentasComponent implements OnInit {
     this.venta.getTotal();
     
   }
+  public findClientByCi(nitci){
+
+    /*this.listaClient.filter(item => {
+      if (item.nitCi == nitci) {
+        this.clienteEncontrado = item
+      }else{
+        item = null
+      }
+    })*/
+
+    //this.listaClient = this.listaClient.filter((item) => item.nitCi == nitci)
+    //this.listaClient.filter(item => this.clienteEncontrado=item)
+    
+    this.listaClient.forEach(element => {
+      
+      if (element.nitCi == nitci) {
+        this.clienteEncontrado = element
+      }/*else if(element.nitCi != nitci){
+        this.clienteEncontrado = null
+        return
+      }else{
+        this.clienteEncontrado = null
+      }*/
+    });
+    if (this.clienteEncontrado != null) {
+      console.log(this.clienteEncontrado)
+    } else {
+      console.log("No hay ")
+    }
+     console.log(this.listaClient)
+    
+  }
 
   
   public deleteOneProductList (id: number) {
     this.venta.detallesVentas = this.venta.detallesVentas.filter((item) => item.idProducto !== id)
     this.venta.getTotal();
   }
+
+
+
 
 
   
@@ -172,6 +217,8 @@ export class VentasComponent implements OnInit {
       this.venta.addDetallesVentas(new DetalleVenta(this.producto2));
       this.venta.addDetallesVentas(new DetalleVenta(this.producto3));
 
+      
+      
 
       this.filteredOptions = this.myControl.valueChanges.pipe(
         startWith(''),

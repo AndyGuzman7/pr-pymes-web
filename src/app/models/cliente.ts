@@ -8,14 +8,20 @@ export class Cliente {
     public status?: number;
     public fechaActualizacion?: string;
     public correo?: string; 
+
+    
+    constructor(id?, nit?, nombre?, apellido? )
+	{
+		this.idCliente = id;
+		this.nitCi = nit;
+		this.nombre = nombre;
+		this.apellidos = apellido;
+        
+	}
     
     public get IdCliente()
     {
         return this.idCliente;
-    }
-    constructor()
-    {
-        this.status = 1;
     }
 
     public set IdCliente(idCliente:number)
