@@ -153,27 +153,46 @@
             </div>
             <div id="modalRegister" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-sm">
-                    <div class="modal-content" style="padding: 10px;">
-                        <form action="">
+                    <div class="modal-content"   style="padding: 10px;">
+                        <form  (ngSubmit)="RegisterClient()" validate>
+                            <div  [formGroup]="angForm">
+
+                            
                             <div class="form-group">
                                 <label class="text-input" for="nombre">Nombre</label>
-                                <input type="text" class="form-control input-register" name="nombre"  id="nombre" placeholder="Nombre" [(ngModel)]="cliente.nombre">
-                                
+                                <input type="text" formControlName="nombre" class="form-control input-register" name="nombre"  id="nombre" placeholder="Nombre" [(ngModel)]="cliente.nombre">
+                                <div *ngIf=" angForm.controls['nombre'].invalid && (angForm.controls['nombre'].dirty || angForm.controls['nombre'].touched)">
+                                    <div *ngIf="angForm.controls['nombre'].errors.required">El nombre es requerido.</div>
+                              </div>
                             </div>
-                            <div>
+                            <div >
                                 <label class="text-input" for="apellido">Apellido</label>
-                                <input type="text" class="form-control input-register" name="apellidos"  id="apellidos" placeholder="Apellido"  [(ngModel)]="cliente.apellidos">
-                               
+                                <input formControlName="apellido" type="text" class="form-control input-register" name="apellidos"  id="apellidos" placeholder="Apellido"  [(ngModel)]="cliente.apellidos">
+                                <div *ngIf=" angForm.controls['apellido'].invalid && (angForm.controls['apellido'].dirty || angForm.controls['apellido'].touched)">
+                                    <div *ngIf="angForm.controls['apellido'].errors.required">El apellido es requerido</div>
+                                    
+                                </div>
                             </div>
                             <div>
                                 <label class="text-input" for="nitCi">Nit</label>
-                                <input type="text" class="form-control input-register" name="nitCi"  id="nitCi" placeholder="NIT" [(ngModel)]="cliente.nitCi">
-                                
+                                <input formControlName="nit" type="text" class="form-control input-register" name="nitCi"  id="nitCi" placeholder="NIT" [(ngModel)]="cliente.nitCi">
+                                <div *ngIf=" angForm.controls['nit'].invalid && (angForm.controls['nit'].dirty || angForm.controls['nit'].touched)">
+                                    <div *ngIf="angForm.controls['nit'].errors.required">El nit o Ci es necesario.</div>
+                              </div>
                             </div>
                             <div>
                                 <label class="text-input" for="correo">Correo electrónico</label>
-                                <input type="email" class="form-control input-register" name="correo" name="correo" placeholder="Correo electrónico" [(ngModel)]="cliente.correo">
-                                
+                                <input formControlName="correo" type="email" class="form-control input-register" name="correo" name="correo" placeholder="Correo electrónico" [(ngModel)]="cliente.correo">
+                                <div *ngIf=" angForm.controls['correo'].invalid && (angForm.controls['correo'].dirty || angForm.controls['correo'].touched)">
+                                    <div *ngIf="angForm.controls['correo'].errors.required">El correo es necesario</div>
+                                    <div *ngIf="angForm.controls['correo'].errors.email">EL correo es invalido</div>
+                                    
+                              </div>
+                            </div>
+                            <div>
+                                <div *ngIf=" angForm.controls['nombre'].invalid || angForm.controls['apellido'].invalid|| angForm.controls['nit'].invalid || angForm.controls['correo']">
+                                    <div *ngIf="angForm.controls['nombre'].errors.required">El nombre es requerido.</div>
+                              </div>
                             </div>
                             <div style="margin-top: 10px ;" >
                                 <button type="button" id="btnRegister" (click)="RegisterClient()" class="btn btn-primary" style="width:100%">Registrar</button>
@@ -181,7 +200,7 @@
                             <div style="margin-top: 10px ;" >
                                 <button type="button" id="btnCloseModal" class="btn btn-danger" style="width:100%">Cancelar</button>
                             </div>
-
+                        </div>
                         </form>
                     </div>
                 </div>
@@ -268,4 +287,5 @@
               </form>
             
         </div>
+       
 </div>

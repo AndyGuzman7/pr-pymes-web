@@ -80,9 +80,7 @@ import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/n
     RegisterBusinessComponent,
     SelectRegisterComponent,
     ListProductsComponent,
-
     VentasComponent,
-
     RegisterProductComponent,
     HomeComponent,
     JournalPrincipalComponent,

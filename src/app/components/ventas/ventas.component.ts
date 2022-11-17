@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 import { DetalleVenta } from 'src/app/models/detalle-venta';
 import { ClienteService } from 'src/app/services/cliente.service'
 
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -23,15 +24,24 @@ declare var js;
 export class VentasComponent implements OnInit {
   public titulo: string = 'Listado de ventas';
   cliente : Cliente = new Cliente();
+  angForm: FormGroup;
 
 
   ventas: Venta[];
-  constructor(private serviceVenta: VentaService, private serviceCliente: ClienteService, private _LoadScripts:LoadScriptsService , private router:Router) { 
+  constructor(private serviceVenta: VentaService, private serviceCliente: ClienteService, private _LoadScripts:LoadScriptsService , private router:Router, private fb: FormBuilder) { 
     _LoadScripts.Load(["accordion"]);
+    this.createForm();
   }
   
   
-  
+  createForm() {
+    this.angForm = this.fb.group({
+      nombre: ["", [Validators.required, ]],
+      apellido: ["", [Validators.required, ]],
+      nit: ["", [Validators.required, ]],
+      correo: ["", [Validators.required, Validators.email]]
+    });
+  }
 
 
  
@@ -173,20 +183,28 @@ export class VentasComponent implements OnInit {
 
   
   public RegisterClient(): void{
-    const nombre = (document.getElementById('nombre') as HTMLInputElement).value;
-    const apellido = (document.getElementById('apellidos') as HTMLInputElement).value;
-    const nit = (document.getElementById('nitCi') as HTMLInputElement).value;
-    const correo = (document.getElementById('correo') as HTMLInputElement).value;
-    let cliente2 = new Cliente();
-    
-    cliente2.nombre = nombre;
-    cliente2.apellidos = apellido;
-    cliente2.nitCi = nit;
-    cliente2.correo = correo;
-    console.log(cliente2.nombre)
-    this.serviceCliente.createCliente(cliente2).subscribe(res => {
-      console.log(res)
-    })
+    if(this.angForm.valid)
+    {
+      const nombre = (document.getElementById('nombre') as HTMLInputElement).value;
+      const apellido = (document.getElementById('apellidos') as HTMLInputElement).value;
+      const nit = (document.getElementById('nitCi') as HTMLInputElement).value;
+      const correo = (document.getElementById('correo') as HTMLInputElement).value;
+      let cliente2 = new Cliente();
+      
+      cliente2.nombre = nombre;
+      cliente2.apellidos = apellido;
+      cliente2.nitCi = nit;
+      cliente2.correo = correo;
+      console.log(cliente2.nombre)
+      this.serviceCliente.createCliente(cliente2).subscribe(res => {
+        console.log(res)
+      })
+    }
+    else
+    {
+      console.log("no esta validado");
+    }
+   
   };
   
 
