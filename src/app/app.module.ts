@@ -94,7 +94,7 @@ import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/n
     BudgetSheetComponent,
     NewSupplierOrderComponent,
     BudgetSheetComponent,
-    SideMenuShoppingComponent
+    SideMenuShoppingComponent,
   
   ],
   imports: [

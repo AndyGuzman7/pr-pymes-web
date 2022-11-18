@@ -14,6 +14,8 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { ItemsList } from '@ng-select/ng-select/lib/items-list';
+import { ProductService } from 'src/app/services/product.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 declare var js;
 @Component({
   selector: 'app-ventas',
@@ -23,15 +25,45 @@ declare var js;
 
 export class VentasComponent implements OnInit {
   public titulo: string = 'Listado de ventas';
-  cliente : Cliente = new Cliente();
+  
   angForm: FormGroup;
+  venta : Venta = new Venta();
+  products: Producto[] = [];
 
 
-  ventas: Venta[];
-  constructor(private serviceVenta: VentaService, private serviceCliente: ClienteService, private _LoadScripts:LoadScriptsService , private router:Router, private fb: FormBuilder) { 
+  constructor(private _snackBar: MatSnackBar, private serviceVenta: VentaService, private serviceProduct: ProductService, private serviceCliente: ClienteService, private _LoadScripts:LoadScriptsService , private router:Router, private fb: FormBuilder) { 
+ 
     _LoadScripts.Load(["accordion"]);
     this.createForm();
+    this.selectProduct();
   }
+
+
+  myControl = new FormControl<string | Cliente>('');
+  filteredOptions: Observable<Cliente[]>;
+ 
+  ngOnInit() {
+
+    this.myControl.valueChanges.subscribe(item =>{
+      if(!(item=='') && typeof item === 'string')
+      this.filteredOptions = this._filter(item as string);
+      if((item != '') && typeof item === 'object')
+      {
+        this.selectClientVenta(item);
+      }
+      
+      
+    });
+    
+  }
+
+displayFn(user: Cliente): string {
+  return user && user.nombre ? user.nombre : '';
+}
+
+private _filter(name: string): Observable<Cliente[]> {
+  return this.serviceCliente.searchProductCriteria(name);
+}
   
   
   createForm() {
@@ -39,128 +71,86 @@ export class VentasComponent implements OnInit {
       nombre: ["", [Validators.required, ]],
       apellido: ["", [Validators.required, ]],
       nit: ["", [Validators.required, ]],
-      correo: ["", [Validators.required, Validators.email]]
+      correo: ["", [Validators.required, Validators.email]],
+      nombreEscogido :[""]
     });
   }
 
 
- 
-  
-
-//Buscador de Objetos
-  listaProductosPorBuscador =[
-    
-  ]
-  listaProductosBuscador = [
-  
-  ]
-
-
-  listaProductos = [
-   
-  ]  
-
-  public selectOneProductList(detalleventa : DetalleVenta){
-    this.listaProductosBuscador = this.listaProductosBuscador.filter((item) => item !== detalleventa)
-    this.listaProductos.push(detalleventa)
-    this.totalVenta = this.getProducts();
-
-    
-
-  }
-
-  public addCountProduct(id:number)
+  selectProduct()
   {
-    let product = this.listaProductos.find((item) => item.producto.productID == id);
-    product.addCantidad();
+    this.serviceProduct.selectClient().subscribe(producto =>{
+      this.products = producto;
+    });
   }
-  public removeCountProduct(id:number)
+
+  addProductVenta(product : Producto)
   {
-    let product = this.listaProductos.find((item) => item.producto.productID == id);
-    product.removeCantidad();
-    
+    let ok = this.venta.detallesVentas.find((item) => item.producto.productID == product.productID);
+    if(!ok)
+    this.venta.addDetallesVentas(new DetalleVenta(product));
   }
 
-  public salesProducts() {
-    //El id de la seccion de usuario
-    let idUsuario = 1;
-    let venta = new Venta();
-    let detalleVentas = [];
-    //detalleVentas.push(new DetalleVenta())
-    
-  
-     //this.service.createVenta()
-  }
-  
-
-  public getProducts(){
-    var total = 0;
-    this.listaProductos.forEach(element => {
-      
-      total = total + (element.cantidad * element.producto.precio)
-    }); 
-    return total;
-  }
-  totalVenta = this.getProducts();
-  
-  public deleteOneProductList (id: number) {
-    this.listaProductos = this.listaProductos.filter((item) => item.idProducto !== id)
-    this.totalVenta = this.getProducts();
+  removeProductVenta(detalleVenta: DetalleVenta)
+  {
+    this.venta.removeDetalleVenta(detalleVenta);
   }
 
+  public addCountProductVenta(id:number)
+  {
+    this.venta.addQuantityDetalleVenta(id);
+  }
 
+  public removeCountProductVenta(id:number)
+  {
+    this.venta.removeQauntityDetalleVenta(id);
+  }
+
+  public selectClientVenta(cliente : Cliente)
+  {
+    this.venta.Cliente = cliente;
+  }
   
   public RegisterClient(): void{
     if(this.angForm.valid)
     {
-      const nombre = (document.getElementById('nombre') as HTMLInputElement).value;
-      const apellido = (document.getElementById('apellidos') as HTMLInputElement).value;
-      const nit = (document.getElementById('nitCi') as HTMLInputElement).value;
-      const correo = (document.getElementById('correo') as HTMLInputElement).value;
-      let cliente2 = new Cliente();
-      
-      cliente2.nombre = nombre;
-      cliente2.apellidos = apellido;
-      cliente2.nitCi = nit;
-      cliente2.correo = correo;
-      console.log(cliente2.nombre)
-      this.serviceCliente.createCliente(cliente2).subscribe(res => {
-        console.log(res)
+      let nombre = this.angForm.controls['nombre'].value;
+      let apellido = this.angForm.controls['apellido'].value;
+      let nit = this.angForm.controls['nit'].value;
+      let correo = this.angForm.controls['correo'].value;
+      let cliente  = new Cliente();
+      cliente.nitCi = nit;
+      cliente.apellidos = apellido;
+      cliente.nombre = nombre;
+      cliente.correo = correo;
+      this.serviceCliente.createCliente(cliente).subscribe(res => {
+        this.openSnackBar();
+        this.createForm();
       })
     }
     else
     {
       console.log("no esta validado");
-    }
-   
+    }   
   };
-  
 
-    myControl = new FormControl<string | User>('');
-    options: User[] = [{name: 'Mary'}, {name: 'Shelley'}, {name: 'Igor'}];
-    filteredOptions: Observable<User[]>;
-  
-    ngOnInit() {
-      this.filteredOptions = this.myControl.valueChanges.pipe(
-        startWith(''),
-        map(value => {
-          const name = typeof value === 'string' ? value : value?.name;
-          return name ? this._filter(name as string) : this.options.slice();
-        }),
-      );
-    }
-  
-    displayFn(user: User): string {
-      return user && user.name ? user.name : '';
-    }
-  
-    private _filter(name: string): User[] {
-      const filterValue = name.toLowerCase();
-      //this.serviceCliente.
-      return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
-    }
+  openSnackBar() {
+    this._snackBar.open("Registro Exitoso");
+    this._snackBar.dismiss()
+  }
 
-}
-export interface User {
-  name: string;
+
+  sales()
+  {
+    if(this.venta.isOk())
+    {
+      this.serviceVenta.createVenta(this.venta).subscribe(res => {
+        console.log("venta correcta")
+        this.router.navigate(['ventas'])
+      });
+    }
+  }
+
+   
+
 }
