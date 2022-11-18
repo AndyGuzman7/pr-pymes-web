@@ -46,90 +46,18 @@ export class VentasComponent implements OnInit {
 
  
   
-  producto1 : Producto = {
-    idProducto: 1,
-    producto: 'Portatil',
-    descripcion: 'i5 75000QH 1TB SSD CRUSSIAL',
-    cantidad: 2,
-    precio: 1230,
-    subtotal: 2
-  }
-  producto2 : Producto = {
-    idProducto: 2,
-    producto: 'Licuadora PHILIPS',
-    descripcion: 'Modelo K3829 + Trituradora + Envase',
-    cantidad: 2,
-    precio: 240,
-    subtotal: 1
-  }
-  producto3 : Producto = {
-    idProducto: 3,
-    producto: 'Parlante SONY-X2H3',
-    descripcion: 'Sonido envolvente, 5 bocinas',
-    cantidad: 2,
-    precio: 150,
-    subtotal: 1
-  }
 
-
-  //Items para buscador de Objetos
-  producto4 : Producto = {
-    idProducto: 4,
-    producto: 'Celular Iphone X',
-    descripcion: 'Buena camara, Camara HD',
-    cantidad: 4,
-    precio: 2000,
-    subtotal: 1
-  }
-  producto5 : Producto = {
-    idProducto: 5,
-    producto: 'Botellon de Agua Totto',
-    descripcion: '1 Litro, Color Azul',
-    cantidad: 2,
-    precio: 70,
-    subtotal: 1
-  }
-  producto6 : Producto = {
-    idProducto: 6,
-    producto: 'Gafas de Sol',
-    descripcion: 'Color Negro',
-    cantidad: 3,
-    precio: 200,
-    subtotal: 1
-  }
-  producto7 : Producto = {
-    idProducto: 7,
-    producto: 'Vaso de Vidrio',
-    descripcion: 'Transparente',
-    cantidad: 2,
-    precio: 20,
-    subtotal: 1
-  }
-
-  producto8 : Producto = {
-    idProducto: 8,
-    producto: 'Vaso de Vidrio',
-    descripcion: 'Transparente',
-    cantidad: 2,
-    precio: 20,
-    subtotal: 1
-  }
 //Buscador de Objetos
   listaProductosPorBuscador =[
     
   ]
   listaProductosBuscador = [
-    new DetalleVenta(this.producto4),
-    new DetalleVenta(this.producto5),
-    new DetalleVenta(this.producto6),
-    new DetalleVenta(this.producto7),
+  
   ]
 
 
   listaProductos = [
-    new DetalleVenta(this.producto1),
-    new DetalleVenta(this.producto2),
-    new DetalleVenta(this.producto3),
+   
   ]  
 
   public selectOneProductList(detalleventa : DetalleVenta){
@@ -143,12 +71,12 @@ export class VentasComponent implements OnInit {
 
   public addCountProduct(id:number)
   {
-    let product = this.listaProductos.find((item) => item.producto.idProducto == id);
+    let product = this.listaProductos.find((item) => item.producto.productID == id);
     product.addCantidad();
   }
   public removeCountProduct(id:number)
   {
-    let product = this.listaProductos.find((item) => item.producto.idProducto == id);
+    let product = this.listaProductos.find((item) => item.producto.productID == id);
     product.removeCantidad();
     
   }

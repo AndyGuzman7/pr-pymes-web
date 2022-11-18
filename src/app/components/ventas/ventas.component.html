@@ -27,17 +27,17 @@
                     <tr *ngFor="let item of listaProductos">
                         <td>
                             <div>
-                                <h6><b> {{item.producto.nombre}}</b></h6>
+                                <h6><b> {{item.producto.name}}</b></h6>
                             </div>
-                            <p>{{item.producto.descripcion}}</p>
+                            <p>{{item.producto.description}}</p>
                         </td>
                         <td>
-                            {{item.producto.precio}}
+                            {{item.producto.price}}
                         </td>
                         <td>
                             {{item.cantidad}}
-                            <button id="button-option-sale" (click)="addCountProduct(item.producto.idProducto)" class="">+</button> 
-                            <button id="button-option-sale" (click)="removeCountProduct(item.producto.idProducto)" class="bi">-</button>
+                            <button id="button-option-sale" (click)="addCountProduct(item.producto.productID)" class="">+</button> 
+                            <button id="button-option-sale" (click)="removeCountProduct(item.producto.productID)" class="bi">-</button>
                         </td>
                         <td>{{item.subTotal}}</td>
                         <td>
@@ -98,16 +98,16 @@
                                 <tbody>
                                     <tr *ngFor="let item of listaProductosBuscador">
                                         <td>
-                                            {{item.producto.producto}}
+                                            {{item.producto.name}}
                                         </td>
                                         <td>
-                                            {{item.producto.descripcion}}
+                                            {{item.producto.description}}
                                         </td>
                                         <td>
-                                            {{item.producto.cantidad}}
+                                            {{item.producto.quantity}}
                                         </td>
                                         <td>
-                                            {{item.producto.precio}}
+                                            {{item.producto.price}}
                                         </td>
                                         <td>
                                             <button id="button-option-sale" (click)="selectOneProductList(item)" class="bi bi-bookmark-check-fill"></button>

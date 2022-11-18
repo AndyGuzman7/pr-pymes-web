@@ -17,8 +17,8 @@ export class DetalleVenta {
 	constructor(producto:Producto)
 	{
 		this._producto = producto;
-		this._idProducto = producto.idProducto;
-		this._precioVenta = producto.precio;
+		this._idProducto = producto.productID;
+		this._precioVenta = producto.price;
 		this._status = 1;
 		this._descuento = 0.0;
 		this._cantidad = 1;
