@@ -1,0 +1,46 @@
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+<header>
+
+    <nav class="navigation">
+      <div class="logo"> 
+        <img src="assets/svg/logo-pymes.svg" height="40px">
+      </div>
+      
+      <div class="toggle__menu" id="toggle-menu">
+        <i class="bx bx-grid-alt"></i>
+      </div>
+      <ul class="nav__list nav_menu" id="nav-menu">
+        <div class="close__menu" id="close-menu">
+          <i class="bx bx-x"></i>
+        </div>
+        <li class="nav__item">
+            <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]="searchTerm" (keyup)="search($event)" placeholder="Buscar Productos">
+            </div>
+        </li>
+
+        <label style="font-size: 30px;">{{ nameSession }}</label>
+
+        <li class="nav__item">
+          <button class="btn nav__link" (click)=loginNavi()>{{ logintext }}</button>
+        </li>
+        <li class="nav__item">
+          <button class="btn nav__link" (click)=registerNavi()>Registro</button>
+        </li>
+
+        <button routerLink="cart" class="btn">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <circle cx="6" cy="19" r="2"></circle>
+            <circle cx="17" cy="19" r="2"></circle>
+            <path d="M17 17h-11v-14h-2"></path>
+            <path d="M6 5l14 1l-1 7h-13"></path>
+          </svg>
+          <div style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>
+        </button>
+      </ul>
+    </nav>
+
+  
+</header>

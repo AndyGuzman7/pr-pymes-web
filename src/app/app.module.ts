@@ -68,6 +68,7 @@ import { LoginportalComponent } from './views/portal/loginportal/loginportal.com
 import { SignupComponent } from './views/portal/signup/signup.component';
 import { CheckoutComponent } from './views/portal/checkout/checkout.component';
 import { DetailproductComponent } from './views/portal/detailproduct/detailproduct.component';
+import { NavBarPortalComponent } from './components/nav-bar-portal/nav-bar-portal.component';
 
 
 
@@ -117,7 +118,8 @@ import { DetailproductComponent } from './views/portal/detailproduct/detailprodu
     SignupComponent,
     CheckoutComponent,
     DetailproductComponent,
-    LoginportalComponent
+    LoginportalComponent,
+    NavBarPortalComponent
   
   ],
   imports: [
