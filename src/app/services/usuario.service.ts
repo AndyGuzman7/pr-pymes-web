@@ -26,12 +26,15 @@ export class UsuarioService {
     return this.http.post<Usuario>(this.baseEndpoint, user, { headers: this.cabecera});
   }
   //editar un usuario
-  public editUser(user: Usuario): Observable<Usuario>{
+  /*public editUser(user: Usuario): Observable<Usuario>{
     return this.http.put<Usuario>(`${this.baseEndpoint}/${user.idUsuario}`, user , {headers: this.cabecera});
-  }
+  }*/
   //eliminar un usuario
   public deleteUser(idUsuario: number): Observable<void>{
     return this.http.delete<void>(`${this.baseEndpoint}/${idUsuario}`);
   }
-
+  //Autenticar usuario
+  public loginUser(email:string, pass:string ): Observable<Usuario>{
+    return this.http.get<Usuario>(`${this.baseEndpoint}/login?email=${email}&pass=${pass}`, {headers: this.cabecera});
+  }
 }
