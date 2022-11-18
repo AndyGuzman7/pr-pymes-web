@@ -1,0 +1,35 @@
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="portal-nav-bar.component.css">+
+
+<header>
+
+    <nav class="navigation">
+      <div class="logo"> 
+        <img src="assets/svg/logo-pymes.svg" height="40px">
+      </div>
+      
+      <div class="toggle__menu" id="toggle-menu">
+        <i class="bx bx-grid-alt"></i>
+      </div>
+      <ul class="nav__list nav_menu" id="nav-menu">
+
+        <!--agregar la funcion  [(ngModel)]="searchTerm" (keyup)="search($event)" -->>
+        <div class="form-group">
+            <input type="text" class="form-control"   placeholder="search products">
+        </div>
+        
+        <li class="nav__item"><a routerLink="/select_register" class="nav__link register__link">Regístrate</a></li>
+        <li class="nav__item"><a href="#" class="nav__link login__link">Iniciar Sesión</a></li>
+        <button routerLink="cart" class="nav__item" >
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="36" height="36" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00AEE1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <circle cx="6" cy="19" r="2" />
+                <circle cx="17" cy="19" r="2" />
+                <path d="M17 17h-11v-14h-2" />
+                <path d="M6 5l14 1l-1 7h-13" />
+              </svg>
+            <div style="font-size: 10px;" class="badge bg-danger"></div>
+        </button>
+      </ul>
+    </nav> 
+</header>
