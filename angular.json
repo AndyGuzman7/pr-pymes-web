@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pr-pymes-web": {
+    "facturacion": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/pr-pymes-web",
+            "outputPath": "dist/facturacion",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -23,16 +23,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
-
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.css"
             ],
-            "scripts": [
-              "./node_modules/jquery/dist/jquery.slim.min.js",
-              "./node_modules/popper.js/dist/umd/popper.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
-
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -71,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "pr-pymes-web:build:production"
+              "browserTarget": "facturacion:build:production"
             },
             "development": {
-              "browserTarget": "pr-pymes-web:build:development"
+              "browserTarget": "facturacion:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pr-pymes-web:build"
+            "browserTarget": "facturacion:build"
           }
         },
         "test": {
@@ -97,6 +91,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -106,6 +101,6 @@
     }
   },
   "cli": {
-    "analytics": "3a4e3f8c-1f3d-48dc-b2eb-5122da10e736"
+    "analytics": "844d0fff-6a6e-431c-9468-058d9a06d0f7"
   }
 }
