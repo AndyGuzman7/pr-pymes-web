@@ -1,0 +1,76 @@
+<div class="container" style="margin-top:50px;">
+    <h1>{{titulo}}</h1>
+    <div class="alert alert-info" *ngIf="librodiarios?.length <= 0">
+        Sin registros
+    </div>
+    <table class="table table-hover" *ngIf="librodiarios?.length > 0">
+        <thead>
+            <tr>
+                <th scope="col">Libro diario</th>
+                <th scope="col">Glosa</th>
+                <th scope="col">Razon social</th>
+                <th scope="col">Tipo libro</th>
+                <th scope="col">Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let librodiario of librodiarios">
+                <td>{{librodiario.idLibroDiario}}</td>
+                <td>{{librodiario.glosa}}</td>
+                <td>{{librodiario.razonSocial}}</td>
+                <td>{{librodiario.tipoLibro}}</td>
+                <td>{{librodiario.fecha | date}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <mat-paginator [length]="totalRegistros" 
+    [pageSize]="totalporPagina" 
+    [pageIndex]="paginaActual" 
+    [pageSizeOptions]="[5, 10, 25, 50]"
+    (page)="paginar($event)"
+    showFirstLastButtons
+    class="float-left mx-2">
+    </mat-paginator>
+    <div style="position: relative;">
+        <div class="form-group" style="position: absolute; top: 50%; left: 25%;">
+            <form class="row" (submit)="filtrar($event)">
+                <div class="col-auto">
+                    <label for="inputStartDate" class="form-label">Fecha de inicio:</label>
+                    <input type="date" name="fechaInicio" class="form-control" id="inputStartDate">
+                    <p class="alert alert-danger" *ngIf="fechaInicio == 0">
+                        Fecha invalida
+                    </p>
+                </div>
+                <div class="col-auto">
+                    <label for="inputFinishDate" class="form-label">Fecha de fin:</label>
+                    <input type="date" name="fechaFin" class="form-control" id="inputFinishDate">
+                    <p class="alert alert-danger" *ngIf="fechaFin == 0">
+                        Fecha invalida
+                    </p>
+                </div>
+                <div class="col-auto">
+                    <label class="form-label">Tipo de libro:</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="tipoLibro" id="radioBookType1" value="ingreso"
+                            checked>
+                        <label class="form-check-label" for="radioBookType1">Ingreso</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="tipoLibro" id="radioBookType2" value="egreso">
+                        <label class="form-check-label" for="radioBookType2">Egreso</label>
+                    </div>
+                </div>
+                <div class="col-auto" style="padding-top: 25px;">
+                    <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
+                </div>
+                <form class="col-auto" (submit)="ngOnInit()">
+                    <div style="padding-top: 25px;">
+                        <button type="submit" class="btn btn-secondary btn-sm">Deshacer</button>
+                    </div>
+                </form>
+            </form>
+        </div>
+    </div>
+</div>
+
+        
