@@ -39,24 +39,24 @@ export class GetComponent implements OnInit {
   }
   
   onDelete(id: number, estado: number){
-    /*let dialogConfirm = this.dialog.open(DialogComponent, {
+    let dialogConfirm = this.dialog.open(DialogComponent, {
       disableClose: true,
     });
     dialogConfirm.afterClosed().subscribe(status => {
       if(status){
-        
+        estado = 0;
+
+        this.facturaService.delete(id, estado).subscribe(() => {
+          this.venta.estado = estado;
+          this.getList();
+        });
       }
-    });*/
+    });
 
     /*this.facturaService.delete(id).subscribe(() => {
       this.getList();
     });*/
-    estado = 0;
-
-    this.facturaService.delete(id, estado).subscribe(() => {
-      this.getList();
-      this.venta.estado = estado;
-    });
+    
   }
 
   filter(valor: Event){
