@@ -59,6 +59,17 @@ import { BudgetSheetComponent } from './views/shopping/budget-sheet/budget-sheet
 import { SideMenuShoppingComponent } from './components/side-menu-shopping/side-menu-shopping.component';
 import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/new-supplier-order.component';
 
+//Portal
+import { HeaderComponent } from './views/portal/header/header.component';
+import { CartComponent } from './views/portal/cart/cart.component';
+import { ProductsComponent } from './views/portal/products/products.component';
+import { FiltersPipe } from './views/portal/filter/filters.pipe';
+import { LoginportalComponent } from './views/portal/loginportal/loginportal.component';
+import { SignupComponent } from './views/portal/signup/signup.component';
+import { CheckoutComponent } from './views/portal/checkout/checkout.component';
+import { DetailproductComponent } from './views/portal/detailproduct/detailproduct.component';
+
+
 
 @NgModule({
   declarations: [
@@ -96,7 +107,17 @@ import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/n
     BudgetSheetComponent,
     NewSupplierOrderComponent,
     BudgetSheetComponent,
-    SideMenuShoppingComponent
+    SideMenuShoppingComponent,
+
+    HeaderComponent,
+    CartComponent,
+    ProductsComponent,
+    FiltersPipe,
+    LoginComponent,
+    SignupComponent,
+    CheckoutComponent,
+    DetailproductComponent,
+    LoginportalComponent
   
   ],
   imports: [
