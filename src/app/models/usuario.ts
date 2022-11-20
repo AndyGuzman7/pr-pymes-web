@@ -1,21 +1,22 @@
 export class Usuario {
 
-    public idUsuario: number;
-    public nombre: string;
-    public apellidos: string;
-    public fechaCreacion?: string;
+    public id: number;
+    public name: string;
+    public last_name: string;
+    /*public fechaCreacion?: string;
     public status?: number;
-    public fechaActualizacion?: string;
-    public correo?: string; 
-    public contrasenia: string;
+    public fechaActualizacion?: string;*/
+    public email: string; 
+    public password: string;
+    public rol_id: number;
     
-    public get IdUsuario()
+    /*public get IdUsuario()
     {
         return this.idUsuario;
     }
     constructor()
     {
-        this.status = 1;
+        //this.status = 1;
     }
 
     public set IdUsuario(idUsuario:number)
@@ -62,7 +63,7 @@ export class Usuario {
     {
         this.contrasenia = contrasenia;
     }
-    public get Status()
+    /*public get Status()
     {
         return this. status;
     }
@@ -71,5 +72,16 @@ export class Usuario {
     {
         this. status = status;
     }
+
+
+    public get Rol_id()
+    {
+        return this.rol_Id;
+    }
+    
+    public set Rol_id (rol_id: number)
+    {
+        this.rol_Id = rol_id;
+    }*/
 }
  

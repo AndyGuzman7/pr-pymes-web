@@ -5,13 +5,15 @@ import { ModuloVentasComponent } from './components/modulo-ventas/modulo-ventas.
 import { RegisterBusinessComponent } from './views/users/register-business/register-business.component';
 import { RegisterComponent } from './views/users/register/register.component';
 import { SelectRegisterComponent } from './views/users/select-register/select-register.component';
+import { LoginComponent } from './views/users/login/login.component';
 
 const routes: Routes = [
   {path: 'ventas', component: ModuloVentasComponent},
   {path: 'HacerVenta', component: VentasComponent},
   {path: 'register_business', component: RegisterBusinessComponent},
   {path: 'register_user', component: RegisterComponent},
-  {path: 'select_register', component: SelectRegisterComponent}
+  {path: 'select_register', component: SelectRegisterComponent},
+  {path: 'user_login', component: LoginComponent}
 ];
 
 @NgModule({
