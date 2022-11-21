@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -9,7 +9,8 @@ import { LibroDiario } from '../models/libro-diario';
 })
 export class LibroDiarioService {
 
-  private baseEndPoint = 'http://localhost:8090/api/librodiario';
+  private baseEndPoint = '/api/librodiario';
+  private cabecera: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }
 
@@ -34,6 +35,11 @@ export class LibroDiarioService {
     .set('tipo_libro',tipo_libro);
     return this.http.get<LibroDiario[]>
     (`${this.baseEndPoint}/mostrar`,{params:params});
+  }
+
+  //Crear libro
+  crearLibro(LibroDiario) {
+    return this.http.post<LibroDiario>(`${this.baseEndPoint}/`, LibroDiario, { headers: this.cabecera})
   }
     
 }

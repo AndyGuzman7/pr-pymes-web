@@ -28,4 +28,8 @@ export class CuentaService {
     deleteAccount(idCuenta:number) {
         return this.http.delete<Cuenta[]>(this.baseEndpoint + idCuenta)
     }
+
+    selectByCode(codigo: string) {
+        return this.http.get<Cuenta>('/api/librodiario/CodigoCuenta/' + codigo)
+    }
 }

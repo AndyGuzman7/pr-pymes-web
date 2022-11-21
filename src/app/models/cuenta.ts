@@ -1,10 +1,13 @@
+import { Detalle } from "./detalle";
+
 export class Cuenta {
 
     idCuenta: number = 0;
     codigoCuenta: string = "";
     denominacion: string = "";    
     idEmpresa: number = 0;
-    status: number = 0;   
+    status: number = 0;
+    detalles:Detalle[]=[]   
     
     constructor()
     {

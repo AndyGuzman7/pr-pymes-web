@@ -27,3 +27,10 @@ h1{
     color:#0A457F;
     font-weight:bold;
 }
+.btn-r:hover{
+    background-color: #0A457F;
+}
+.btn{
+    background-color: #00AEE1;
+    color: #fff;
+}

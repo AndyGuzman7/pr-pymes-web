@@ -1,11 +1,11 @@
 import { Detalle } from "./detalle";
 
 export class LibroDiario {
-    idLibroDiario: number;
+    id: number = 0;
     detalles: Detalle []= [];
-    glosa: string;
-    razonSocial: string;
-    tipoLibro: string;
-    fecha: string;
+    glosa: string = '';
+    razon_social: string = '';
+    tipo_libro: string = '';
+    fecha: Date = new Date();
 
 }
