@@ -7,7 +7,7 @@ import { Venta } from '../models/venta';
 })
 export class VentaService {
 
-  private baseEndpoint = '/api/ventas';
+  private baseEndpoint = 'http://localhost:8090/api/ventas';
   private cabecera: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   constructor(private http: HttpClient) { }
 

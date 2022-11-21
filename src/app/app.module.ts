@@ -92,9 +92,7 @@ import { NavBarPortalComponent } from './components/nav-bar-portal/nav-bar-porta
     RegisterBusinessComponent,
     SelectRegisterComponent,
     ListProductsComponent,
-
     VentasComponent,
-
     RegisterProductComponent,
     HomeComponent,
     JournalPrincipalComponent,

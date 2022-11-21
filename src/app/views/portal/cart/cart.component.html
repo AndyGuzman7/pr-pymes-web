@@ -20,10 +20,10 @@
                     <tbody>
                         <tr *ngFor="let item of products; let i = index">
                             <td>{{i+1}}</td>
-                            <td>{{item.title}}</td>
+                            <td>{{item.name}}</td>
                             <td><img style="width: 100px;" src="{{item.image}}" alt=""></td>
                             <th style="width: 150px; text-align: center;">{{item.price}}Bs.</th>
-                            <td style="width: 150px; text-align: center;">x{{item.quantity}}</td>
+                            <td style="width: 150px; text-align: center;">x{{item.quantitycart}}</td>
                             <td style="width: 150px; text-align: center;">{{item.total}}Bs.</td>
                             <td class="td-delete">
                                 <button (click)="removeItem(item)" class="btn btn-delete"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

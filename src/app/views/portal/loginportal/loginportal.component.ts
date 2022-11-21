@@ -29,7 +29,7 @@ export class LoginportalComponent implements OnInit {
     .subscribe(res=>{
       if(res.isOk==true){
         this.router.navigate(['products']);
-        this.cartService.addSession(res.email, res.first_name, res.last_name);
+        this.cartService.addSession(res. id_usuario, res.res.email, res.first_name, res.last_name);
       }else{
         alert(res.msj);
       }

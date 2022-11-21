@@ -24,9 +24,9 @@ export class CartService {
   addtoCart(product: any) {
     var isEdit = false;
     this.cartItemList.map((a: any, index: any) => {
-      if (product.id === a.id) {
-        a.quantity = a.quantity + 1;
-        a.total = a.quantity * a.price;
+      if (product.productID === a.productID) {
+        a.quantitycart = a.quantitycart + 1;
+        a.total = a.quantitycart * a.price;
         isEdit = true;
       }
     })
@@ -50,9 +50,19 @@ export class CartService {
     let grandTotal = 0;
     this.cartItemList.map((a: any) => {
       grandTotal += a.total;
-      grandTotal = this.trunc(grandTotal, 2);
+      //grandTotal = this.trunc(grandTotal, 2);
     })
     return grandTotal;
+  }
+
+  getTotalQuantity(): number {
+    let quantitytotal = 0;
+    this.cartItemList.map((a: any) => {
+      quantitytotal += a.quantitycart;
+      console.log(quantitytotal);
+      //grandTotal = this.trunc(grandTotal, 2);
+    })
+    return quantitytotal;
   }
   removeCartItem(product: any) {
     this.cartItemList.map((a: any, index: any) => {
@@ -67,10 +77,11 @@ export class CartService {
     this.productList.next(this.cartItemList);
   }
 
-  addSession(email: any, firstName : any, lastName : any) {
+  addSession(idusuario:any, email: any, firstName : any, lastName : any) {
     sessionStorage.setItem('email', email); 
     sessionStorage.setItem('name', firstName);
     sessionStorage.setItem('lname', lastName);
+    sessionStorage.setItem('id_user', idusuario);
     this.productList.next(this.emailSession);
     this.productList.next(this.cartItemList);
   }
@@ -79,6 +90,7 @@ export class CartService {
     sessionStorage.setItem('email', ''); 
     sessionStorage.setItem('name', '');
     sessionStorage.setItem('lname', '');
+    sessionStorage.setItem('id_user', '');
     this.productList.next(this.emailSession);
     this.productList.next(this.cartItemList);
   }

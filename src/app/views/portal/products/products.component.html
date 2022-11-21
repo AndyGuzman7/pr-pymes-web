@@ -45,13 +45,13 @@
 
 <div class="container text-center">
     <div class="row">
-        <ng-container *ngFor="let item of filterCategory | filters:searchKey:'title'">
+        <ng-container *ngFor="let item of filterCategory | filters:searchKey:'name'">
             <div class="card col-md-2">
                 <div class="img-aline">
-                    <img quality="auto" class="pointer" src="{{item.image}}"  (click)=openDetailproduct(item.id)>
+                    <img quality="auto" class="pointer" src="{{item.image}}"  (click)=openDetailproduct(item.productID)>
                 </div>
                 <h5 class="text-card">
-                    {{item.title}}</h5>
+                    {{item.name}}</h5>
                 <p class="text-card " >
                     {{item.description}}</p>
                 <p><strong>Precio: </strong>{{item.price}}Bs</p>

@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { ProductsComponent } from 'src/app/views/portal/products/products.component';
 import { CartService } from 'src/app/services/cart.service';
 import { Router } from '@angular/router';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-detailproduct',
@@ -14,21 +15,19 @@ export class DetailproductComponent implements OnInit {
   public detailList: any;
   public filterCategory: any;
   public product: any;
-  constructor(private api: ApiService, private cartService: CartService, private router : Router) { }
+  constructor(private api: ApiService, private cartService: CartService, private productService: ProductService, private router : Router) { }
 
   ngOnInit(): void {
-    this.api.getProduct()
+    this.productService.selectClient()
       .subscribe(res => {
         this.detailList = res;
         this.filterCategory = res;
         this.detailList.map((a: any, index: any) => {
-
-          console.log(a.id);
-          if (a.id == sessionStorage.getItem('detailid')) {
+          if (a.productID == sessionStorage.getItem('detailid')) {
             this.product = a;
 
           }
-          Object.assign(a, { quantity: 1, total: a.price });
+          Object.assign(a, { quantitycart: 1, total: a.price });
         });
       });
 

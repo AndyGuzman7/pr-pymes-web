@@ -3,6 +3,7 @@ import { AppModule } from 'src/app/app.module';
 import { ApiService } from 'src/app/services/api.service';
 import { CartService } from 'src/app/services/cart.service';
 import { Router } from '@angular/router';
+import { ProductService } from 'src/app/services/product.service';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -13,18 +14,18 @@ export class ProductsComponent implements OnInit {
   public productList: any;
   public filterCategory: any
   searchKey: string = "";
-  constructor(private api: ApiService, private cartService: CartService, private router: Router) { }
+  constructor(private api: ApiService, private cartService: CartService, private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
-    this.api.getProduct()
+    this.productService.selectClient()
       .subscribe(res => {
         this.productList = res;
         this.filterCategory = res;
         this.productList.forEach((a: any) => {
-          if (a.category === "women's clothing" || a.category === "men's clothing") {//revisar
-            a.category = "fashion"
-          }
-          Object.assign(a, { quantity: 1, total: a.price });
+          //if (a.category === "women's clothing" || a.category === "men's clothing") {//revisar
+          //  a.category = "fashion"
+          //}
+          Object.assign(a, { quantitycart: 1, total: a.price });
         });
         console.log(this.productList)
       });

@@ -126,7 +126,7 @@ div.panel.show {
     margin-bottom: 30px;
 }
 #btn-addClient{
-    color: aqua;
+    color: rgb(255, 255, 255);
     background-color: rgb(23,138,191);
     border-radius: 5px;
     border: none;
@@ -135,7 +135,15 @@ div.panel.show {
     font-size: 20px;
     
 }
-#btn-addClient:hover,#btn-sale:hover,#button-option-list-sale-delete:hover, #button-option-list-sale-update:hover{
+#btnFindClient{
+    color: rgb(255, 255, 255);
+    background-color: rgb(23,138,191);
+    border-radius: 5px;
+    border: none;
+    font-size: 13px;
+    
+}
+#btn-addClient:hover,#btn-sale:hover,#button-option-list-sale-delete:hover, #button-option-list-sale-update:hover, #btnFindClient:hover{
     background-color: rgb(42, 167, 225);
 }
 #button-option-list-sale:hover{
@@ -160,6 +168,34 @@ div.panel.show {
 
 
 
+
+.formulario__mensaje-exito {
+	font-size: 14px;
+	color: #119200;
+	display: none;
+}
+
+.formulario__mensaje-exito-activo {
+	display: block;
+}
+
+.formulario__grupo-correcto .formulario__validacion-estado {
+	color: #1ed12d;
+	opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__label {
+	color: #bb2929;
+}
+
+.formulario__grupo-incorrecto .formulario__validacion-estado {
+	color: #bb2929;
+	opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__input {
+	border: 3px solid #bb2929;
+}
 .dropdown.dropdown-lg .dropdown-menu {
     margin-top: -1px;
     padding: 6px 20px;

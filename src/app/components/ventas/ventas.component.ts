@@ -9,10 +9,13 @@ import {Router} from '@angular/router';
 import { DetalleVenta } from 'src/app/models/detalle-venta';
 import { ClienteService } from 'src/app/services/cliente.service'
 
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { ItemsList } from '@ng-select/ng-select/lib/items-list';
+import { ProductService } from 'src/app/services/product.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 declare var js;
 @Component({
   selector: 'app-ventas',
@@ -22,199 +25,132 @@ declare var js;
 
 export class VentasComponent implements OnInit {
   public titulo: string = 'Listado de ventas';
-  cliente : Cliente = new Cliente();
-
-
-  ventas: Venta[];
-  constructor(private serviceVenta: VentaService, private serviceCliente: ClienteService, private _LoadScripts:LoadScriptsService , private router:Router) { 
-    _LoadScripts.Load(["accordion"]);
-  }
   
-  
-  
+  angForm: FormGroup;
+  venta : Venta = new Venta();
+  products: Producto[] = [];
 
 
+  constructor(private _snackBar: MatSnackBar, private serviceVenta: VentaService, private serviceProduct: ProductService, private serviceCliente: ClienteService, private _LoadScripts:LoadScriptsService , private router:Router, private fb: FormBuilder) { 
  
-  
-  producto1 : Producto = {
-    idProducto: 1,
-    producto: 'Portatil',
-    descripcion: 'i5 75000QH 1TB SSD CRUSSIAL',
-    cantidad: 2,
-    precio: 1230,
-    subtotal: 2
-  }
-  producto2 : Producto = {
-    idProducto: 2,
-    producto: 'Licuadora PHILIPS',
-    descripcion: 'Modelo K3829 + Trituradora + Envase',
-    cantidad: 2,
-    precio: 240,
-    subtotal: 1
-  }
-  producto3 : Producto = {
-    idProducto: 3,
-    producto: 'Parlante SONY-X2H3',
-    descripcion: 'Sonido envolvente, 5 bocinas',
-    cantidad: 2,
-    precio: 150,
-    subtotal: 1
+    _LoadScripts.Load(["accordion"]);
+    this.createForm();
+    this.selectProduct();
   }
 
 
-  //Items para buscador de Objetos
-  producto4 : Producto = {
-    idProducto: 4,
-    producto: 'Celular Iphone X',
-    descripcion: 'Buena camara, Camara HD',
-    cantidad: 4,
-    precio: 2000,
-    subtotal: 1
-  }
-  producto5 : Producto = {
-    idProducto: 5,
-    producto: 'Botellon de Agua Totto',
-    descripcion: '1 Litro, Color Azul',
-    cantidad: 2,
-    precio: 70,
-    subtotal: 1
-  }
-  producto6 : Producto = {
-    idProducto: 6,
-    producto: 'Gafas de Sol',
-    descripcion: 'Color Negro',
-    cantidad: 3,
-    precio: 200,
-    subtotal: 1
-  }
-  producto7 : Producto = {
-    idProducto: 7,
-    producto: 'Vaso de Vidrio',
-    descripcion: 'Transparente',
-    cantidad: 2,
-    precio: 20,
-    subtotal: 1
-  }
+  myControl = new FormControl<string | Cliente>('');
+  filteredOptions: Observable<Cliente[]>;
+ 
+  ngOnInit() {
 
-  producto8 : Producto = {
-    idProducto: 8,
-    producto: 'Vaso de Vidrio',
-    descripcion: 'Transparente',
-    cantidad: 2,
-    precio: 20,
-    subtotal: 1
-  }
-//Buscador de Objetos
-  listaProductosPorBuscador =[
-    
-  ]
-  listaProductosBuscador = [
-    new DetalleVenta(this.producto4),
-    new DetalleVenta(this.producto5),
-    new DetalleVenta(this.producto6),
-    new DetalleVenta(this.producto7),
-  ]
-
-
-  listaProductos = [
-    new DetalleVenta(this.producto1),
-    new DetalleVenta(this.producto2),
-    new DetalleVenta(this.producto3),
-  ]  
-
-  public selectOneProductList(detalleventa : DetalleVenta){
-    this.listaProductosBuscador = this.listaProductosBuscador.filter((item) => item !== detalleventa)
-    this.listaProductos.push(detalleventa)
-    this.totalVenta = this.getProducts();
-
-    
-
-  }
-
-  public addCountProduct(id:number)
-  {
-    let product = this.listaProductos.find((item) => item.producto.idProducto == id);
-    product.addCantidad();
-  }
-  public removeCountProduct(id:number)
-  {
-    let product = this.listaProductos.find((item) => item.producto.idProducto == id);
-    product.removeCantidad();
-    
-  }
-
-  public salesProducts() {
-    //El id de la seccion de usuario
-    let idUsuario = 1;
-    let venta = new Venta();
-    let detalleVentas = [];
-    //detalleVentas.push(new DetalleVenta())
-    
-  
-     //this.service.createVenta()
-  }
-  
-
-  public getProducts(){
-    var total = 0;
-    this.listaProductos.forEach(element => {
+    this.myControl.valueChanges.subscribe(item =>{
+      if(!(item=='') && typeof item === 'string')
+      this.filteredOptions = this._filter(item as string);
+      if((item != '') && typeof item === 'object')
+      {
+        this.selectClientVenta(item);
+      }
       
-      total = total + (element.cantidad * element.producto.precio)
-    }); 
-    return total;
+      
+    });
+    
   }
-  totalVenta = this.getProducts();
+
+displayFn(user: Cliente): string {
+  return user && user.nombre ? user.nombre : '';
+}
+
+private _filter(name: string): Observable<Cliente[]> {
+  return this.serviceCliente.searchProductCriteria(name);
+}
   
-  public deleteOneProductList (id: number) {
-    this.listaProductos = this.listaProductos.filter((item) => item.idProducto !== id)
-    this.totalVenta = this.getProducts();
+  
+  createForm() {
+    this.angForm = this.fb.group({
+      nombre: ["", [Validators.required, ]],
+      apellido: ["", [Validators.required, ]],
+      nit: ["", [Validators.required, ]],
+      correo: ["", [Validators.required, Validators.email]],
+      nombreEscogido :[""]
+    });
   }
 
 
+  selectProduct()
+  {
+    this.serviceProduct.selectClient().subscribe(producto =>{
+      this.products = producto;
+    });
+  }
+
+  addProductVenta(product : Producto)
+  {
+    let ok = this.venta.detallesVentas.find((item) => item.producto.productID == product.productID);
+    if(!ok)
+    this.venta.addDetallesVentas(new DetalleVenta(product));
+  }
+
+  removeProductVenta(detalleVenta: DetalleVenta)
+  {
+    this.venta.removeDetalleVenta(detalleVenta);
+  }
+
+  public addCountProductVenta(id:number)
+  {
+    this.venta.addQuantityDetalleVenta(id);
+  }
+
+  public removeCountProductVenta(id:number)
+  {
+    this.venta.removeQauntityDetalleVenta(id);
+  }
+
+  public selectClientVenta(cliente : Cliente)
+  {
+    this.venta.Cliente = cliente;
+  }
   
   public RegisterClient(): void{
-    const nombre = (document.getElementById('nombre') as HTMLInputElement).value;
-    const apellido = (document.getElementById('apellidos') as HTMLInputElement).value;
-    const nit = (document.getElementById('nitCi') as HTMLInputElement).value;
-    const correo = (document.getElementById('correo') as HTMLInputElement).value;
-    let cliente2 = new Cliente();
-    
-    cliente2.nombre = nombre;
-    cliente2.apellidos = apellido;
-    cliente2.nitCi = nit;
-    cliente2.correo = correo;
-    console.log(cliente2.nombre)
-    this.serviceCliente.createCliente(cliente2).subscribe(res => {
-      console.log(res)
-    })
+    if(this.angForm.valid)
+    {
+      let nombre = this.angForm.controls['nombre'].value;
+      let apellido = this.angForm.controls['apellido'].value;
+      let nit = this.angForm.controls['nit'].value;
+      let correo = this.angForm.controls['correo'].value;
+      let cliente  = new Cliente();
+      cliente.nitCi = nit;
+      cliente.apellidos = apellido;
+      cliente.nombre = nombre;
+      cliente.correo = correo;
+      this.serviceCliente.createCliente(cliente).subscribe(res => {
+        this.openSnackBar();
+        this.createForm();
+      })
+    }
+    else
+    {
+      console.log("no esta validado");
+    }   
   };
-  
 
-    myControl = new FormControl<string | User>('');
-    options: User[] = [{name: 'Mary'}, {name: 'Shelley'}, {name: 'Igor'}];
-    filteredOptions: Observable<User[]>;
-  
-    ngOnInit() {
-      this.filteredOptions = this.myControl.valueChanges.pipe(
-        startWith(''),
-        map(value => {
-          const name = typeof value === 'string' ? value : value?.name;
-          return name ? this._filter(name as string) : this.options.slice();
-        }),
-      );
-    }
-  
-    displayFn(user: User): string {
-      return user && user.name ? user.name : '';
-    }
-  
-    private _filter(name: string): User[] {
-      const filterValue = name.toLowerCase();
-      //this.serviceCliente.
-      return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
-    }
+  openSnackBar() {
+    this._snackBar.open("Registro Exitoso");
+    this._snackBar.dismiss()
+  }
 
-}
-export interface User {
-  name: string;
+
+  sales()
+  {
+    if(this.venta.isOk())
+    {
+      this.serviceVenta.createVenta(this.venta).subscribe(res => {
+        console.log("venta correcta")
+        this.router.navigate(['ventas'])
+      });
+    }
+  }
+
+   
+
 }

@@ -12,13 +12,13 @@ export class DetalleVenta {
 	private _descuento: number;
 	private _idProducto: number;
 	private _status: number;
-	private _producto : Producto;
+	public producto : Producto;
 
 	constructor(producto:Producto)
 	{
-		this._producto = producto;
-		this._idProducto = producto.idProducto;
-		this._precioVenta = producto.precio;
+		this.producto = producto;
+		this._idProducto = producto.productID;
+		this._precioVenta = producto.price;
 		this._status = 1;
 		this._descuento = 0.0;
 		this._cantidad = 1;
@@ -27,27 +27,27 @@ export class DetalleVenta {
 
 	public addCantidad()
 	{
-		this.cantidad++;
-		this.subTotal = this.cantidad * this.precioVenta;
+		this._cantidad++;
+		this._subTotal = this._cantidad * this._precioVenta;
 	}
 
 	public removeCantidad()
 	{
 		if(this.cantidad > 1)
 		{
-			this.cantidad--;
-			this.subTotal = this.cantidad * this.precioVenta;
+			this._cantidad--;
+			this._subTotal = this._cantidad * this._precioVenta;
 		}
 	}
 
-	public get producto()
+	public get Producto()
 	{
-		return this._producto;
+		return this.producto;
 	}
 
-	public set producto(producto:Producto)
+	public set Producto(producto:Producto)
 	{
-		this._producto = producto;
+		this.producto = producto;
 	}
 
 	public get precioVenta()
