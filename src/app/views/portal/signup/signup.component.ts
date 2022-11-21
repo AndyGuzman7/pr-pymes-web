@@ -24,7 +24,13 @@ export class SignupComponent implements OnInit {
   }
 
   signUp(){
-    this.http.post<any>("http://localhost:3500/crear-usuario", this.signupForm.value)
+    let band = true;
+      if(this.signupForm.controls['first_name'].value==''||this.signupForm.controls['last_name'].value==''||this.signupForm.controls['email'].value==''||this.signupForm.controls['password'].value==''||this.signupForm.controls['passwordConfirm'].value==''){
+        alert("Ingrese datos");
+        band=false;
+      }
+      if(band){
+        this.http.post<any>("http://localhost:3500/crear-usuario", this.signupForm.value)
     .subscribe(res=>{
       if(this.signupForm.controls['password'].value==this.signupForm.controls['passwordConfirm'].value){
         if(res.isOk==true){
@@ -42,6 +48,8 @@ export class SignupComponent implements OnInit {
     },err=>{
       alert("Something went wrong")
     })
-  }
+      }
+    
+  } 
 
 }
