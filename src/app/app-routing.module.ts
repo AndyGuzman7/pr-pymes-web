@@ -8,6 +8,7 @@ import { SelectRegisterComponent } from './views/users/select-register/select-re
 import { NewAccountJournalComponent } from './views/journal/new-account-journal/new-account-journal.component';
 import { ReportsJournalComponent } from './views/journal/reports-journal/reports-journal.component';
 import { JournalPrincipalComponent } from './views/journal/journal-principal/journal-principal.component';
+import { SeeSalesJournalComponent } from './views/journal/see-sales-journal/see-sales-journal.component';
 
 const routes: Routes = [
   {path: 'ventas', component: ModuloVentasComponent},
@@ -15,9 +16,10 @@ const routes: Routes = [
   {path: 'register_business', component: RegisterBusinessComponent},
   {path: 'register_user', component: RegisterComponent},
   {path: 'select_register', component: SelectRegisterComponent},
-  {path: 'CrearCuenta', component: NewAccountJournalComponent},
-  {path: 'ReporteLibroDiario', component: ReportsJournalComponent},
-  {path: 'librodiario', component: JournalPrincipalComponent}
+  {path: 'gestion_cuenta', component: NewAccountJournalComponent},
+  {path: 'reporte_libroDiario', component: ReportsJournalComponent},
+  {path: 'libro_diario', component: JournalPrincipalComponent},
+  {path: 'reporte_transacciones/:id', component: SeeSalesJournalComponent}
 ];
 
 @NgModule({

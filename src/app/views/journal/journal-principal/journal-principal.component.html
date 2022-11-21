@@ -31,10 +31,10 @@
                 </mat-form-field> 
             </mat-grid-tile>         
             <mat-grid-tile [colspan]="3" [rowspan]="1"></mat-grid-tile>
-            <!--mat-grid-tile class="mar-grid-v" [colspan]="2" [rowspan]="1" >
-                <button class="btn-c-c" mat-raised-button>Compras </button>  
-                <button class="btn-c-v" mat-raised-button>Ventas </button>  
-            </mat-grid-tile-->
+            <mat-grid-tile class="mar-grid-v" [colspan]="2" [rowspan]="1" >
+                <button class="btn-c-c" (click)="Redireccionar(1)" mat-raised-button>Compras </button>  
+                <button class="btn-c-v" (click)="Redireccionar(2)" mat-raised-button>Ventas </button>  
+            </mat-grid-tile>
        </mat-grid-list>
     </form>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z4">

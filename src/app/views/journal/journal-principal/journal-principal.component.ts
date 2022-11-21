@@ -7,7 +7,7 @@ import { LibroDiario } from 'src/app/models/libro-diario';
 import { MatTableDataSource } from '@angular/material/table';
 import { Detalle } from 'src/app/models/detalle';
 import { Cuenta } from 'src/app/models/cuenta';
-import { concat } from 'rxjs';
+import {Router} from '@angular/router';
 
 
 
@@ -27,7 +27,7 @@ export class JournalPrincipalComponent implements OnInit {
   fecha:Date;
   detalles:Detalle[] = [] 
  
-  constructor(private _LoadScripts:LoadScriptsService, private serviceDetalle: DetalleService, private service: LibroDiarioService,  private serviceCuenta: CuentaService) {
+  constructor(private _LoadScripts:LoadScriptsService, private serviceDetalle: DetalleService, private service: LibroDiarioService,  private serviceCuenta: CuentaService, private router:Router ) {
     _LoadScripts.Load(["journal_type"])
   }
 
@@ -94,4 +94,7 @@ export class JournalPrincipalComponent implements OnInit {
     })    
   }
 
+  Redireccionar(a: number) :void {
+    this.router.navigate(['reporte_transacciones/' + a]);
+  }
 }
