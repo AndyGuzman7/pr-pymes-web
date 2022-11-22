@@ -33,6 +33,7 @@ header {
 .nav__list{
     display: flex !important;
     margin-top: 12px;
+    align-items: center;
   }
 
 .nav__item {
