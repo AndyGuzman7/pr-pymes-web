@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import {Router} from '@angular/router';
+import { RecuperarContraseniaService } from 'src/app/services/recuperar-contrasenia.service';
+import { EmailValuesDTO } from 'src/app/models/email-values-dto';
+import { Usuario } from 'src/app/models/usuario';
 export class Email {
+  
   public email!: string;
 }
 
@@ -12,12 +16,16 @@ export class Email {
 })
 export class PasswordRecoveryComponent implements OnInit {
   model = new Email();
-
+  mailTo: string;
+  dto: EmailValuesDTO;
   displayStyle = "none";
-  
-  constructor() { }
+  user: Usuario;
+  constructor(private router:Router, private recuperarContrasenia: RecuperarContraseniaService) { }
   onSubmit(form: any) {
-    console.log(form.value);
+    this.dto = new EmailValuesDTO(this.model.email);
+    this.recuperarContrasenia.sendEmail(this.dto).subscribe(data =>this.model.email = data
+    );
+    this.router.navigate(['update_password/'+ this.model.email]);
   }
 
   ngOnInit(): void {

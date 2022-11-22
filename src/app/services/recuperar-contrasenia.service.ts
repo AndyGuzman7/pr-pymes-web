@@ -11,17 +11,17 @@ import { Usuario } from '../models/usuario';
 })
 export class RecuperarContraseniaService {
 
+  user:Usuario;
 
-  private baseEndpoint = '/api/cliente-usuario/email-password';
+  private baseEndpoint = 'api/cliente-usuario';
   private cabecera: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-  //changePasswordURL = environment.changePasswordURL;
   constructor(private http: HttpClient) { }
 
   public sendEmail(dto: EmailValuesDTO): Observable<any> {
-    return this.http.post<any>(this.baseEndpoint + '/send-email', dto);
+    return this.http.post<any>(this.baseEndpoint + '/email-password/send-email', dto);
   }
 
-  public changePassword(dto: ChangePasswordDTO): Observable<any> {
-    return this.http.post<any>(this.baseEndpoint + '/update_password', dto);
+  public changePassword(user: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>(this.baseEndpoint + '/recoverPassword/' + user.email, user, { headers: this.cabecera});
   }
 }

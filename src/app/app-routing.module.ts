@@ -6,6 +6,8 @@ import { RegisterBusinessComponent } from './views/users/register-business/regis
 import { RegisterComponent } from './views/users/register/register.component';
 import { SelectRegisterComponent } from './views/users/select-register/select-register.component';
 import { LoginComponent } from './views/users/login/login.component';
+import { PasswordRecoveryComponent } from './views/recovery_password/password-recovery/password-recovery.component';
+import { UpdatePasswordComponent } from './views/recovery_password/update-password/update-password.component';
 
 const routes: Routes = [
   {path: 'ventas', component: ModuloVentasComponent},
@@ -13,7 +15,9 @@ const routes: Routes = [
   {path: 'register_business', component: RegisterBusinessComponent},
   {path: 'register_user', component: RegisterComponent},
   {path: 'select_register', component: SelectRegisterComponent},
-  {path: 'user_login', component: LoginComponent}
+  {path: 'user_login', component: LoginComponent},
+  {path: 'password_recovery', component: PasswordRecoveryComponent},
+  {path: 'update_password/:email', component: UpdatePasswordComponent}
 ];
 
 @NgModule({

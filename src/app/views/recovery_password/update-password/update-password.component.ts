@@ -1,5 +1,10 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ChangePasswordDTO } from 'src/app/models/change-password-dto';
+import { Usuario } from 'src/app/models/usuario';
+import { RecuperarContraseniaService } from 'src/app/services/recuperar-contrasenia.service';
 
 export class Email {
   public email!: string;
@@ -47,10 +52,17 @@ export class UpdatePasswordComponent implements OnInit {
     ],
   }
   
-  
-  constructor(
+  user: Usuario = new Usuario();
+  password: string;
+  confirmPassword: string;
+
+  dto: ChangePasswordDTO;
+  constructor( private recuperarContraseniaService: RecuperarContraseniaService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
     public formBuilder: FormBuilder
   ) {
+    console.log(this.activatedRoute.snapshot.paramMap.get('email'))
     this.updatePassForm = this.formBuilder.group({
       password: new FormControl('', Validators.compose([
         Validators.required,
@@ -70,14 +82,25 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   onSubmit(form: any) {
-    console.log(form.value);
+    this.activatedRoute.params.subscribe(params => {
+      
+      const pass = (document.getElementById('password') as HTMLInputElement).value;
+      this.user.email = params['email'] as string;
+      this.user.password = pass;
+      //console.log(params['email'] as string);
+      //console.log(this.user);
+      this.recuperarContraseniaService.changePassword(this.user).subscribe();
+      this.router.navigate(['user_login']);
+    })
+    
   }
 
   ngOnInit(): void {
+
   }
 
   
-  password(formGroup: FormGroup) {
+  Password(formGroup: FormGroup) {
     const { value: password } = formGroup.get('password');
     const { value: confirmPassword } = formGroup.get('confirmpassword');
     return password === confirmPassword ? null : { passwordNotMatch: true };
