@@ -59,6 +59,7 @@ import { BudgetSheetComponent } from './views/shopping/budget-sheet/budget-sheet
 import { SideMenuShoppingComponent } from './components/side-menu-shopping/side-menu-shopping.component';
 import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/new-supplier-order.component';
 import { TopNavBarBusinessComponent } from './components/top-nav-bar-business/top-nav-bar-business.component';
+import { RegisterEmployeeComponent } from './views/users/register-employee/register-employee.component';
 
 
 @NgModule({
@@ -98,7 +99,8 @@ import { TopNavBarBusinessComponent } from './components/top-nav-bar-business/to
     NewSupplierOrderComponent,
     BudgetSheetComponent,
     SideMenuShoppingComponent,
-    TopNavBarBusinessComponent
+    TopNavBarBusinessComponent,
+    RegisterEmployeeComponent
   
   ],
   imports: [
