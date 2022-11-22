@@ -38,6 +38,12 @@ import { SelectRegisterComponent } from './views/users/select-register/select-re
 
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ListProductsComponent } from './views/warehouses/list-products/list-products.component';
+import { VentasComponent } from './components/ventas/ventas.component';
+import { ModuloVentasComponent } from './components/modulo-ventas/modulo-ventas.component';
+import { JQueryStyleEventEmitter } from 'rxjs/internal/observable/fromEvent';
+import {HttpClientModule} from '@angular/common/http';
+import {MatAutocompleteModule} from '@angular/material/autocomplete'
+//import {jquery} from './jquery';
 
 import { RegisterProductComponent } from './views/warehouses/register-product/register-product.component';
 import { HomeComponent } from './views/portal/home/home.component';
@@ -58,6 +64,8 @@ import { TopNavBarBusinessComponent } from './components/top-nav-bar-business/to
 @NgModule({
   declarations: [
     AppComponent,
+    VentasComponent,
+    ModuloVentasComponent,
     TopNavBarComponent,
     LoginComponent,
     SupplierComponent,
@@ -73,6 +81,9 @@ import { TopNavBarBusinessComponent } from './components/top-nav-bar-business/to
     RegisterBusinessComponent,
     SelectRegisterComponent,
     ListProductsComponent,
+
+    VentasComponent,
+
     RegisterProductComponent,
     HomeComponent,
     JournalPrincipalComponent,
@@ -83,12 +94,12 @@ import { TopNavBarBusinessComponent } from './components/top-nav-bar-business/to
     ProductionInformationDetailComponent,
     SupplierManagementComponent,
     OrderToSupplierComponent,
+    BudgetSheetComponent,
     NewSupplierOrderComponent,
     BudgetSheetComponent,
     SideMenuShoppingComponent,
     TopNavBarBusinessComponent
   
-
   ],
   imports: [
     BrowserModule,
@@ -105,6 +116,11 @@ import { TopNavBarBusinessComponent } from './components/top-nav-bar-business/to
     MatButtonModule,
     MatTableModule,
     MatIconModule,
+
+    NgSelectModule,
+    HttpClientModule,
+    MatAutocompleteModule,
+
     MatTooltipModule,
     MatGridListModule,
     MatSelectModule,
