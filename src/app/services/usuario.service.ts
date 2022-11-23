@@ -23,7 +23,7 @@ export class UsuarioService {
   }
   //crear un usuario
   public createUser(user: Usuario): Observable<Usuario>{
-    return this.http.post<Usuario>(this.baseEndpoint, user, { headers: this.cabecera});
+    return this.http.post<Usuario>(this.baseEndpoint + "/person", user, { headers: this.cabecera});
   }
   //editar un usuario
   /*public editUser(user: Usuario): Observable<Usuario>{
