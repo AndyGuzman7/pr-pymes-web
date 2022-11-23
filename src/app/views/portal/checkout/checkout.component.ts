@@ -16,7 +16,7 @@ export class CheckoutComponent implements OnInit {
   public product : Producto;
   public venta : Venta;
   public detalle_venta : DetalleVenta;
-  public detalle_ventalist : any = [];
+  public detalle_ventalist : DetalleVenta[] = [];
   public grandTotal !: number;
   public quantityTotal !: number;
   public first_name : any = sessionStorage.getItem('name');
@@ -46,8 +46,11 @@ export class CheckoutComponent implements OnInit {
     });
     this.venta = new Venta();
     this.venta.idUsuario = this.id_user;
+    this.venta.Cliente.idCliente = this.id_user;
     this.venta.detallesVentas = this.detalle_ventalist;
     this.ventaService.createVenta(this.venta);
+
+    console.log(this.venta.isOk());
 
     alert("Tu pedido se realizó con éxito");
     this.cartService.removeAllCart();
