@@ -7,15 +7,17 @@ export class Cliente {
     public fechaCreacion?: string;
     public status?: number;
     public fechaActualizacion?: string;
-    public correo?: string; 
+    public correo: string; 
+
+    
+    constructor()
+	{
+		
+	}
     
     public get IdCliente()
     {
         return this.idCliente;
-    }
-    constructor()
-    {
-        this.status = 1;
     }
 
     public set IdCliente(idCliente:number)

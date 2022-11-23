@@ -82,9 +82,7 @@ import { RegisterEmployeeComponent } from './views/users/register-employee/regis
     RegisterBusinessComponent,
     SelectRegisterComponent,
     ListProductsComponent,
-
     VentasComponent,
-
     RegisterProductComponent,
     HomeComponent,
     JournalPrincipalComponent,
