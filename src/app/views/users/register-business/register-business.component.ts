@@ -78,6 +78,7 @@ export class RegisterBusinessComponent implements OnInit {
       { type: 'required', message: 'El tipo de empresa es necesario.'}      
     ],
     'categories': [       
+      { type: 'required', message: 'Seleccione al menos una categoria.'}      
     ]
   } 
 
@@ -129,7 +130,9 @@ export class RegisterBusinessComponent implements OnInit {
       type: new FormControl('', Validators.compose([
         Validators.required        
       ])),
-      categories: new FormControl('', Validators.compose([]))
+      categories: new FormControl('', Validators.compose([
+        Validators.required
+      ]))
     }, 
     {
       validators:this.PasswordMatch('password','confirmPassword')   
