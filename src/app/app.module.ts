@@ -93,6 +93,13 @@ import { RegisterEmployeeComponent } from './views/users/register-employee/regis
     ProductionInformationDetailComponent,
     SupplierManagementComponent,
     OrderToSupplierComponent,
+    NewSupplierOrderComponent,
+    BudgetSheetComponent,
+    SideMenuShoppingComponent,
+  
+    BudgetSheetComponent,
+
+
     BudgetSheetComponent,
     NewSupplierOrderComponent,
     BudgetSheetComponent,
