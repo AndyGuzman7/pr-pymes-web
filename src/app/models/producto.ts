@@ -1,11 +1,18 @@
 import { VariableBinding } from "@angular/compiler";
 
 export class Producto {
-    idProducto: number;
-    producto:string;
-    descripcion:string;
-    cantidad:number;
-    precio:number;
-    subtotal: number;
-    total?:number;
+    productID: number;
+    name:string;
+    quantity:number;
+    description:string;
+    entryDate:Date;
+    expireDate:Date;
+    brand:string;
+    price:number;
+    barcode:string;
+    discount:number;
+    supplier:string;
+    iva:number;
+    category:string;
+    batch:number;
 }

@@ -19,7 +19,7 @@ export class ModuloVentasComponent implements OnInit {
   ventas: Venta[];
   datas = [];
   constructor(private service: VentaService, private _LoadScripts:LoadScriptsService, private router:Router ) { 
-    _LoadScripts.Load(["accordion"]);
+  
   }
 
    ngOnInit(): void {
