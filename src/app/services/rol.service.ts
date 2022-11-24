@@ -13,6 +13,11 @@ export class RolService {
   constructor(private http: HttpClient) { }
 
   //obtener un rol
+  public saveRol(rol: Rol): Observable<Rol>{
+    return this.http.post<Rol>(`${this.baseEndpoint}/rol`, rol, { headers: this.cabecera });
+  }
+
+  //obtener un rol
   public selectRol(idRol: number): Observable<Rol>{
     return this.http.get<Rol>(`${this.baseEndpoint}/rol/${idRol}`);
   }

@@ -11,6 +11,8 @@ import { EmpresaService } from 'src/app/services/empresa.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import {Router} from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder }from '@angular/forms';
+import { Rol } from 'src/app/models/rol';
+import { RolService } from 'src/app/services/rol.service';
 
 @Component({
   selector: 'app-register-business',
@@ -30,6 +32,7 @@ export class RegisterBusinessComponent implements OnInit {
   
   usuario: Usuario = new Usuario;
   empresa: Empresa = new Empresa;
+  rol: Rol = new Rol;
 
   registerForm: FormGroup;  
 
@@ -82,7 +85,7 @@ export class RegisterBusinessComponent implements OnInit {
     ]
   } 
 
-  constructor(public formBuilder: FormBuilder, private _LoadScripts:LoadScriptsService, private router: Router, private categoriesService: CategoriaService, private categoryBusinessService: CategoriaEmpresaService, private businessService: EmpresaService, private usuarioService: UsuarioService) {     
+  constructor(public formBuilder: FormBuilder, private _LoadScripts:LoadScriptsService, private router: Router, private categoriesService: CategoriaService, private categoryBusinessService: CategoriaEmpresaService, private businessService: EmpresaService, private usuarioService: UsuarioService, private rolService: RolService) {     
     _LoadScripts.Load(["register_multistep"]);
     this.categoriesService.selectCategory().subscribe(categorias => {this.categoriesList = categorias});        
   
@@ -160,39 +163,51 @@ export class RegisterBusinessComponent implements OnInit {
   enviar(): void {    
     if (!this.registerForm.valid) {
       return;
-    }
+    }    
 
-    this.usuario.rol_id = 2;
-
-    this.usuarioService.createUser(this.usuario).subscribe(usuario => {
-
-    });
+    // Crea la empresa
     this.businessService.createBusiness(this.empresa).subscribe(empresa => {
+      console.log(empresa);
 
-    });
+      // Crea el rol
+      var rolToSave: Rol = new Rol();
+      rolToSave.business_id = empresa.id;
+      rolToSave.rol_name = "Administrador";
+      
+      this.rolService.saveRol(rolToSave).subscribe(rol => {
+        console.log(rol);
 
-    var nextBusinessId: number;
-    this.businessService.getNextId().subscribe(nextId => {
-      nextBusinessId = nextId
-    }); 
-    
-    if (this.selectedCategories.length > 0) {            
-      for (let index = 0; index < this.selectedCategories.length; index++) {      
-        var ce: CategoriaEmpresa = {
-          business_id: nextBusinessId,
-          category_id: this.selectedCategories[index].id          
-        };      
-        this.categoryBusiness.push(ce);
-      }
-    }    
+        // Crea el usuario
+        this.usuario.rol_id = rol.id;
+        
+        this.usuarioService.createUser(this.usuario).subscribe(usuario => {
+          console.log(usuario);
+          
+          // Inserta las categorias de la empresa
+          var business_id: number = empresa.id;
 
-    if (this.categoryBusiness.length > 0) {
-      this.categoryBusinessService.createCategoryBusiness(this.categoryBusiness).subscribe(categoryBusiness => {
-        console.log(categoryBusiness);
-      })
-    }    
+          if (this.selectedCategories.length > 0) {            
+            for (let index = 0; index < this.selectedCategories.length; index++) {      
+              var ce: CategoriaEmpresa = {
+                business_id: business_id,
+                category_id: this.selectedCategories[index].id          
+              };      
+              this.categoryBusiness.push(ce);
+            }
+          }    
 
-    this.router.navigate(['user_login']);
+          if (this.categoryBusiness.length > 0) {
+            this.categoryBusinessService.createCategoryBusiness(this.categoryBusiness).subscribe(categoryBusiness => {
+              console.log(categoryBusiness);
+            })
+          }    
+      
+          this.router.navigate(['user_login']);
+
+        });  
+      });
+    });  
+
   }
 
   ngOnInit() {
