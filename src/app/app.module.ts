@@ -62,7 +62,10 @@ import { LibrodiarioComponent } from './components/libro-diario/libro-diario.com
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { TopNavBarBusinessComponent } from './components/top-nav-bar-business/top-nav-bar-business.component';
 import { RegisterEmployeeComponent } from './views/users/register-employee/register-employee.component';
-
+import { DatePipe } from '@angular/common';
+//import { DetalleFacturaComponent } from './DetalleFactura/DetalleFactura.component';
+//import { GetComponent } from './Factura/get/get.component';
+//import { DialogComponent } from './Factura/get/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -141,10 +144,14 @@ import { RegisterEmployeeComponent } from './views/users/register-employee/regis
     NgSelectModule,
     MatDialogModule,
     MatPaginatorModule
+    //GetComponent,
+    //DialogComponent,
+    //DetalleFacturaComponent
   ],
   providers: [
     LoadScriptsService,
-    TopNavBarBusinessComponent
+    TopNavBarBusinessComponent,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

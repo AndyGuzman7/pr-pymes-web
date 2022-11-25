@@ -13,6 +13,8 @@ import { SeeSalesJournalComponent } from './views/journal/see-sales-journal/see-
 import { LoginComponent } from './views/users/login/login.component';
 import { PasswordRecoveryComponent } from './views/recovery_password/password-recovery/password-recovery.component';
 import { UpdatePasswordComponent } from './views/recovery_password/update-password/update-password.component';
+//import { DetalleFacturaComponent } from './DetalleFactura/DetalleFactura.component';
+//import { GetComponent } from './Factura/get/get.component';
 
 const routes: Routes = [
   {path: 'ventas', component: ModuloVentasComponent},
@@ -29,6 +31,8 @@ const routes: Routes = [
   {path: 'user_login', component: LoginComponent},
   {path: 'password_recovery', component: PasswordRecoveryComponent},
   {path: 'update_password/:email', component: UpdatePasswordComponent}
+  //{path: 'get', component:GetComponent},
+  //{path: 'detallefactura', component:DetalleFacturaComponent},
 ];
 
 @NgModule({
