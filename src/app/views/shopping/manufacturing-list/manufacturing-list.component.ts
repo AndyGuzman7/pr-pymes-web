@@ -45,7 +45,7 @@ export class ManufacturingListComponent implements OnInit {
       });
 
       this.service.getProducts().subscribe(product => {
-        let ordenesConProductos = this.produccions.map(orden => {
+        let productionManufacture = this.produccions.map(orden => {
           return{
             productoNombre: product.find(x => x.productID == orden.manufacturas.id_producto).name,
             id:orden.id,
@@ -57,8 +57,6 @@ export class ManufacturingListComponent implements OnInit {
             manufacturas:orden.manufacturas
           }
         })
-
-        console.log(ordenesConProductos);
         
       })
     });
