@@ -1,3 +1,4 @@
+import { Budget } from "./budget";
 import { Generic } from "./generic";
 
 export class Supplier implements Generic {
@@ -9,5 +10,5 @@ export class Supplier implements Generic {
     logotipo:string;
     estado:number;
     update_date:Date;
-    user_update:number;
+    presupuestos: Budget[] = [];
 }

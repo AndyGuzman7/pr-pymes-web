@@ -1,4 +1,5 @@
 import { Generic } from "./generic";
+import { Pedido } from "./pedido";
 import { Supplier } from "./supplier";
 
 export class Budget implements Generic {
@@ -14,5 +15,5 @@ export class Budget implements Generic {
     presupuestoActual:number;
     estado:number;
     updateDate:Date;
-    userUpdate:number;
+    pedidos: Pedido[] = [];
 }

@@ -5,6 +5,8 @@ import { BudgetSheetViewComponent } from './views/shopping/budget-sheet-view/bud
 import { BudgetSheetComponent } from './views/shopping/budget-sheet/budget-sheet.component';
 import { ManufacturingListComponent } from './views/shopping/manufacturing-list/manufacturing-list.component';
 import { ManufacturingProductionRegistrationComponent } from './views/shopping/manufacturing-production-registration/manufacturing-production-registration.component';
+import { OrderToSupplierComponent } from './views/shopping/order-to-supplier/order-to-supplier.component';
+import { OrdersToSupplierComponent } from './views/shopping/orders-to-supplier/orders-to-supplier.component';
 import { ProductionInformationDetailComponent } from './views/shopping/production-information-detail/production-information-detail.component';
 import { SupplierManagementComponent } from './views/shopping/supplier-management/supplier-management.component';
 import { SupplierRegistrationComponent } from './views/shopping/supplier-registration/supplier-registration.component';
@@ -38,7 +40,7 @@ const routes: Routes = [
   {path: 'budget/:idSupplier/:idBudget', component: BudgetSheetComponent},//Editar presupuesto
 
   //Pedido de compra
-  
+  {path: 'pedidos', component: OrdersToSupplierComponent}
 ];
 
 @NgModule({
