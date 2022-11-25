@@ -3,10 +3,11 @@
         <p class="header-1">FICHA DE PRESUPUESTO</p>
     </div>
     <div class="content">
-        <a class="link-list" [routerLink]="['/budgets/']">VOLVER A LISTADO</a>
+        <a class="link-list" href="/budgets">VOLVER A LISTADO</a>
         <div class="text-inline" style="margin-top: 10px">
-            <p style="margin-right: 10px" class="text-c">PROVEEDOR:</p>
-            <p>{{ model.proveedor.nombre }}</p>
+            <p style="margin-right: 10px" >PROVEEDOR:</p>
+            
+            <p class="text-center">{{ model.refProveedor }}</p>
         </div>
         <div class="line"></div>
         <div class="row">
@@ -15,8 +16,7 @@
                     <div class="text-inline">
                         <p style="margin-right: 10px" class="tx" for="refPresupuesto">REF. PRESUPUESTO</p>
                         <div class="input-wrapper">
-                            <input type="text" class="form-control input-register"  id="refPresupuesto" [(ngModel)]="model.refPresupuesto" [ngModelOptions]="{standalone: true}"
-                                placeholder="Ref. Presupuesto" />
+                            <p id="refPresupuesto" class="mt-2">{{model.refPresupuesto}}</p>
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="icon input-icon icon-tabler icon-tabler-discount" width="24" height="24"
                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColork" fill="none"
@@ -32,8 +32,7 @@
                     <div class="text-inline">
                         <p style="margin-right: 10px" class="tx">DESCUENTOS:</p>
                         <div class="input-wrapper">
-                            <input type="number" class="form-control input-register"  id="descuentos" [(ngModel)]="model.descuentos" [ngModelOptions]="{standalone: true}"
-                                placeholder="Descuento" />
+                            <p id="descuentos"  class="mt-2">{{model.descuentos}}</p>
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="icon input-icon icon-tabler icon-tabler-discount" width="24" height="24"
                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -49,7 +48,7 @@
                     <div class="text-inline">
                         <p style="margin-right: 10px" class="tx">FECHA DE INICIO:</p>
                         <div class="input-wrapper">
-                            <input type="date" class="form-control input-register" id="fechaInicio" [(ngModel)]="model.fechaInicio" [ngModelOptions]="{standalone: true}"/>
+                            <p id="fechaInicio"  class="mt-2">{{model.fechaInicio}}</p>
                         </div>
                     </div>
                     
@@ -60,8 +59,7 @@
                     <div class="text-inline">
                         <p style="margin-right: 10px" class="tx">BASE IMPONIBLE:</p>
                         <div class="input-wrapper">
-                            <input type="text" class="form-control input-register" id="baseImpinible"
-                                placeholder="Base imponible" [(ngModel)]="model.baseImponible" [ngModelOptions]="{standalone: true}"/>
+                            <p id="baseImpinible"  class="mt-2">{{model.baseImponible}}</p>
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="icon input-icon icon-tabler icon-tabler-moneybag" width="24" height="24"
                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -77,11 +75,42 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
-            <button class="btn btn-continue"
-                (click)="model.id? editar(): crear()">
-                    {{ model.id? 'Editar': 'Crear' }}</button>
+            <table class="table align-middle mb-0 bg-white table-hover">
+                <thead class="bg-light table-light">
+                    <tr class="text-th">
+                        <th>Descripción</th>
+                        <th class="td-tx">Precio Unitario</th>
+                        <th class="td-tx">Cantidad</th>
+                        <th class="td-tx">Descuento</th>
+                        <th class="td-tx">Base Imponible</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let card of products">
+                    <tr>
+                        <td>
+                            <p class="fw-normal mb-1">{{ card.description }}</p>
+                        </td>
+                        <td class="td-tx">
+                            <p>{{ card.unit_price }}</p>
+                        </td>
+                        <td class="td-tx">
+                            <p>{{ card.unit_price }}</p>
+                        </td>
+                        <td class="td-tx">
+                            <p>{{ card.quantity }}</p>
+                        </td>
+                        <td class="td-tx">
+                            <p>{{ card.taxable_income }}</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="content-btn">
+                <button class="btn">Cerrar</button>
+            </div>
         </div>
     </div>
 </div>

@@ -11,7 +11,7 @@ export class Budget implements Generic {
     baseImponible:number;
     descuentos:number;
     fechaInicio:Date;
-    presupuesto_actual:number;
+    presupuestoActual:number;
     estado:number;
     updateDate:Date;
     userUpdate:number;

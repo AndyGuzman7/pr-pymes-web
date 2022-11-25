@@ -8,12 +8,12 @@ import { CommonFormComponent } from '../../common-form.component';
 import { SupplierService } from 'src/app/services/supplier.service';
 
 @Component({
-  selector: 'app-budget-sheet',
-  templateUrl: './budget-sheet.component.html',
-  styleUrls: ['./budget-sheet.component.css']
+  selector: 'app-budget-sheet-view',
+  templateUrl: './budget-sheet-view.component.html',
+  styleUrls: ['./budget-sheet-view.component.css']
 })
 
-export class BudgetSheetComponent
+export class BudgetSheetViewComponent
 extends CommonFormComponent<Budget, BudgetService>
 implements OnInit {
 
@@ -42,26 +42,17 @@ implements OnInit {
 
   override ngOnInit() {
     this.route.paramMap.subscribe( params => {
-      const idSupplier =+ params.get('idSupplier');
       const idBudget =+ params.get('idBudget');
-
-      if(idBudget){
-        this.service.ver(idBudget).subscribe(m => {
-          this.model = m;
-          this.serviceSupplier.ver(idSupplier).subscribe(x => {
-            this.model.proveedor = x;
-            this.model.idProveedor = x.id;
-            this.titulo = 'Editar ' + this.nombreModel;
+      if (idBudget) {
+        this.service.ver(idBudget).subscribe(x => {
+          this.model = x;
+          this.serviceSupplier.ver(this.model.idProveedor).subscribe(s => {
+            this.model.refProveedor = s.nombre;
           })
-        })
-        
-      } else if (idSupplier) {
-        this.serviceSupplier.ver(idSupplier).subscribe(x => {
-          this.model.proveedor = x;
-          this.model.idProveedor = x.id;
         })
       }
     })
   }
 
 }
+

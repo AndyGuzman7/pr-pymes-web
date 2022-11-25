@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BudgetListComponent } from './views/shopping/budget-list/budget-list.component';
+import { BudgetSheetViewComponent } from './views/shopping/budget-sheet-view/budget-sheet-view.component';
 import { BudgetSheetComponent } from './views/shopping/budget-sheet/budget-sheet.component';
 import { ManufacturingListComponent } from './views/shopping/manufacturing-list/manufacturing-list.component';
 import { ManufacturingProductionRegistrationComponent } from './views/shopping/manufacturing-production-registration/manufacturing-production-registration.component';
@@ -30,17 +31,11 @@ const routes: Routes = [
   {path: 'manufacture/:id', component: ManufacturingProductionRegistrationComponent},
 
   //Presupuestos
-  {path: 'budgets', component: BudgetListComponent},
-  //{path: 'budgets/:id', component: null}, /*View presupuesto */
-  /** 
-   * Vista con proveedor seleccionado (Edit/Create)
-   **/
-  {path: 'budget/:idSupplier', component: BudgetSheetComponent},
-  /**
-   * Vista para selecionar o buscar proveedor (Edit/Create)
-   * Crear un modal o similar.
-   */
-  {path: 'budget', component: BudgetSheetComponent}, 
+  {path: 'budgets', component: BudgetListComponent},//Listado
+  {path: 'budget', component: BudgetSheetComponent},//Crear presupuesto
+  {path: 'budget/:idSupplier', component: BudgetSheetComponent},//Crear presupuesto teniendo proveedor
+  {path: 'budgetView/:idBudget', component: BudgetSheetViewComponent},//Ver presupuesto
+  {path: 'budget/:idSupplier/:idBudget', component: BudgetSheetComponent},//Editar presupuesto
 
   //Pedido de compra
   

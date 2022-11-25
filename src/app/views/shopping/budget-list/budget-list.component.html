@@ -9,15 +9,6 @@
           <span>LISTA DE PRESUPUESTO DE PROVEEDORES</span>
         </mat-toolbar>
         <div class="agregar">
-          <button mat-raised-button class="btn">
-            <svg class="pointer" matTooltip="Nuevo Presupuesto" xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-plus" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="#ffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <line x1="12" y1="5" x2="12" y2="19" />
-              <line x1="5" y1="12" x2="19" y2="12" />
-            </svg>
-          </button>
           <mat-grid-list cols="8">
             <mat-grid-tile [colspan]="7" [rowspan]="1">
               <mat-form-field appearance="standard">
@@ -40,7 +31,7 @@
           </mat-grid-list>
         </div>
         <div class="body">
-          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
             <!-- Referencia Column -->
             <ng-container matColumnDef="refPresupuesto">
               <th mat-header-cell *matHeaderCellDef> Ref. Presupuesto </th>
@@ -75,7 +66,7 @@
             <ng-container matColumnDef="acciones">
               <th mat-header-cell *matHeaderCellDef> </th>
               <td mat-cell *matCellDef="let element; let i = index" style="text-align: right;">
-                <a class="pointer" matTooltip="Editar">
+                <a class="pointer" [routerLink]="['/budget', element[0], element[1]]" routerLinkActive="router-link-active" matTooltip="Editar">
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="32"
                     height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00AEE1" fill="none"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -84,7 +75,7 @@
                     <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
                   </svg>
                 </a>
-                <a class="pointer" (click)="seebudget(i)" matTooltip="Ver Presupuesto">
+                <a class="pointer" [routerLink]="['/budgetView/', element[0]]" matTooltip="Ver Presupuesto">
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="32"
                     height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none"
                     stroke-linecap="round" stroke-linejoin="round">

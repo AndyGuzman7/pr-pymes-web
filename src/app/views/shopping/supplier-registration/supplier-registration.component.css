@@ -11,6 +11,12 @@
     margin-bottom: 30px;
 }
 
+.link-list{
+    letter-spacing: 3px;
+    color: #4c86c1;
+    font-weight: 600;
+}
+
 .text-prov{
     font-weight: bolder;
     letter-spacing: 7px;

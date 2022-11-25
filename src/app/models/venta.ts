@@ -10,7 +10,4 @@ export class Venta {
     idUsuario: number;
     total: number;
     status: number;
-
-
-
 }
