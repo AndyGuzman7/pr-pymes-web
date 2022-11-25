@@ -12,7 +12,7 @@ export class DetalleVenta {
 	 descuento: number;
 	 idProducto: number;
 	 status: number;
-	 idCliente_online :number;
+
 	public producto : Producto;
 
 	constructor(producto:Producto)
@@ -24,7 +24,7 @@ export class DetalleVenta {
 		this.descuento = 0.0;
 		this.cantidad = 1;
 		this.subTotal = this.precioVenta;
-		this.idCliente_online = 0;
+		
 	}
 
 	public addCantidad()
@@ -42,15 +42,7 @@ export class DetalleVenta {
 		}
 	}
 
-	public get IdCliente_online()
-	{
-		return this.idCliente_online;
-	}
 
-	public set IdCliente_online(producto:number)
-	{
-		this.idCliente_online = producto;
-	}
 
 	public get Producto()
 	{
