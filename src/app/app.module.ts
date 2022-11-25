@@ -7,6 +7,7 @@ import { TopNavBarComponent } from './components/top-nav-bar/top-nav-bar.compone
 import { LoadScriptsService } from './load-scripts.service';
 import { LoginComponent } from './views/users/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgxWebstorageModule} from 'ngx-webstorage';
 //Angular Material
 import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -111,6 +112,7 @@ import { RegisterEmployeeComponent } from './views/users/register-employee/regis
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgxWebstorageModule.forRoot(),
     BrowserAnimationsModule,
     MatSliderModule,
     MatFormFieldModule,
