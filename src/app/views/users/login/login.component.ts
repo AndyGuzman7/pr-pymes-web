@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import {LoadScriptsService} from 'src/app/load-scripts.service'
-import {Router, TitleStrategy} from '@angular/router';
+import {Router} from '@angular/router';
 import {Usuario} from 'src/app/models/usuario'
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { EmpresaService } from 'src/app/services/empresa.service';
 import { RolService } from 'src/app/services/rol.service';
 import { Rol } from 'src/app/models/rol';
 import { Empresa } from 'src/app/models/empresa';
-import {LocalStorage, SessionStorage, SessionStorageService} from 'ngx-webstorage';
+import {SessionStorageService} from 'ngx-webstorage';
 
 @Component({
   selector: 'app-login',
@@ -70,20 +70,19 @@ export class LoginComponent implements OnInit {
                 this.sessionStorage.store('user', this.user);
                 this.sessionStorage.store('rol', this.rol);
                 this.sessionStorage.store('business', this.business);
-                // console.log(this.sessionStorage.retrieve('user'));
-                // console.log(this.sessionStorage.retrieve('rol'));
-                // console.log(this.sessionStorage.retrieve('business'));
+                this.sessionStorage.store('isLogin', true);
+
               })
             } else {
                 this.sessionStorage.store('user', this.user);
-                this.sessionStorage.store('rol', this.rol);                
-                // console.log(this.sessionStorage.retrieve('user'));
-                // console.log(this.sessionStorage.retrieve('rol'));                
+                this.sessionStorage.store('rol', this.rol);                                          
+                this.sessionStorage.store('isLogin', true);
             }
             
           })        
 
-          this.router.navigate(['/']);
+          this.router.navigate(['/']).then(() => {            
+          });          
 
         } 
 

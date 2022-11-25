@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionStorageService } from 'ngx-webstorage';
 import { LoadScriptsService } from 'src/app/load-scripts.service';
 
 @Component({
@@ -8,8 +9,13 @@ import { LoadScriptsService } from 'src/app/load-scripts.service';
 })
 export class TopNavBarComponent implements OnInit {
 
-  constructor(private _LoadScripts:LoadScriptsService) { 
+  
+
+  constructor(private _LoadScripts:LoadScriptsService, private sessionStorage: SessionStorageService) { 
     _LoadScripts.Load(["nav"]);
+
+
+
   }
   ngOnInit(): void {
   }

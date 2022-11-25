@@ -140,7 +140,8 @@ import { RegisterEmployeeComponent } from './views/users/register-employee/regis
     MatDialogModule
   ],
   providers: [
-    LoadScriptsService
+    LoadScriptsService,
+    TopNavBarBusinessComponent
   ],
   bootstrap: [AppComponent]
 })
