@@ -9,6 +9,14 @@ export class Usuario {
     public email: string; 
     public password: string;
     public rol_id: number;
+    constructor()
+    {
+        this.name = "";
+        this.last_name = "";
+        this.email = "";
+        this.password = "";
+        this.rol_id = -1;
+    }
     
     /*public get IdUsuario()
     {

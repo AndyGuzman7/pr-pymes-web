@@ -149,6 +149,19 @@
 
         <li class="nav__item"><a routerLink="/select_register" class="nav__link">Almacenes</a></li>
         <li class="nav__item"><a href="#" class="nav__link">Configuración</a></li>
+        
+        <div *ngIf="dataService.isAdmin">
+          <li class="nav__item"><a routerLink="/register_employee" class="nav__link register__link">Registrar empleado</a></li>        
+        </div>        
+        <div *ngIf="!dataService.isLogin">
+          <li class="nav__item"><a routerLink="/select_register" class="nav__link register__link">Regístrate</a></li>        
+        </div>        
+        <div *ngIf="!dataService.isLogin">
+          <li class="nav__item"><a href="/user_login" class="nav__link login__link">Iniciar Sesión</a></li>
+        </div>
+        <div *ngIf="dataService.isLogin">
+          <li class="nav__item"><a (click)="cerrarSesion()" href="/" class="nav__link login__link">Cerrar Sesión</a></li>
+        </div>        
       </ul>
     </nav>
 
