@@ -10,9 +10,11 @@ export class TopNavBarBusinessComponent implements OnInit {
 
   constructor(private _LoadScripts:LoadScriptsService) { 
     _LoadScripts.Load(["nav"]);
+    console.log("contrusctor nav")
   }
 
   ngOnInit(): void {
+    console.log("ng")
   }
 
 }
