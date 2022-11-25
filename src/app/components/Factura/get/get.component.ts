@@ -42,7 +42,7 @@ export class GetComponent implements OnInit {
     });
     dialogConfirm.afterClosed().subscribe(status => {
       if(status){
-        this.facturaService.delete(id).subscribe(() => {
+        this.facturaService.deleteVenta(id).subscribe(() => {
           this.getList();
         });
       }
