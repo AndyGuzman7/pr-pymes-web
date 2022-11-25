@@ -14,141 +14,36 @@
         <div class="close__menu" id="close-menu">
           <i class="bx bx-x"></i>
         </div>
-        <li class="nav__item">
-          <a href="#" class="nav__link">Menú</a>
-        </li>
-        <li class="nav__item dropdown nav_list_menu">
-          <a href="#" class="nav__link dropdown__link">Ventas 
-            <i class="bx bxs-chevron-down dropdown__icon"></i>
-          </a>
 
-          <div class="megamenu">
-            <ul class="content">
-              <li class="megamenu__item header__megamenu">Ej</li>
-              <li class="megamenu__item">
-                <div class="menu__icon">
-                  <i class="bx bx-palette"></i>
-                </div>
-                <div class="megamenu__link">
-                  <a href="#">Ej</a>
-                  <p>Learn the basics of users</p>
-                </div>
-              </li>
-              <li class="megamenu__item">
-                <div class="menu__icon">
-                  <i class="bx bx-sidebar"></i>
-                </div>
-                <div class="megamenu__link">
-                  <a href="#">Ej</a>
-                  <p>Create your own user experience</p>
-                </div>
-              </li>
-              <li class="megamenu__item">
-                <div class="menu__icon">
-                  <i class="bx bx-rocket"></i>
-                </div>
-                <div class="megamenu__link">
-                  <a href="#">Ej</a>
-                  <p>Create your own user experience</p>
-                </div>
-              </li>
-              <li class="megamenu__item">
-                <div class="menu__icon">
-                  <i class="bx bx-user-voice"></i>
-                </div>
-                <div class="megamenu__link">
-                  <a href="#">Ej</a>
-                  <p>Get custom training</p>
-                </div>
-              </li>
-            </ul>
-            <ul class="content">
-              <li class="megamenu__item header__megamenu">Ej</li>
-              <li class="megamenu__item">
-                <div class="menu__icon">
-                  <i class="bx bx-palette"></i>
-                </div>
-                <div class="megamenu__link">
-                  <a href="#">Ej</a>
-                  <p>Learn the basics of users</p>
-                </div>
-              </li>
-              <li class="megamenu__item">
-                <div class="menu__icon">
-                  <i class="bx bx-sidebar"></i>
-                </div>
-                <div class="megamenu__link">
-                  <a href="#">Ej</a>
-                  <p>Create your own user experience</p>
-                </div>
-              </li>
-              <li class="megamenu__item">
-                <div class="menu__icon">
-                  <i class="bx bx-rocket"></i>
-                </div>
-                <div class="megamenu__link">
-                  <a href="#">Ej</a>
-                  <p>Create your own user experience</p>
-                </div>
-              </li>
-              <li class="megamenu__item">
-                <div class="menu__icon">
-                  <i class="bx bx-user-voice"></i>
-                </div>
-                <div class="megamenu__link">
-                  <a href="#">Ej</a>
-                  <p>Get custom training</p>
-                </div>
-              </li>
-            </ul>
-            <ul class="content">
-              <li class="megamenu__item header__megamenu">Ej</li>
-              <li class="megamenu__item">
-                <div class="menu__icon">
-                  <i class="bx bx-palette"></i>
-                </div>
-                <div class="megamenu__link">
-                  <a href="#">Ej</a>
-                  <p>Learn the basics of users</p>
-                </div>
-              </li>
-              <li class="megamenu__item">
-                <div class="menu__icon">
-                  <i class="bx bx-sidebar"></i>
-                </div>
-                <div class="megamenu__link">
-                  <a href="#">Ej</a>
-                  <p>Create your own user experience</p>
-                </div>
-              </li>
-              <li class="megamenu__item">
-                <div class="menu__icon">
-                  <i class="bx bx-rocket"></i>
-                </div>
-                <div class="megamenu__link">
-                  <a href="#">Ej</a>
-                  <p>Create your own user experience</p>
-                </div>
-              </li>
-              <li class="megamenu__item">
-                <div class="menu__icon">
-                  <i class="bx bx-user-voice"></i>
-                </div>
-                <div class="megamenu__link">
-                  <a href="#">Ej</a>
-                  <p>Get custom training</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </li>
+        <div *ngIf="dataService.isLogin && dataService.isAdmin" >
+          <li class="nav__item"><a href="#" class="nav__link">Libro Diario</a></li>
+        </div>
 
+        <div *ngIf="dataService.isLogin" >
+          <li class="nav__item"><a href="#" class="nav__link">Compras</a></li>
+        </div>
+
+        <div *ngIf="dataService.isLogin" >
+          <li class="nav__item"><a routerLink="" class="nav__link">Almacenes</a></li>
+        </div>
+
+        <div *ngIf="dataService.isLogin" >
+          <li class="nav__item"><a routerLink="/ventas" class="nav__link">Ventas</a></li>
+        </div>
         
 
-        <li class="nav__item"><a href="#" class="nav__link">Compras</a></li>
-
-        <li class="nav__item"><a routerLink="/select_register" class="nav__link">Almacenes</a></li>
-        <li class="nav__item"><a href="#" class="nav__link">Configuración</a></li>
+        <div *ngIf="dataService.isAdmin">
+          <li class="nav__item"><a routerLink="/register_employee" class="nav__link register__link">Registrar empleado</a></li>        
+        </div>        
+        <div *ngIf="!dataService.isLogin">
+          <li class="nav__item"><a routerLink="/select_register" class="nav__link register__link">Regístrate</a></li>        
+        </div>        
+        <div *ngIf="!dataService.isLogin">
+          <li class="nav__item"><a href="/user_login" class="nav__link login__link">Iniciar Sesión</a></li>
+        </div>
+        <div *ngIf="dataService.isLogin">
+          <li class="nav__item"><a (click)="cerrarSesion()" href="/" class="nav__link login__link">Cerrar Sesión</a></li>
+        </div>        
       </ul>
     </nav>
 

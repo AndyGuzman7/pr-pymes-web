@@ -10,7 +10,7 @@
                         </div>
                     </div>
                     <div class="radio-group row justify-content-between px-3 text-center a">
-                        <div class="col-auto mr-sm-2 mx-1 card-block  py-0 text-center radio selected ">
+                        <div class="col-auto mr-sm-2 mx-1 card-block  py-0 text-center radio selected " id="comprador">
                             <div class="flex-row">
                                 <div class="col">
                                     <div class="pic"> <img class="irc_mut img-fluid" src="..\assets\png\profile.png" width="100" height="100"> </div>
@@ -19,7 +19,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-auto ml-sm-2 mx-1 card-block  py-0 text-center radio  ">
+                        <div class="col-auto ml-sm-2 mx-1 card-block  py-0 text-center radio  " >
                             <div class="flex-row">
                                 <div class="col">
                                     <div class="pic"> <img class="irc_mut img-fluid" src="..\assets\png\sales.png"  width="100" height="100"> </div>
@@ -28,10 +28,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div hidden="true">                        
+                            <input id="registerType" type="text" value="0">
+                        </div>                        
                     </div>
                     
                     <div class="row btn-c">
-                        <button type="button" class="btn btn-continue">Continuar</button>
+                        <button type="button" class="btn btn-continue" (click)="continuar()">Continuar</button>
                     </div>
                 </div>
             </div>

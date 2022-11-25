@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LoadScriptsService } from './load-scripts.service';
 import { LoginComponent } from './views/users/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgxWebstorageModule} from 'ngx-webstorage';
 //Angular Material
 import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -66,6 +67,7 @@ import { RegisterEmployeeComponent } from './views/users/register-employee/regis
     AppComponent,
     VentasComponent,
     ModuloVentasComponent,
+   
     LoginComponent,
     SupplierComponent,
     RegisterComponent,
@@ -91,6 +93,13 @@ import { RegisterEmployeeComponent } from './views/users/register-employee/regis
     ProductionInformationDetailComponent,
     SupplierManagementComponent,
     OrderToSupplierComponent,
+    NewSupplierOrderComponent,
+    BudgetSheetComponent,
+    SideMenuShoppingComponent,
+  
+    BudgetSheetComponent,
+
+
     BudgetSheetComponent,
     NewSupplierOrderComponent,
     BudgetSheetComponent,
@@ -102,6 +111,7 @@ import { RegisterEmployeeComponent } from './views/users/register-employee/regis
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgxWebstorageModule.forRoot(),
     BrowserAnimationsModule,
     MatSliderModule,
     MatFormFieldModule,
@@ -129,7 +139,8 @@ import { RegisterEmployeeComponent } from './views/users/register-employee/regis
     MatDialogModule
   ],
   providers: [
-    LoadScriptsService
+    LoadScriptsService,
+    TopNavBarBusinessComponent
   ],
   bootstrap: [AppComponent]
 })

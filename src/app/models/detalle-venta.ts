@@ -3,41 +3,53 @@ import { Venta } from "./venta";
 import {Producto} from "./producto"
 
 export class DetalleVenta {
-    private _idDetalleVenta: number;
-    private _precioVenta: number;
-    private _fechaCreacion: Date;
-    private _fechaActualizacion: Date;
-	private _cantidad: number;
-	private _subTotal: number;
-	private _descuento: number;
-	private _idProducto: number;
-	private _status: number;
+     idDetalleVenta: number;
+     precioVenta: number;
+     fechaCreacion: Date;
+     fechaActualizacion: Date;
+	 cantidad: number;
+	 subTotal: number;
+	 descuento: number;
+	 idProducto: number;
+	 status: number;
+	 idCliente_online :number;
 	public producto : Producto;
 
 	constructor(producto:Producto)
 	{
 		this.producto = producto;
-		this._idProducto = producto.productID;
-		this._precioVenta = producto.price;
-		this._status = 1;
-		this._descuento = 0.0;
-		this._cantidad = 1;
-		this._subTotal = this._precioVenta;
+		this.idProducto = producto.productID;
+		this.precioVenta = producto.price;
+		this.status = 1;
+		this.descuento = 0.0;
+		this.cantidad = 1;
+		this.subTotal = this.precioVenta;
+		this.idCliente_online = 0;
 	}
 
 	public addCantidad()
 	{
-		this._cantidad++;
-		this._subTotal = this._cantidad * this._precioVenta;
+		this.cantidad++;
+		this.subTotal = this.cantidad * this.precioVenta;
 	}
 
 	public removeCantidad()
 	{
 		if(this.cantidad > 1)
 		{
-			this._cantidad--;
-			this._subTotal = this._cantidad * this._precioVenta;
+			this.cantidad--;
+			this.subTotal = this.cantidad * this.precioVenta;
 		}
+	}
+
+	public get IdCliente_online()
+	{
+		return this.idCliente_online;
+	}
+
+	public set IdCliente_online(producto:number)
+	{
+		this.idCliente_online = producto;
 	}
 
 	public get Producto()
@@ -50,53 +62,53 @@ export class DetalleVenta {
 		this.producto = producto;
 	}
 
-	public get precioVenta()
+	public get PrecioVenta()
 	{
-		return this._precioVenta;
+		return this.precioVenta;
 	}
 
-	public set precioVenta(precioVenta : number)
+	public set PrecioVenta(precioVenta : number)
 	{
-		this._precioVenta = precioVenta;
+		this.precioVenta = precioVenta;
 	}
 
-	public get idDetalleVenta()
+	public get IdDetalleVenta()
 	{
-		return this._idDetalleVenta;
+		return this.idDetalleVenta;
 	}
 
-	public set idDetalleVenta(idDetalleVenta : number)
+	public set IdDetalleVenta(idDetalleVenta : number)
 	{
 		this.idDetalleVenta = idDetalleVenta;
 	}
 
-	public get cantidad()
+	public get Cantidad()
 	{
-		return this._cantidad;
+		return this.cantidad;
 	}
 
-	public set cantidad(cantidad:number)
+	public set Cantidad(cantidad:number)
 	{
-		this._cantidad = cantidad;
+		this.cantidad = cantidad;
 	}
 
-	public get subTotal()
+	public get SubTotal()
 	{
-		return this._subTotal;
+		return this.subTotal;
 	}
 
-	public set subTotal(subTotal:number)
+	public set SubTotal(subTotal:number)
 	{
-		this._subTotal = subTotal;
+		this.subTotal = subTotal;
 	}
 
-	public get idProducto()
+	public get IdProducto()
 	{
-		return this._idProducto;
+		return this.idProducto;
 	}
-	public set idProducto(idProducto:number)
+	public set IdProducto(idProducto:number)
 	{
-		this._idProducto = idProducto;
+		this.idProducto = idProducto;
 	}
 
 

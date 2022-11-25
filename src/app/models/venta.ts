@@ -13,12 +13,14 @@ export class Venta {
     fechaResumen : string;
     ok: boolean;
     cantidadTotal : number;
+    idCliente_online :number;
     constructor()
     {
         this.total = 0.0;
         this.cliente = new Cliente();
         this.cantidadTotal = 0.0;
-        
+        this.status = 1;
+      
     }
 
 
@@ -76,5 +78,13 @@ export class Venta {
     fecha(): string {
         return this.fechaActualizacion.getFullYear().toString();
     }
+	public get IdCliente_online()
+	{
+		return this.idCliente_online;
+	}
 
+	public set IdCliente_online(producto:number)
+	{
+		this.idCliente_online = producto;
+	}
 }

@@ -16,6 +16,7 @@ import {map, startWith} from 'rxjs/operators';
 import { ItemsList } from '@ng-select/ng-select/lib/items-list';
 import { ProductService } from 'src/app/services/product.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataServiceService } from 'src/app/service/data-service.service';
 declare var js;
 @Component({
   selector: 'app-ventas',
@@ -31,7 +32,7 @@ export class VentasComponent implements OnInit {
   products: Producto[] = [];
 
 
-  constructor(private _snackBar: MatSnackBar, private serviceVenta: VentaService, private serviceProduct: ProductService, private serviceCliente: ClienteService, private loadScripts:LoadScriptsService , private router:Router, private fb: FormBuilder) { 
+  constructor(private serviceSession : DataServiceService, private _snackBar: MatSnackBar, private serviceVenta: VentaService, private serviceProduct: ProductService, private serviceCliente: ClienteService, private loadScripts:LoadScriptsService , private router:Router, private fb: FormBuilder) { 
  
     loadScripts.Load(["accordions"]);
     this.createForm();
@@ -154,6 +155,7 @@ private _filter(name: string): Observable<Cliente[]> {
   {
     if(this.venta.isOk())
     {
+      this.venta.idUsuario = this.serviceSession.user.id;
       this.serviceVenta.createVenta(this.venta).subscribe(res => {
         console.log("venta correcta")
         this.router.navigate(['ventas'])
