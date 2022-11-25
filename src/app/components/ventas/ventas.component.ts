@@ -31,13 +31,18 @@ export class VentasComponent implements OnInit {
   products: Producto[] = [];
 
 
-  constructor(private _snackBar: MatSnackBar, private serviceVenta: VentaService, private serviceProduct: ProductService, private serviceCliente: ClienteService, private _LoadScripts:LoadScriptsService , private router:Router, private fb: FormBuilder) { 
+  constructor(private _snackBar: MatSnackBar, private serviceVenta: VentaService, private serviceProduct: ProductService, private serviceCliente: ClienteService, private loadScripts:LoadScriptsService , private router:Router, private fb: FormBuilder) { 
  
-    _LoadScripts.Load(["accordion"]);
+    loadScripts.Load(["accordions"]);
     this.createForm();
     this.selectProduct();
   }
 
+
+  ngOnDestroy() {
+    
+    console.log("saliendo")
+  }
 
   myControl = new FormControl<string | Cliente>('');
   filteredOptions: Observable<Cliente[]>;
@@ -47,10 +52,11 @@ export class VentasComponent implements OnInit {
     this.myControl.valueChanges.subscribe(item =>{
       if(!(item=='') && typeof item === 'string')
       this.filteredOptions = this._filter(item as string);
-      if((item != '') && typeof item === 'object')
+      else if((item != '') && typeof item === 'object')
       {
         this.selectClientVenta(item);
-      }
+      }else
+      this.deleteClientVenta();
       
       
     });
@@ -110,6 +116,10 @@ private _filter(name: string): Observable<Cliente[]> {
   {
     this.venta.Cliente = cliente;
   }
+  public deleteClientVenta()
+  {
+    this.venta.cliente = new Cliente();
+  }
   
   public RegisterClient(): void{
     if(this.angForm.valid)
@@ -147,6 +157,7 @@ private _filter(name: string): Observable<Cliente[]> {
       this.serviceVenta.createVenta(this.venta).subscribe(res => {
         console.log("venta correcta")
         this.router.navigate(['ventas'])
+        
       });
     }
   }
