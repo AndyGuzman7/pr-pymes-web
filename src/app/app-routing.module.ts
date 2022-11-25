@@ -40,7 +40,8 @@ const routes: Routes = [
   {path: 'budget/:idSupplier/:idBudget', component: BudgetSheetComponent},//Editar presupuesto
 
   //Pedido de compra
-  {path: 'pedidos', component: OrdersToSupplierComponent}
+  {path: 'pedidos', component: OrdersToSupplierComponent},
+  {path: 'pedido', component: OrderToSupplierComponent}
 ];
 
 @NgModule({

@@ -45,8 +45,10 @@ implements OnInit {
       const idBudget =+ params.get('idBudget');
       if (idBudget) {
         this.service.ver(idBudget).subscribe(x => {
+          
           this.model = x;
-          this.serviceSupplier.ver(this.model.idProveedor).subscribe(s => {
+          console.log(this.model.proveedor.idProveedor)
+          this.serviceSupplier.ver(this.model.proveedor.idProveedor).subscribe(s => {
             this.model.refProveedor = s.nombre;
           })
         })

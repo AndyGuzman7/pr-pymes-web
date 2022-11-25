@@ -39,16 +39,27 @@ export class ManufacturingListComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getProduccionManufactura().subscribe(produccion => {
-      console.log(produccion)
-       
+
       produccion.forEach(element => {
         this.produccions.push(new Produccion(element[0],element[1],element[2],element[3],element[4], new Manufactura(element[5],element[6],element[7], null)))
       });
 
-      console.log(this.produccions)
       this.service.getProducts().subscribe(product => {
-        produccion.forEach(element => {
-        });
+        let ordenesConProductos = this.produccions.map(orden => {
+          return{
+            productoNombre: product.find(x => x.productID == orden.manufacturas.id_producto).name,
+            id:orden.id,
+            nombre:orden.nombre,
+            estado:orden.estado,
+            fecha_produccion:orden.fecha_produccion,
+            ref_produccion:orden.ref_produccion,
+            update_date:orden.update_date,
+            manufacturas:orden.manufacturas
+          }
+        })
+
+        console.log(ordenesConProductos);
+        
       })
     });
   }

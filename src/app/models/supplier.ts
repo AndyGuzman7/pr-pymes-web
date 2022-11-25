@@ -3,6 +3,7 @@ import { Generic } from "./generic";
 
 export class Supplier implements Generic {
     id:number;
+    idProveedor:number;
     nombre:string;
     direccion:string;
     telefono:string;

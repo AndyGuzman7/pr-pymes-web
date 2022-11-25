@@ -29,7 +29,7 @@ export class OrdersToSupplierComponent implements OnInit {
 
   displayedColumns: string[] = ['referencia','proveedor','fechaPedido','fechaLlegada', 'baseImponible','estado','acciones'];
   
-  pedido: Object[];
+  pedido: Pedido[];
 
   constructor(private route: ActivatedRoute,
     private service: PedidoService) { }
@@ -37,10 +37,16 @@ export class OrdersToSupplierComponent implements OnInit {
   ngOnInit() {
     this.service.listadoPedidos().forEach(pedidos => {
       this.pedido = pedidos
-      //this.iniciarPaginador(); 
+      this.iniciarPaginador(); 
       console.log(this.pedido);
     });
     console.log("error");
+  }
+
+  iniciarPaginador(): void {
+    this.dataSource = new MatTableDataSource<Pedido>(this.pedido);
+   // this.dataSource.paginator = this.paginator;
+    //this.paginator._intl.itemsPerPageLabel = 'Registros por página';
   }
 
   applyFilter(event: Event) {

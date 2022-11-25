@@ -11,6 +11,7 @@ export class Produccion implements Generic {
     
     //Manufactura
     manufacturas:Manufactura;
+    productoNombre:string
 
     constructor( id:number,
         estado:number,

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Produccion } from '../models/produccion';
 import { CommonService } from './common.service';
 import { Observable } from 'rxjs';
+import { Producto } from '../models/producto';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,8 @@ export class ProduccionService extends CommonService<Produccion> {
     return this.http.get<Object[]>(`${this.baseEndpoint}/manufactura`);
   }
 
-  public getProducts(): Observable<Object[]>{
-    return this.http.get<Object[]>(`${this.baseEndpointOther}/manufactured`);
+  public getProducts(): Observable<Producto[]>{
+    return this.http.get<Producto[]>(`${this.baseEndpointOther}/manufactured`);
   }
 
 }

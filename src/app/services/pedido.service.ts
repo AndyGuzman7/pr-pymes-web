@@ -7,6 +7,7 @@ import { CommonService } from './common.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class PedidoService extends CommonService<Pedido> {
   protected override baseEndpoint =  '/api/compras/pedidos';
 
@@ -14,8 +15,8 @@ export class PedidoService extends CommonService<Pedido> {
     super(http);
    }
 
-   public listadoPedidos(): Observable<Object[]>{
-    return this.http.get<Object[]>(`${this.baseEndpoint}/listaPedidos`);
+  public listadoPedidos(): Observable<Pedido[]>{
+    return this.http.get<Pedido[]>(`${this.baseEndpoint}/listaPedidos`);
   }
 
 }
