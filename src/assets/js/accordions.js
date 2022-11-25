@@ -33,7 +33,7 @@ $("#btnCloseModalProduct").click(() => {
   $("#modalRegisterProduct").modal('toggle');
 })
 
-
+/*
 //#region  VALIDACION FORMULARIOS
 const campos ={
   nombre: false,
@@ -142,4 +142,4 @@ function ColorCorreoBien() {
 
 }
 //#endregion
-
+*/
