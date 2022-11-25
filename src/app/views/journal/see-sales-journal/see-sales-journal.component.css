@@ -35,8 +35,10 @@ span{
     width: 100%;
 }
 
+.btn-r:hover{
+    background-color: #0A457F;
+}
 .btn{
-    margin-top: 5%;
-    margin-left: 5%;
-    text-align: left;
+    background-color: #00AEE1;
+    color: #fff;
 }

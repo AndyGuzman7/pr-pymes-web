@@ -1,9 +1,9 @@
 <div class="principal">
     <div class="row justify-content-md-center">
-        
+
         <div id="list-products" class="col col-lg">
-            <h2 >Carro de compras</h2>
-            <table class="table " >
+            <h2>Carro de compras</h2>
+            <table class="table ">
                 <thead>
                     <tr>
                         <th scope="col">
@@ -14,8 +14,8 @@
                         </th>
                         <th scope="col">
                             Cantidad
-                        
-                        </th >
+
+                        </th>
                         <th scope="col">
                             Subtotal
                         </th>
@@ -45,36 +45,39 @@
                             
                         </td>
                     </tr>
-                    
+
                 </tbody>
                 <tfoot>
 
                 </tfoot>
             </table>
-            
-            <div class="container"  >
+
+            <div class="container">
                 <div class="row " id="options-buttons">
                     <div class="col col-lg-2">
-                        <button data-target="#modalRegisterProduct" data-toggle="modal" id="button-option-list-sale">Seguir comprando</button>
+                        <button data-target="#modalRegisterProduct" data-toggle="modal"
+                            id="button-option-list-sale">Seguir comprando</button>
 
                     </div>
                     <div class="col-md-auto">
-                        <button  id="button-option-list-sale-update">Actualizar el carrito</button>
+                        <button id="button-option-list-sale-update">Actualizar el carrito</button>
 
                     </div>
                     <div class="col">
                         <button id="button-option-list-sale-delete">Borrar el carro de compra</button>
                     </div>
                 </div>
-                
+
             </div>
-            <div id="modalRegisterProduct" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div id="modalRegisterProduct" class="modal fade" tabindex="-1" role="dialog"
+                aria-labelledby="mySmallModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content" style="padding: 10px;">
                         <form action="">
                             <div class="form-group">
                                 <label class="text-input" id="IDBuscar" for="idProducto">Producto por ID</label>
-                                <input type="text" class="form-control input-register" id="idProducto" placeholder="Buscar Producto por ID">
+                                <input type="text" class="form-control input-register" id="idProducto"
+                                    placeholder="Buscar Producto por ID">
                             </div>
                             <table id="table-detail">
                                 <thead>
@@ -91,8 +94,8 @@
 
                                         <th scope="col">
                                             Precio
-                                        
-                                        </th >
+
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -113,12 +116,13 @@
                                             <button id="button-option-sale" (click)="addProductVenta(item)" class="bi bi-bookmark-check-fill"></button>
                                         </td>
                                     </tr>
-                                
+
                             </table>
-                            <div style="margin-top: 10px ;" >
-                                <button type="button" id="btnCloseModalProduct" class="btn btn-primary" style="width:100%">Salir</button>
+                            <div style="margin-top: 10px ;">
+                                <button type="button" id="btnCloseModalProduct" class="btn btn-primary"
+                                    style="width:100%">Salir</button>
                             </div>
-    
+
                         </form>
                     </div>
                 </div>
@@ -151,7 +155,8 @@
                 </form>
             </div>
             <div id="icon-add">
-                <button data-target="#modalRegister" data-toggle="modal" id="btn-addClient" class="bi bi-person-plus"></button>
+                <button data-target="#modalRegister" data-toggle="modal" id="btn-addClient"
+                    class="bi bi-person-plus"></button>
             </div>
             <div id="modalRegister" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-sm">
@@ -204,35 +209,35 @@
                     </div>
                 </div>
             </div>
-            
-            
-        
-			
+
+
+
+
             <br>
             <div>
                 <div id="total-products">
                     <div id="total">
                         Total Productos
-                        
+
                     </div>
                     <div id="number">
                         {{venta.detallesVentas.length}}
                     </div>
                 </div>
-                
+
                 <button class="accordion">Ver mas detalle </button>
-                
-                <div class="panel" >
-                    
-                    <div >
+
+                <div class="panel">
+
+                    <div>
                         <table id="table-detail">
                             <thead>
-                                
+
                             </thead>
                             <tbody>
-                                <tr >
-                    
-                                    <table style="background-color: rgb(207,229,237);"  id="table-detail" >
+                                <tr>
+
+                                    <table style="background-color: rgb(207,229,237);" id="table-detail">
                                         <thead>
                                             <tr>
                                                 <th>Producto</th>
@@ -247,7 +252,7 @@
                                                     <div>
                                                         <h4> {{item.producto.name}}</h4>
                                                     </div>
-                                                    
+
                                                 </td>
                                                 <td>
                                                     {{item.producto.price}}
@@ -258,14 +263,14 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                </tr>     
+                                </tr>
                             </tbody>
-                            <tfoot style="margin: 50px;" >
+                            <tfoot style="margin: 50px;">
                                 <tr>
                                     <p><b>Total :</b> <strong> {{venta.total}}</strong></p>
                                 </tr>
                             </tfoot>
-                            
+
                         </table>
                     </div>
                 </div>
