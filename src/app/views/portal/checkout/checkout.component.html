@@ -4,9 +4,11 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
 
   <div class="testbox container cont-all">
-    <h1><b style="color: #0A457F;">Tu Pedido</b></h1>
+    
     <form >
+        <br/>
      <div class="line"></div>
+     <h1><b style="color: #0A457F;">Tu Pedido</b></h1>
     <div class="row">
         <div class="col-md-6">
             <div class="form-group form-control">
@@ -76,7 +78,7 @@
                     <p style="margin-left: 15px; padding: 10px; background-color: #b4daff;"> ${{grandTotal}}</p>
                 </div>
                 <div class="cont-btn">
-                    <button class="btn btn-b" (click)="checkoutGo()">Finalizar Compra</button>
+                    <button class="btn btn-b" (click)="checkoutGo()">{{buttonText}}</button>
                 </div>
             </div>
         </div>

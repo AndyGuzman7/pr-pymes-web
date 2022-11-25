@@ -67,6 +67,7 @@ import { FiltersPipe } from './views/portal/filter/filters.pipe';
 import { LoginportalComponent } from './views/portal/loginportal/loginportal.component';
 import { SignupComponent } from './views/portal/signup/signup.component';
 import { CheckoutComponent } from './views/portal/checkout/checkout.component';
+import { HistoryComponent } from './views/portal/history/history.component';
 import { DetailproductComponent } from './views/portal/detailproduct/detailproduct.component';
 import { NavBarPortalComponent } from './components/nav-bar-portal/nav-bar-portal.component';
 
@@ -115,6 +116,7 @@ import { NavBarPortalComponent } from './components/nav-bar-portal/nav-bar-porta
     LoginComponent,
     SignupComponent,
     CheckoutComponent,
+    HistoryComponent,
     DetailproductComponent,
     LoginportalComponent,
     NavBarPortalComponent

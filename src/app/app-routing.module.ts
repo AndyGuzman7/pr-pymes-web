@@ -12,6 +12,7 @@ import { ProductsComponent } from './views/portal/products/products.component';
 import { LoginportalComponent } from './views/portal/loginportal/loginportal.component';
 import { SignupComponent } from './views/portal/signup/signup.component';
 import { CheckoutComponent } from './views/portal/checkout/checkout.component';
+import { HistoryComponent } from './views/portal/history/history.component';
 import { DetailproductComponent } from './views/portal/detailproduct/detailproduct.component';
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'loginportal', component: LoginportalComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'history', component: HistoryComponent },
   { path: 'detailproduct', component: DetailproductComponent }
 ];
 

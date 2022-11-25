@@ -37,4 +37,12 @@ export class CartComponent implements OnInit {
     }
   }
 
+  verHistorialVentas(){
+    if(sessionStorage.getItem('name')!=''&&sessionStorage.getItem('name')!=null){
+      this.router.navigate(['history']);
+    }else{
+      alert("Debes Iniciar Sesión");
+    }
+  }
+
 }

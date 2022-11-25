@@ -49,6 +49,7 @@
             <div class="cont-btn">
                 <button (click)="emptycart()" class="btn btn-b btn-danger">Cartera Vacía</button>
                 <button routerLink="/products" class="btn btn-shop btn-b">Comprar Más</button>
+                <button (click)="verHistorialVentas()" class="btn btn-shop btn-b">Ver Historial</button>
                 <button class="btn btn-b btn-success" (click)="goCheckout()">Finalizar Compra</button>
             </div>
 
@@ -67,7 +68,8 @@
             <img src="https://cdn-icons-png.flaticon.com/512/7714/7714517.png">
             <h4>Tu cartera está vacía</h4>
             <h6>Añadir elemento ahora</h6>
-            <button routerLink="/products" class="btn btn-dark">Comprar Ahora</button>
+            <button routerLink="/products" class="btn btn-dark">Comprar Ahora</button>&nbsp;&nbsp;
+            <button class="btn btn-dark" (click)="verHistorialVentas()" >Ver Historial</button>
         </div>
     </div>
 </ng-container>
