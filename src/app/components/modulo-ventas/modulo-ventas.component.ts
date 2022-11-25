@@ -33,6 +33,10 @@ export class ModuloVentasComponent implements OnInit {
   {
     this.router.navigate(['HacerVenta'])
   }
+  public verFacturas()
+  {
+    
+  }
 
 
 }
