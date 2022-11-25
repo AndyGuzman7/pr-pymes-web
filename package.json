@@ -20,6 +20,12 @@
     "@angular/router": "^14.2.0",
     "bootstrap": "^5.2.2",
     "jquery": "^3.6.1",
+<<<<<<< Updated upstream
+=======
+    "jspdf": "^2.5.1",
+    "mdb-angular-ui-kit": "^3.0.0",
+    "ngx-webstorage": "^10.0.1",
+>>>>>>> Stashed changes
     "popper.js": "^1.16.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
