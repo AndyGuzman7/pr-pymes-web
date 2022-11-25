@@ -1,28 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from 'src/app/services/producto.service';
+import { WarehouseService } from 'src/app/services/warehouse.service';
+import { Warehouse } from 'src/app/models/warehouse';
 import { ActivatedRoute, Router } from '@angular/router';
-import {Producto} from 'src/app/models/producto';
 import Swal from 'sweetalert2'
+
 @Component({
-  selector: 'app-register-product',
-  templateUrl: './register-product.component.html',
-  styleUrls: ['./register-product.component.css']
+  selector: 'app-form-warehouse',
+  templateUrl: './form-warehouse.component.html',
+  styleUrls: ['./form-warehouse.component.css']
 })
-export class RegisterProductComponent implements OnInit {
+export class FormWarehouseComponent implements OnInit {
 
   titulo: string;
-  producto: Producto;
+  warehouse: Warehouse;
   redirect: string;
 
   error:any;
 
-  constructor(private service: ProductService,
+  constructor(private service: WarehouseService,
               private router: Router,
               private route: ActivatedRoute) {
     
-                this.titulo='Nuevo Producto';
-                this.producto = new Producto();           
-                this.redirect= '/listar_productos';
+                this.titulo='Nuevo Almacen';
+                this.warehouse = new Warehouse();           
+                this.redirect= '/warehouse';
                }
 
   ngOnInit(): void {
@@ -30,15 +31,15 @@ export class RegisterProductComponent implements OnInit {
       const id: number = +params.get('id');
       if(id){
         this.service.ver(id).subscribe(w => {
-          this.producto = w;
-          this.titulo = 'Editar ' + this.producto.name;
+          this.warehouse = w;
+          this.titulo = 'Editar ' + this.warehouse.name;
         });
       }
     })
   }
 
   public crear(): void {
-    this.service.create(this.producto).subscribe(w => {
+    this.service.create(this.warehouse).subscribe(w => {
       console.log(w);
       Swal.fire('Nuevo:', `${w.name} creado con éxito`, 'success');
       this.router.navigate([this.redirect]);
@@ -51,9 +52,9 @@ export class RegisterProductComponent implements OnInit {
   }
 
   public editar(): void {
-    this.service.editProducto(this.producto).subscribe(producto => {
-      console.log(producto);
-      Swal.fire('Modificado:', `${producto.name} actualizado con éxito`, 'success');
+    this.service.modify(this.warehouse).subscribe(warehouse => {
+      console.log(warehouse);
+      Swal.fire('Modificado:', `${warehouse.name} actualizado con éxito`, 'success');
       this.router.navigate([this.redirect]);
     }, err => {
       if(err.status === 400){
@@ -62,6 +63,7 @@ export class RegisterProductComponent implements OnInit {
       }
     });
   }
+
 
 
 }

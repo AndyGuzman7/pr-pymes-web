@@ -1,14 +1,14 @@
 <div class="container content-all ">
   <div class="row">
-    <div class="col-md-6"  style="margin-bottom: 40px;">
+    <div class="col-md-6" style="margin-bottom: 40px;">
       <div>
         <h1 class="hd-s prd">Lista de Productos</h1>
-        <div class="" *ngFor="let card of cards">
+        <div class="" *ngFor="let producto of productos">
           <mat-card class="card-wr">
             <div class="header-card" style="display: inline-flex; justify-content: space-between;">
-              <p>{{card.title}}</p>
+              <p>{{producto.name}}</p>
               <div class="buttons-edit-delete">
-                <button class="btn-h" mat-mini-fab 
+                <button class="btn-h" mat-mini-fab [routerLink]="['/producto', producto.productID]"
                   aria-label="Example icon button with a plus one icon">
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="24"
                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -18,7 +18,7 @@
                     <line x1="13.5" y1="6.5" x2="17.5" y2="10.5"></line>
                   </svg>
                 </button>
-                <button class="btn-h" mat-mini-fab 
+                <button class="btn-h" mat-mini-fab (click)="eliminar(producto)"
                   aria-label="Example icon button with a plus one icon">
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24"
                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -35,43 +35,42 @@
             </div>
             <mat-card-content>
               <p>
-                {{card.description}}
+                {{producto.description}}
               </p>
-              <p style="text-align: right; font-size: large; font-weight: bolder;" class="td-units">x{{card.units}}</p>
+              <p style="text-align: right; font-size: large; font-weight: bolder;" class="td-units">
+              {{producto.quantity}}</p>
             </mat-card-content>
           </mat-card>
         </div>
       </div>
       <div class="content-btn">
-        <button class="btn btn-submit">Añadir Producto</button>
+        <button class="btn btn-submit" routerLink="/producto">Añadir Producto</button>
       </div>
     </div>
+    
     <div class="col-md-6">
       <div>
-        <h2 class="hd-s">Secciones</h2>
+        <h2 class="hd-s">Estantes</h2>
+        <button class="btn btn-submit" style="margin-bottom: 10px;" data-toggle="modal" id="btn-addrack"
+          routerLink="/formRack">Nuevo Estante</button>
         <table class="table align-middle mb-0 bg-white table-hover">
           <thead class="bg-light table-light">
             <tr>
               <th>Nombre</th>
-              <th class="td-tx">Tipo</th>
-              <th class="td-tx">Estantes</th>
+              <th class="td-tx">Productos</th>
               <th></th>
             </tr>
           </thead>
-          <tbody *ngFor="let card of sections">
+          <tbody *ngFor="let rack of racks">
             <tr>
               <td>
-                <p class="fw-normal mb-1"><b>{{card.title}}</b></p>
-                <p class="text-muted mb-0">{{card.description}}</p>
-              </td>
-              <td class="td-tx td-type">
-                <p>{{card.type}}</p>
+                <p class="text-muted mb-0">{{rack.description}}</p>
               </td>
               <td class="td-tx">
-                <p>x{{card.quantity_shelves}}</p>
+                <p>x{{rack.products.length}}</p>
               </td>
               <td class="td-btn">
-                <button type="button" class="btn btn-link btn-sm btn-rounded">
+                <button [routerLink]="['/formRack', rack.idRack]" type="button" class="btn btn-link btn-sm btn-rounded">
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="24"
                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -80,7 +79,7 @@
                     <line x1="13.5" y1="6.5" x2="17.5" y2="10.5"></line>
                   </svg>
                 </button>
-                <button type="button" class="btn btn-link btn-sm btn-rounded">
+                <button (click)="eliminarEstante(rack)" type="button" class="btn btn-link btn-sm btn-rounded">
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24"
                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -92,86 +91,24 @@
                     <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
                   </svg>
                 </button>
+                <button [routerLink]="['/asignar-producto', rack.idRack]" type="button"
+                  class="btn btn-link btn-sm btn-rounded">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <circle cx="6" cy="19" r="2" />
+                    <circle cx="17" cy="19" r="2" />
+                    <path d="M17 17h-11v-14h-2" />
+                    <path d="M6 5l6.005 .429m7.138 6.573l-.143 .998h-13" />
+                    <path d="M15 6h6m-3 -3v6" />
+                  </svg>
+                </button>
               </td>
             </tr>
           </tbody>
         </table>
-        <div class="content-btn">
-          <button class="btn btn_done btn-submit" >Añadir Seccion</button>
-          
-        </div>
       </div>
     </div>
   </div>
-
-</div>
-
-
-
-<div class="modal_wrapper">
-	<div class="shadow"></div>
-	<div class="success_wrap">
-        <div class="modal-content">
-            <div class="modal-header">
-              <h2 class="modal-title modal-t" >Crear Seccion</h2>
-              <span class="close">&times;</span>
-            </div>
-                <form>
-                  <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-4 label-col col-form-label">Nombre:</label>
-                            <div class="col-sm-8">
-                                <div class="input-wrapper">
-                                    <input type="text" class="form-control input-register" id="nombre" placeholder="Nombre">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon input-icon icon-tabler icon-tabler-building-warehouse" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                      <path d="M3 21v-13l9 -4l9 4v13"></path>
-                                      <path d="M13 13h4v8h-10v-6h6"></path>
-                                      <path d="M13 21v-9a1 1 0 0 0 -1 -1h-2a1 1 0 0 0 -1 1v3"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-4 label-col col-form-label">Cant. estantes:</label>
-                            <div class="col-sm-8">
-                                <div class="input-wrapper">
-                                    <input type="number" class="form-control input-register" id="estante" placeholder="Cantidad de estantes">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon input-icon icon-tabler icon-tabler-section" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                      <path d="M20 20h.01"></path>
-                                      <path d="M4 20h.01"></path>
-                                      <path d="M8 20h.01"></path>
-                                      <path d="M12 20h.01"></path>
-                                      <path d="M16 20h.01"></path>
-                                      <path d="M20 4h.01"></path>
-                                      <path d="M4 4h.01"></path>
-                                      <path d="M8 4h.01"></path>
-                                      <path d="M12 4h.01"></path>
-                                      <path d="M16 4l0 0"></path>
-                                      <rect x="4" y="8" width="16" height="8" rx="1"></rect>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                  </div>
-                </form>
-
-            
-            <div class="modal-footer">
-              <div class="content-btn">
-                <button class="btn btn_cancel" data-dismiss="modal">Cancelar</button>
-                <button class="btn btn-submit">Añadir Seccion</button>
-              </div>
-            </div>
-
-          </div>
-      
-	</div>
 </div>

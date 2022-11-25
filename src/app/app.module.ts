@@ -9,6 +9,8 @@ import { LoginComponent } from './views/users/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgxWebstorageModule} from 'ngx-webstorage';
 //Angular Material
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatTabsModule} from '@angular/material/tabs';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -62,6 +64,16 @@ import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/n
 import { TopNavBarBusinessComponent } from './components/top-nav-bar-business/top-nav-bar-business.component';
 import { RegisterEmployeeComponent } from './views/users/register-employee/register-employee.component';
 
+//WAREHOUSE
+import { AsignarSeccionesComponent } from './views/warehouses/all-warehouses/asignar-secciones/asignar-secciones.component';
+import { FormWarehouseComponent } from './views/warehouses/all-warehouses/form-warehouse.component';
+import { SectionsComponent } from './views/warehouses/Sections/sections.component';
+import { FormSectionComponent } from './views/warehouses/Sections/form-section.component';
+import { AssignRacksComponent } from './views/warehouses/Sections/asign-racks/assign-racks.component';
+import { RacksComponent } from './views/warehouses/racks/racks.component';
+import { FormRackComponent } from './views/warehouses/racks/form-rack.component';
+import { AsignarProductosComponent } from './views/warehouses/racks/asignar-productos/asignar-productos.component';
+
 
 @NgModule({
   declarations: [
@@ -106,7 +118,17 @@ import { RegisterEmployeeComponent } from './views/users/register-employee/regis
     BudgetSheetComponent,
     SideMenuShoppingComponent,
     TopNavBarBusinessComponent,
-    RegisterEmployeeComponent
+    RegisterEmployeeComponent,
+
+    //WAREHOUSE
+    AsignarSeccionesComponent,
+    FormWarehouseComponent,
+    SectionsComponent,
+    FormSectionComponent,
+    AssignRacksComponent,
+    RacksComponent,
+    FormRackComponent,
+    AsignarProductosComponent
   
   ],
   imports: [
@@ -125,6 +147,7 @@ import { RegisterEmployeeComponent } from './views/users/register-employee/regis
     MatButtonModule,
     MatTableModule,
     MatIconModule,
+    MatTabsModule,
 
     NgSelectModule,
     HttpClientModule,
@@ -137,7 +160,8 @@ import { RegisterEmployeeComponent } from './views/users/register-employee/regis
     MatDialogModule,
     MatDatepickerModule,
     NgSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule
   ],
   providers: [
     LoadScriptsService
