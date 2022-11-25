@@ -3,10 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import {Router, ActivatedRoute} from '@angular/router';
 import {VentaService} from 'src/app/services/venta.service'
 import {Venta} from 'src/app/models/venta'
-export interface Compra {
-  fechaCreacion: Date;
-  total: number;
-}
+import {LibroDiarioService} from 'src/app/services/libro-diario.service';
 
 @Component({
   selector: 'app-see-sales-journal',
@@ -18,13 +15,12 @@ export class SeeSalesJournalComponent implements OnInit {
   fechaInicio:Date;
   fechaFin:Date;
   ventas:Venta[]=[];
-  compras:Compra[]=[];
   id:number;
 
   displayedColumns: string[] = ['product','total'];
   dataSource = new MatTableDataSource();
 
-  constructor(private router:Router, private route:ActivatedRoute, private service: VentaService) { }
+  constructor(private router:Router, private route:ActivatedRoute, private serviceLibro: LibroDiarioService, private service: VentaService) { }
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.id = params['id'] as number;
@@ -58,13 +54,10 @@ export class SeeSalesJournalComponent implements OnInit {
   }
 
   CargarCompras() :void {
-    this.compras = [
-      {fechaCreacion: new Date('11-05-2022'), total: 860.15},
-      {fechaCreacion: new Date('11-06-2022'), total: 560.70},
-      {fechaCreacion: new Date('11-07-2022'), total: 170.90},
-      {fechaCreacion: new Date('11-08-2022'), total: 140.78}
-    ];
-    this.dataSource = new MatTableDataSource(this.compras);
-    this.compras = [];
+    this.serviceLibro.selectTotal(this.fechaInicio.toISOString(), this.fechaFin.toISOString()).subscribe(data => {
+      this.ventas = data;
+      this.dataSource = new MatTableDataSource(this.ventas);
+      this.ventas = [];
+    })
   }
 }

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LibroDiario } from '../models/libro-diario';
+import { Venta } from '../models/venta';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,15 @@ export class LibroDiarioService {
   //Crear libro
   crearLibro(LibroDiario) {
     return this.http.post<LibroDiario>(`${this.baseEndPoint}/`, LibroDiario, { headers: this.cabecera})
+  }
+
+  //Obtener total compras por fechas
+  public selectTotal(fecha_inicio:string, fecha_fin:string): Observable<Venta[]>{
+    const params =new HttpParams()
+    .set('from',fecha_inicio)
+    .set('to',fecha_fin);
+
+    return this.http.get<Venta[]>(`/api/compras/detalle-pedidos/filtrar/fecha-total/`, {params:params});
   }
     
 }
