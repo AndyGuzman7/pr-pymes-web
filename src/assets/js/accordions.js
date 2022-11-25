@@ -1,4 +1,3 @@
-
 var acc = document.getElementsByClassName("accordion");
 var i;
 
@@ -34,7 +33,7 @@ $("#btnCloseModalProduct").click(() => {
   $("#modalRegisterProduct").modal('toggle');
 })
 
-
+/*
 //#region  VALIDACION FORMULARIOS
 const campos ={
   nombre: false,
@@ -143,4 +142,4 @@ function ColorCorreoBien() {
 
 }
 //#endregion
-
+*/

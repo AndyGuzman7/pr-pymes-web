@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TopNavBarComponent } from './components/top-nav-bar/top-nav-bar.component';
 import { LoadScriptsService } from './load-scripts.service';
 import { LoginComponent } from './views/users/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgxWebstorageModule} from 'ngx-webstorage';
 //Angular Material
 import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -60,6 +60,8 @@ import { SideMenuShoppingComponent } from './components/side-menu-shopping/side-
 import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/new-supplier-order.component';
 import { LibrodiarioComponent } from './components/libro-diario/libro-diario.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { TopNavBarBusinessComponent } from './components/top-nav-bar-business/top-nav-bar-business.component';
+import { RegisterEmployeeComponent } from './views/users/register-employee/register-employee.component';
 
 
 @NgModule({
@@ -67,7 +69,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AppComponent,
     VentasComponent,
     ModuloVentasComponent,
-    TopNavBarComponent,
+   
     LoginComponent,
     SupplierComponent,
     RegisterComponent,
@@ -93,16 +95,26 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ProductionInformationDetailComponent,
     SupplierManagementComponent,
     OrderToSupplierComponent,
+    NewSupplierOrderComponent,
+    BudgetSheetComponent,
+    SideMenuShoppingComponent,
+  
+    BudgetSheetComponent,
+
+
     BudgetSheetComponent,
     NewSupplierOrderComponent,
     BudgetSheetComponent,
     SideMenuShoppingComponent,
-    LibrodiarioComponent
+    LibrodiarioComponent,
+    TopNavBarBusinessComponent,
+    RegisterEmployeeComponent
   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgxWebstorageModule.forRoot(),
     BrowserAnimationsModule,
     MatSliderModule,
     MatFormFieldModule,
@@ -131,7 +143,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatPaginatorModule
   ],
   providers: [
-    LoadScriptsService
+    LoadScriptsService,
+    TopNavBarBusinessComponent
   ],
   bootstrap: [AppComponent]
 })

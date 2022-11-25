@@ -18,7 +18,7 @@ export class ModuloVentasComponent implements OnInit {
 
   ventas: Venta[];
   datas = [];
-  constructor(private service: VentaService, private _LoadScripts:LoadScriptsService, private router:Router ) { 
+  constructor(private service: VentaService, private router:Router ) { 
   
   }
 
@@ -32,6 +32,10 @@ export class ModuloVentasComponent implements OnInit {
   public hacerUnaVenta()
   {
     this.router.navigate(['HacerVenta'])
+  }
+  public verFacturas()
+  {
+    
   }
 
 

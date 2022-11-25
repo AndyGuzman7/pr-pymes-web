@@ -46,7 +46,7 @@ export class SeeSalesJournalComponent implements OnInit {
   }
 
   CargarVentas(): void{
-    this.service.selectTotal(this.fechaInicio.toISOString(), this.fechaFin.toISOString()).subscribe(data => {
+    this.service.selectTotal(this.fechaInicio.toLocaleDateString('en-CA'), this.fechaFin.toLocaleDateString('en-CA')).subscribe(data => {
       this.ventas = data;
       this.dataSource = new MatTableDataSource(this.ventas);
       this.ventas = [];
