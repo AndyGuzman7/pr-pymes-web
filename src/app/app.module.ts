@@ -15,13 +15,15 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { DatePipe } from '@angular/common';
+import { DetalleFacturaComponent } from './DetalleFactura/DetalleFactura.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     GetComponent,
-    DialogComponent
+    DialogComponent,
+    DetalleFacturaComponent
   ],
   imports: [
     BrowserModule,
