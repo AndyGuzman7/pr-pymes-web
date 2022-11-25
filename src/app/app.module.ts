@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TopNavBarComponent } from './components/top-nav-bar/top-nav-bar.component';
 import { LoadScriptsService } from './load-scripts.service';
 import { LoginComponent } from './views/users/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -68,7 +67,7 @@ import { RegisterEmployeeComponent } from './views/users/register-employee/regis
     AppComponent,
     VentasComponent,
     ModuloVentasComponent,
-    TopNavBarComponent,
+   
     LoginComponent,
     SupplierComponent,
     RegisterComponent,
@@ -140,7 +139,8 @@ import { RegisterEmployeeComponent } from './views/users/register-employee/regis
     MatDialogModule
   ],
   providers: [
-    LoadScriptsService
+    LoadScriptsService,
+    TopNavBarBusinessComponent
   ],
   bootstrap: [AppComponent]
 })
