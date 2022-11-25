@@ -35,7 +35,7 @@ export class ModuloVentasComponent implements OnInit {
   }
   public verFacturas()
   {
-    
+    this.router.navigate(['get'])
   }
 
 

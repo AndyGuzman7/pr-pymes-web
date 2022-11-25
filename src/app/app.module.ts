@@ -59,6 +59,9 @@ import { SideMenuShoppingComponent } from './components/side-menu-shopping/side-
 import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/new-supplier-order.component';
 import { TopNavBarBusinessComponent } from './components/top-nav-bar-business/top-nav-bar-business.component';
 import { RegisterEmployeeComponent } from './views/users/register-employee/register-employee.component';
+import { DatePipe } from '@angular/common';
+import { GetComponent } from './components/Factura/get/get.component';
+import { DetalleFacturaComponent } from './components/DetalleFactura/DetalleFactura.component';
 
 
 @NgModule({
@@ -96,7 +99,10 @@ import { RegisterEmployeeComponent } from './views/users/register-employee/regis
     BudgetSheetComponent,
     SideMenuShoppingComponent,
     TopNavBarBusinessComponent,
-    RegisterEmployeeComponent
+    RegisterEmployeeComponent,
+    GetComponent,
+    DetalleFacturaComponent
+
   
   ],
   imports: [
@@ -129,7 +135,8 @@ import { RegisterEmployeeComponent } from './views/users/register-employee/regis
     MatDialogModule
   ],
   providers: [
-    LoadScriptsService
+    LoadScriptsService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
