@@ -62,6 +62,7 @@ import { RegisterEmployeeComponent } from './views/users/register-employee/regis
 import { DatePipe } from '@angular/common';
 import { GetComponent } from './components/Factura/get/get.component';
 import { DetalleFacturaComponent } from './components/DetalleFactura/DetalleFactura.component';
+import { DialogComponent } from './components/Factura/get/dialog/dialog.component';
 
 
 @NgModule({
@@ -101,7 +102,8 @@ import { DetalleFacturaComponent } from './components/DetalleFactura/DetalleFact
     TopNavBarBusinessComponent,
     RegisterEmployeeComponent,
     GetComponent,
-    DetalleFacturaComponent
+    DetalleFacturaComponent,
+    DialogComponent
 
   
   ],
