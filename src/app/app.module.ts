@@ -14,6 +14,7 @@ import { DialogComponent } from './Factura/get/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import {MatInputModule} from '@angular/material/input';
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
