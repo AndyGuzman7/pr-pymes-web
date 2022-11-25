@@ -82,9 +82,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     RegisterBusinessComponent,
     SelectRegisterComponent,
     ListProductsComponent,
-
     VentasComponent,
-
     RegisterProductComponent,
     HomeComponent,
     JournalPrincipalComponent,

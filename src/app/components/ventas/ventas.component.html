@@ -24,28 +24,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of listaProductos">
+                    <tr *ngFor="let item of venta.detallesVentas">
                         <td>
                             <div>
-                                <h6><b> {{item.producto.nombre}}</b></h6>
+                                <h6><b> {{item.producto.name}}</b></h6>
                             </div>
-                            <p>{{item.producto.descripcion}}</p>
+                            <p>{{item.producto.description}}</p>
                         </td>
                         <td>
-                            {{item.producto.precio}}
+                            {{item.producto.price}}
                         </td>
                         <td>
                             {{item.cantidad}}
-                            <button id="button-option-sale" (click)="addCountProduct(item.producto.idProducto)"
-                                class="">+</button>
-                            <button id="button-option-sale" (click)="removeCountProduct(item.producto.idProducto)"
-                                class="bi">-</button>
+                            <button id="button-option-sale" (click)="addCountProductVenta(item.producto.productID)" class="">+</button> 
+                            <button id="button-option-sale" (click)="removeCountProductVenta(item.producto.productID)" class="bi">-</button>
                         </td>
                         <td>{{item.subTotal}}</td>
                         <td>
-                            <button id="button-option-sale" (click)="deleteOneProductList(item.idDetalleVenta)"
-                                class="bi bi-x-circle"></button> <br>
-                            <button id="button-option-sale" class="bi bi-pencil-square"></button>
+                            <button id="button-option-sale" (click)="removeProductVenta(item)" class="bi bi-x-circle"></button> <br>
+                            
                         </td>
                     </tr>
 
@@ -102,22 +99,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let item of listaProductosBuscador">
+                                    <tr *ngFor="let item of products">
                                         <td>
-                                            {{item.producto.producto}}
+                                            {{item.name}}
                                         </td>
                                         <td>
-                                            {{item.producto.descripcion}}
+                                            {{item.description}}
                                         </td>
                                         <td>
-                                            {{item.producto.cantidad}}
+                                            {{item.quantity}}
                                         </td>
                                         <td>
-                                            {{item.producto.precio}}
+                                            {{item.price}}
                                         </td>
                                         <td>
-                                            <button id="button-option-sale" (click)="selectOneProductList(item)"
-                                                class="bi bi-bookmark-check-fill"></button>
+                                            <button id="button-option-sale" (click)="addProductVenta(item)" class="bi bi-bookmark-check-fill"></button>
                                         </td>
                                     </tr>
 
@@ -138,66 +134,77 @@
             <div class="col-lg-20">
                 <form action="">
                     <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Buscar cliente</mat-label>
-                        <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                        <mat-label>CI/NIT/NOMBRE</mat-label>
+                        <input #txtCi type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
                         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                                {{option.name}}
-                            </mat-option>
+                          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{option.nombre}}
+                          </mat-option>
                         </mat-autocomplete>
-                    </mat-form-field>
-                    <div id="form-ci">
-                        <strong><label class="text-input" for="txtCi">CI: </label></strong>
-                        <input class="form-control" type="text" id="txtCi" value="4827328">
-                    </div>
-                    <div id="form-name">
-                        <strong><label class="text-input" for="txtFullName">Cliente: </label></strong>
-                        <input class="form-control" type="text" id="txtFullName" value="Juan Perez">
-                    </div>
+                      </mat-form-field>
+                      <div>
+                        <label class="text-input" for="nitCi">Nit</label>
+                        <input type="text" class="form-control input-register" name="nombreClienteEscogido" [(ngModel)]="venta.cliente.nitCi" [readonly]="true">
+                       
+                            
+                        </div>
+                        
+                        
+                  
+                   
                 </form>
             </div>
             <div id="icon-add">
                 <button data-target="#modalRegister" data-toggle="modal" id="btn-addClient"
                     class="bi bi-person-plus"></button>
             </div>
-            <div id="modalRegister" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-                aria-hidden="true">
+            <div id="modalRegister" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-sm">
-                    <div class="modal-content" style="padding: 10px;">
-                        <form action="">
+                    <div class="modal-content"   style="padding: 10px;">
+                        <form  (ngSubmit)="RegisterClient()" validate>
+                            <div  [formGroup]="angForm">
+
+                            
                             <div class="form-group">
                                 <label class="text-input" for="nombre">Nombre</label>
-                                <input type="text" class="form-control input-register" name="nombre" id="nombre"
-                                    placeholder="Nombre" [(ngModel)]="cliente.nombre">
-
+                                <input type="text" formControlName="nombre" class="form-control input-register" name="nombre"  id="nombre" placeholder="Nombre" >
+                                <div *ngIf=" angForm.controls['nombre'].invalid && (angForm.controls['nombre'].dirty || angForm.controls['nombre'].touched)">
+                                    <div *ngIf="angForm.controls['nombre'].errors.required">El nombre es requerido.</div>
+                              </div>
                             </div>
-                            <div>
+                            <div >
                                 <label class="text-input" for="apellido">Apellido</label>
-                                <input type="text" class="form-control input-register" name="apellidos" id="apellidos"
-                                    placeholder="Apellido" [(ngModel)]="cliente.apellidos">
-
+                                <input formControlName="apellido" type="text" class="form-control input-register" name="apellidos"  id="apellidos" placeholder="Apellido" >
+                                <div *ngIf=" angForm.controls['apellido'].invalid && (angForm.controls['apellido'].dirty || angForm.controls['apellido'].touched)">
+                                    <div *ngIf="angForm.controls['apellido'].errors.required">El apellido es requerido</div>
+                                    
+                                </div>
                             </div>
                             <div>
                                 <label class="text-input" for="nitCi">Nit</label>
-                                <input type="text" class="form-control input-register" name="nitCi" id="nitCi"
-                                    placeholder="NIT" [(ngModel)]="cliente.nitCi">
-
+                                <input formControlName="nit" type="text" class="form-control input-register" name="nitCi"  id="nitCi" placeholder="NIT" >
+                                <div *ngIf=" angForm.controls['nit'].invalid && (angForm.controls['nit'].dirty || angForm.controls['nit'].touched)">
+                                    <div *ngIf="angForm.controls['nit'].errors.required">El nit o Ci es necesario.</div>
+                              </div>
                             </div>
                             <div>
                                 <label class="text-input" for="correo">Correo electrónico</label>
-                                <input type="email" class="form-control input-register" name="correo" name="correo"
-                                    placeholder="Correo electrónico" [(ngModel)]="cliente.correo">
-
-                            </div>
-                            <div style="margin-top: 10px ;">
-                                <button type="button" id="btnRegister" (click)="RegisterClient()"
-                                    class="btn btn-primary" style="width:100%">Registrar</button>
-                            </div>
-                            <div style="margin-top: 10px ;">
-                                <button type="button" id="btnCloseModal" class="btn btn-danger"
-                                    style="width:100%">Cancelar</button>
+                                <input formControlName="correo" type="email" class="form-control input-register" name="correo" name="correo" placeholder="Correo electrónico">
+                                <div *ngIf=" angForm.controls['correo'].invalid && (angForm.controls['correo'].dirty || angForm.controls['correo'].touched)">
+                                    <div *ngIf="angForm.controls['correo'].errors.required">El correo es necesario</div>
+                                    <div *ngIf="angForm.controls['correo'].errors.email">EL correo es invalido</div>
+                                    
+                              </div>
                             </div>
 
+                            <div style="margin-top: 10px ;" >
+                                <button type="submit" id="btnRegister"   class="btn btn-primary" style="width:100%">Registrar</button>
+                            </div>
+                        
+                            <div style="margin-top: 10px ;" >
+                                <button type="button" id="btnCloseModal" class="btn btn-danger" style="width:100%">Cancelar</button>
+                            </div>
+                        </div>
                         </form>
                     </div>
                 </div>
@@ -214,7 +221,7 @@
 
                     </div>
                     <div id="number">
-                        {{listaProductos.length}}
+                        {{venta.detallesVentas.length}}
                     </div>
                 </div>
 
@@ -240,19 +247,19 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let item of listaProductos">
+                                            <tr *ngFor="let item of venta.detallesVentas">
                                                 <td>
                                                     <div>
-                                                        <h4> {{item.producto}}</h4>
+                                                        <h4> {{item.producto.name}}</h4>
                                                     </div>
 
                                                 </td>
                                                 <td>
-                                                    {{item.precio}}
+                                                    {{item.producto.price}}
                                                 </td>
                                                 <td>{{item.cantidad}}</td>
-                                                <td>{{item.cantidad * item.precio}}</td>
-
+                                                <td>{{item.subTotal}}</td>
+                                                
                                             </tr>
                                         </tbody>
                                     </table>
@@ -260,7 +267,7 @@
                             </tbody>
                             <tfoot style="margin: 50px;">
                                 <tr>
-                                    <p><b>Total :</b> <strong> {{totalVenta}}</strong></p>
+                                    <p><b>Total :</b> <strong> {{venta.total}}</strong></p>
                                 </tr>
                             </tfoot>
 
@@ -268,21 +275,11 @@
                     </div>
                 </div>
             </div>
-            <div style="padding: 10px">
-                <button type="button" (click)="deleteOneProductList(1)" id="btn-sale" style="width:100%">Vender</button>
+            <div style="padding: 10px" >
+                <button type="button" (click)="sales()"  id="btn-sale" style="width:100%">Vender</button>
             </div>
-            <form class="example-form">
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Assignee</mat-label>
-                    <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
-                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                            {{option.name}}
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
-            </form>
-
+            
+            
         </div>
-    </div>
+       
 </div>

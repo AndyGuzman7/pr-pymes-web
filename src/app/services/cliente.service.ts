@@ -21,6 +21,10 @@ export class ClienteService {
   public selectClientID(idCliente: number): Observable<Cliente>{
     return this.http.get<Cliente>(`${this.baseEndpoint}/${idCliente}`);
   }
+
+  public searchProductCriteria(criteria: string):  Observable<Cliente[]>{
+    return this.http.get<Cliente[]>(`${this.baseEndpoint}/filtrar/${criteria}`);
+  }
   //crear un cliente
   public createCliente(cliente: Cliente): Observable<Cliente>{
     return this.http.post<Cliente>(this.baseEndpoint, cliente, { headers: this.cabecera});

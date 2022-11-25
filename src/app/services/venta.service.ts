@@ -1,4 +1,4 @@
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient,HttpParams,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Venta } from '../models/venta';
@@ -32,4 +32,12 @@ export class VentaService {
     return this.http.delete<void>(`${this.baseEndpoint}/${idVenta}`);
   }
 
+  //Obtener total ventas por fechas
+  public selectTotal(fecha_inicio:string, fecha_fin:string): Observable<Venta[]>{
+    const params =new HttpParams()
+    .set('fecha_inicio',fecha_inicio)
+    .set('fecha_fin',fecha_fin);
+
+    return this.http.get<Venta[]>(`${this.baseEndpoint}/mostrar`, {params:params});
+  }
 }
