@@ -7,7 +7,7 @@ import { CommonService } from './common.service';
   providedIn: 'root'
 })
 export class ProductionService extends CommonService<Budget> {
-  protected override baseEndpoint =  '/api/produccion';
+  protected override baseEndpoint =  '/api/compras/producciones';
 
   constructor(http: HttpClient) {
     super(http);

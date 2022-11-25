@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BudgetService extends CommonService<Budget>{
-  protected override baseEndpoint =  '/api/presupuestos';
+  protected override baseEndpoint =  '/api/compras/presupuestos';
 
   constructor(http: HttpClient) {
     super(http);

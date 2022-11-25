@@ -10,7 +10,7 @@ import { CommonService } from './common.service';
 })
 
 export class SupplierService extends CommonService<Supplier> {
-  protected override baseEndpoint =  '/api/proveedores';
+  protected override baseEndpoint =  '/api/compras/proveedores';
 
   constructor(http: HttpClient) {
     super(http);
