@@ -8,6 +8,7 @@ import { EmpresaService } from 'src/app/services/empresa.service';
 import { RolService } from 'src/app/services/rol.service';
 import { Rol } from 'src/app/models/rol';
 import { Empresa } from 'src/app/models/empresa';
+import {LocalStorage, SessionStorage, SessionStorageService} from 'ngx-webstorage';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
     ]
   }
 
-  constructor(public formBuilder: FormBuilder, private service: UsuarioService, private empresaService: EmpresaService, private rolService: RolService, private _LoadScripts:LoadScriptsService, private router:Router ) { 
+  constructor(public formBuilder: FormBuilder, private sessionStorage: SessionStorageService, private service: UsuarioService, private empresaService: EmpresaService, private rolService: RolService, private _LoadScripts:LoadScriptsService, private router:Router ) { 
     _LoadScripts.Load(["accordion"]);
 
     this.loginForm = this.formBuilder.group({
@@ -56,12 +57,7 @@ export class LoginComponent implements OnInit {
     const pass = (document.getElementById('password') as HTMLInputElement).value;
    
       this.service.loginUser(email, pass).subscribe(data => {
-        this.user = data;
-        console.log(this.user);
-
-        if (!this.loginForm.valid) {
-          return;
-        }
+        this.user = data;        
 
         if (this.user != null) {          
           this.rolService.selectRol(this.user.rol_id).subscribe(rol => {
@@ -70,20 +66,27 @@ export class LoginComponent implements OnInit {
             if (this.rol.id != 1) {
               this.empresaService.selectBusiness(this.rol.business_id).subscribe(business => {
                 this.business = business;
-            
-                console.log(this.user);
-                console.log(this.rol);
-                console.log(this.business);
+                
+                this.sessionStorage.store('user', this.user);
+                this.sessionStorage.store('rol', this.rol);
+                this.sessionStorage.store('business', this.business);
+                // console.log(this.sessionStorage.retrieve('user'));
+                // console.log(this.sessionStorage.retrieve('rol'));
+                // console.log(this.sessionStorage.retrieve('business'));
               })
+            } else {
+                this.sessionStorage.store('user', this.user);
+                this.sessionStorage.store('rol', this.rol);                
+                // console.log(this.sessionStorage.retrieve('user'));
+                // console.log(this.sessionStorage.retrieve('rol'));                
             }
             
           })        
 
-          this.router.navigate(['HacerVenta']);
+          this.router.navigate(['/']);
 
-        } else {
-          alert('Nombre y/o contraseña incorrectos');
-        }    
+        } 
+
       })    
 
   }
