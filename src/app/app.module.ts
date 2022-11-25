@@ -74,7 +74,6 @@ import { RacksComponent } from './views/warehouses/racks/racks.component';
 import { FormRackComponent } from './views/warehouses/racks/form-rack.component';
 import { AsignarProductosComponent } from './views/warehouses/racks/asignar-productos/asignar-productos.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
