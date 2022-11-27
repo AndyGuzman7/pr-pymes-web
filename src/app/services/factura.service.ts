@@ -12,7 +12,7 @@ export class FacturaService {
   constructor(private http: HttpClient){}
 
   Url='http://localhost:8080/ventas';
-  private baseEndpoint = '/api/ventas';
+  private baseEndpoint = 'http://localhost:8090/api/ventas';
   private cabecera: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   getList(){
     return this.http.get<Venta[]>(this.baseEndpoint);

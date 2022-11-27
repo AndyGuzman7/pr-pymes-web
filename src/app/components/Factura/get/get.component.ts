@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Venta } from 'src/app/models/venta';
@@ -33,6 +33,7 @@ export class GetComponent implements OnInit {
     this.facturaService.getList().subscribe(data => {
       this.ventas = data;
       this.coleccion = this.ventas;
+      
     });
   }
   
