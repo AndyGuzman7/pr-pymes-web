@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Manufactura } from 'src/app/models/manufactura';
 import { Produccion } from 'src/app/models/produccion';
@@ -19,19 +20,13 @@ export class ManufacturingListComponent implements OnInit {
 
   produccions: Produccion[];
 
-  ELEMENT_DATA: Manufacturing[] = [
-    {date: '10-11-2022', quantity: 100 ,product:'Taza de arcilla'},
-    {date: '09-08-2022', quantity: 50 ,product:'manillas'},
-    {date: '07-08-2022', quantity: 2 ,product:'Cuadros'},
-    {date: '10-11-2022', quantity: 100 ,product:'Taza de arcilla'},
-    {date: '09-08-2022', quantity: 50 ,product:'manillas'},
-    {date: '07-08-2022', quantity: 2 ,product:'Cuadros'},
-    {date: '10-11-2022', quantity: 100 ,product:'Taza de arcilla'},
-    {date: '09-08-2022', quantity: 50 ,product:'manillas'},
-    {date: '07-08-2022', quantity: 2 ,product:'Cuadros'},
-  ];
-  displayedColumns: string[] = ['date','quantity', 'product','acciones'];
-  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+  displayedColumns: string[] = ['ref_produccion','fecha_produccion','productoNombre','cantidad','acciones'];
+  
+  dataSource: MatTableDataSource<Produccion>;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  pageSizeOptions: number[] = [6, 20];
+
+  tabIndex = 0;
   
   constructor(private service: ProduccionService) {
     this.produccions = [];
@@ -57,9 +52,16 @@ export class ManufacturingListComponent implements OnInit {
             manufacturas:orden.manufacturas
           }
         })
-        
+
+        this.dataSource = new MatTableDataSource<Produccion>(productionManufacture);
       })
     });
+  }
+
+  iniciarPaginador(): void {
+    this.dataSource = new MatTableDataSource<Produccion>(this.produccions);
+    this.dataSource.paginator = this.paginator;
+    this.paginator._intl.itemsPerPageLabel = 'Registros por página';
   }
 
   applyFilter(event: Event) {

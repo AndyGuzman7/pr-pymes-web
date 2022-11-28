@@ -20,7 +20,7 @@ export class SupplierComponent implements OnInit {
 
   dataSource: MatTableDataSource<Supplier>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  pageSizeOptions: number[] = [5, 20];
+  pageSizeOptions: number[] = [6, 20];
 
   tabIndex = 0;
 
@@ -31,7 +31,7 @@ export class SupplierComponent implements OnInit {
     private service: SupplierService) { }
 
   ngOnInit() {
-    this.service.listar().subscribe(supplider => { 
+    this.service.listar().subscribe(supplider => {       
       this.supplider = supplider; 
       this.iniciarPaginador(); 
     });

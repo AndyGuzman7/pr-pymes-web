@@ -49,7 +49,7 @@
                     <div class="text-inline">
                         <p style="margin-right: 10px" class="tx">FECHA DE INICIO:</p>
                         <div class="input-wrapper">
-                            <input type="date" class="form-control input-register" id="fechaInicio" [(ngModel)]="model.fechaInicio" [ngModelOptions]="{standalone: true}"/>
+                            <input type="date" class="form-control input-register" (ngModelChange)="model.fechaInicio = $event" id="fechaInicio" [(ngModel)]="model.fechaInicio" [ngModelOptions]="{standalone: true}"/>
                         </div>
                     </div>
                     

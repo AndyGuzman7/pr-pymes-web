@@ -66,7 +66,7 @@
                   <ng-container matColumnDef="acciones">
                     <th mat-header-cell *matHeaderCellDef></th>
                     <td mat-cell *matCellDef="let element; let i = index" style="text-align: right">
-                      <a class="pointer" matTooltip="Ver" [routerLink]="['/suppliers/', element.id]">
+                      <a class="pointer" matTooltip="Ver" [routerLink]="['/suppliers/', element.idProveedor]">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="44" 
                           height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00AEE1" fill="none" 
                           stroke-linecap="round" stroke-linejoin="round">
@@ -75,7 +75,7 @@
                           <path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7" />
                         </svg>
                       </a>
-                      <a class="pointer" matTooltip="Editar" [routerLink]="['/supplier/', element.id]">
+                      <a class="pointer" matTooltip="Editar" [routerLink]="['/supplier/', element.idProveedor]">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="32"
                           height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00AEE1" fill="none"
                           stroke-linecap="round" stroke-linejoin="round">

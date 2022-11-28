@@ -51,12 +51,16 @@ implements OnInit {
           this.serviceSupplier.ver(idSupplier).subscribe(x => {
             this.model.proveedor = x;
             this.model.idProveedor = x.id;
+            this.model.id = idBudget;
             this.titulo = 'Editar ' + this.nombreModel;
           })
+          console.log(this.model);
+          
         })
         
       } else if (idSupplier) {
         this.serviceSupplier.ver(idSupplier).subscribe(x => {
+          
           this.model.proveedor = x;
           this.model.idProveedor = x.id;
         })

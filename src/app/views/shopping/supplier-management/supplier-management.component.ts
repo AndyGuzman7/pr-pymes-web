@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Budget } from 'src/app/models/budget';
+import { Producto } from 'src/app/models/producto';
 import { Supplier } from 'src/app/models/supplier';
 import { SupplierService } from 'src/app/services/supplier.service';
 
@@ -11,20 +12,9 @@ import { SupplierService } from 'src/app/services/supplier.service';
 })
 export class SupplierManagementComponent implements OnInit {
 
-
-  products = [
-    {
-      title: 'Product 1',
-      code: '0123',
-      unit_price: '15',
-      iva: '0',
-      warehouse: 'Almacen 1',
-      category: 'Category'
-    }
-  ];
-
   supplider: Supplier;
   budgets: Budget[];
+  products: Producto[];
 
   model: Supplier;
   route: ActivatedRoute;
@@ -36,6 +26,7 @@ export class SupplierManagementComponent implements OnInit {
       this.model = new Supplier();
       this.route = route;
       this.service = service;
+      this.products = [];
     }
 
   ngOnInit(){
@@ -45,9 +36,19 @@ export class SupplierManagementComponent implements OnInit {
         this.service.ver(id).subscribe(m => {
           this.model = m;
         })
+
         this.service.filtrarPresupuestoProveedor(id).subscribe(c => {
           this.budgets = c;
         })
+
+        this.service.getProducts().subscribe(product => {
+          let productionManufacture = product.map(p => {
+            if(p.supplier == id){
+              this.products.push(p)
+            }
+          })
+        })
+
       }
     })
     

@@ -9,6 +9,7 @@ table {
     font-size: 20px;
     width: 100%;
 }
+
 p{
     font-size: 25px;
     color: #170F49;
@@ -18,6 +19,7 @@ p{
 th,td{
     font-size: 12px;
 }
+
 .btn{
     background-color: #00AEE1;
 }
