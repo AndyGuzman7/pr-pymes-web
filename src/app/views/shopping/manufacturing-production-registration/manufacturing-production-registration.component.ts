@@ -1,35 +1,49 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable, startWith } from 'rxjs';
-import { Produccion } from 'src/app/models/produccion';
+import { Manufactura, ManufacturaConst } from 'src/app/models/manufactura';
+import { Produccion, ProduccionConst } from 'src/app/models/produccion';
 import { Producto } from 'src/app/models/producto';
+import { ProduccionService } from 'src/app/services/produccion.service';
 import { ProductoService } from 'src/app/services/producto.service';
+import Swal from 'sweetalert2';
+import { CommonFormComponent } from '../../common-form.component';
 
 @Component({
   selector: 'app-manufacturing-production-registration',
   templateUrl: './manufacturing-production-registration.component.html',
   styleUrls: ['./manufacturing-production-registration.component.css']
 })
-export class ManufacturingProductionRegistrationComponent implements OnInit {
+export class ManufacturingProductionRegistrationComponent
+extends CommonFormComponent<ProduccionConst, ProduccionService> implements OnInit {
 
   selectedProduct: string;
-  productList:Produccion[] = [];
-  produccionAux: Produccion;
+  manufacturas: ManufacturaConst[] = [];
+  manufactura: ManufacturaConst;
+  produccion: ProduccionConst;
 
   //ComboBox
   products: Producto[];
-  service: ProductoService;
+  serviceProducto: ProductoService;
 
-  myControl = new FormControl<string | Producto>('');
+  myControl = new FormControl<Producto | Producto>(new Producto());
   options: Producto[] = [];
   filteredOptions: Observable<Producto[]>;
   //Fin combobox
   
-  constructor(service: ProductoService) { 
-    this.service=service
-  }
+  constructor(service: ProduccionService,router: Router,
+    route: ActivatedRoute, serviceProducto: ProductoService) { 
+    super(service, router, route);
+    this.titulo = 'Registrar Proveedor';
+    this.redirect = '/suppliers';
+    this.model = this.produccion;
+    this.manufactura = new ManufacturaConst();
+    this.produccion = new ProduccionConst();
+    }
 
-  ngOnInit() {
+  override ngOnInit() {
     //Combobox
     this.service.getProducts().subscribe(p => {
       this.options = p;
@@ -41,11 +55,21 @@ export class ManufacturingProductionRegistrationComponent implements OnInit {
         }),
       );
     })
-    //ComboBox
+   //ComboBox
+
   }
 
-  addList(produccionAux) {
-    this.productList.push(produccionAux)
+  public crearTransaccion(): void {
+    this.crear();
+  }
+
+  guardar(){
+    let p: Producto;
+    p = this.myControl.value;
+    this.manufactura.id_producto = p.productID;
+    this.manufactura.nombreProducto = p.name;
+    this.manufacturas.push(this.manufactura);
+    this.manufactura = new ManufacturaConst();
   }
 
   //Metodos Combobox
