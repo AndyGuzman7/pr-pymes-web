@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { map, Observable, startWith } from 'rxjs';
+import { Produccion } from 'src/app/models/produccion';
+import { Producto } from 'src/app/models/producto';
+import { ProductoService } from 'src/app/services/producto.service';
 
 @Component({
   selector: 'app-manufacturing-production-registration',
@@ -7,18 +12,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManufacturingProductionRegistrationComponent implements OnInit {
 
-  selectedProduct: string
-  productList = [
-    {id: 1, name: 'Product 1'},
-    {id: 2, name: 'Product 2'},
-    {id: 3, name: 'Product 3'},
-    {id: 4, name: 'Product 4'},
-    {id: 5, name: 'Product 5'}
-  ];
-  
-  constructor() { }
+  selectedProduct: string;
+  productList:Produccion[] = [];
+  produccionAux: Produccion;
 
-  ngOnInit(): void {
+  //ComboBox
+  products: Producto[];
+  service: ProductoService;
+
+  myControl = new FormControl<string | Producto>('');
+  options: Producto[] = [];
+  filteredOptions: Observable<Producto[]>;
+  //Fin combobox
+  
+  constructor(service: ProductoService) { 
+    this.service=service
   }
 
+  ngOnInit() {
+    //Combobox
+    this.service.getProducts().subscribe(p => {
+      this.options = p;
+      this.filteredOptions = this.myControl.valueChanges.pipe(
+        startWith(''),
+        map(value => {
+          const name = typeof value === 'string' ? value : value?.name;
+          return name ? this._filter(name as string) : this.options.slice();
+        }),
+      );
+    })
+    //ComboBox
+  }
+
+  addList(produccionAux) {
+    this.productList.push(produccionAux)
+  }
+
+  //Metodos Combobox
+  displayFn(user: Producto): string {
+    if (!user) return '';
+    return user.name;
+  }
+
+  private _filter(name: string): Producto[] {
+    const filterValue = name.toLowerCase();
+
+    return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
+  }
 }

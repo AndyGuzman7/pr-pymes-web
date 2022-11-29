@@ -25,7 +25,6 @@ extends CommonFormComponent<Supplier, SupplierService> implements OnInit {
 
   override ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      
       const id: number =+ params.get('id');
       if(id){
         this.service.ver(id).subscribe(m => {

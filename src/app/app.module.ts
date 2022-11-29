@@ -54,7 +54,6 @@ import { SideMenuShoppingComponent } from './components/side-menu-shopping/side-
 import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/new-supplier-order.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { ComboboxEditableComponent } from './components/combobox-editable/combobox-editable.component';
 import { MatAutocomplete } from '@angular/material/autocomplete';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 @NgModule({
@@ -87,8 +86,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     OrderToSupplierComponent,
     NewSupplierOrderComponent,
     BudgetSheetComponent,
-    SideMenuShoppingComponent,
-    ComboboxEditableComponent
+    SideMenuShoppingComponent
   ],
   imports: [
     BrowserModule,
