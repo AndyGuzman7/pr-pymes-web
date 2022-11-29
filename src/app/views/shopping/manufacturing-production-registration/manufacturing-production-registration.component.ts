@@ -61,7 +61,6 @@ extends CommonFormComponent<ProduccionConst, ProduccionService> implements OnIni
 
   public crearTransaccion(): void {
     this.crear();
-    
   }
 
   guardar(){
