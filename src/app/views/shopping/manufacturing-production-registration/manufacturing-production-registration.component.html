@@ -35,40 +35,56 @@
                     <div class="cont">
                         <div class="text-inline border">
                             <label style="margin-left: 10px" class="text-input">Añadir Producto</label>
-                            <div  style="display: flex; " >
-                                <p class="p-m">Cantidad</p>  
-                            </div>
                         </div>                    
                     </div>
                 </div>
-    
+
+                
                 <div>
                     <div class="cont">
                         <div class="text-inline border">
                             <form class="example-form">
                                 <mat-form-field class="example-full-width" appearance="fill">
-                                  <mat-label>Assignee</mat-label>
-                                  <input class="combobox" type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
-                                  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                                      {{option.name}}
-                                    </mat-option>
-                                  </mat-autocomplete>
+                                    <mat-label>Assignee</mat-label>
+                                    <input class="combobox" type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" >
+                                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                                      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                        {{option.name}}
+                                      </mat-option>
+                                    </mat-autocomplete>
                                 </mat-form-field>
-                            </form>
-                            <div style="display: flex;" >
-                                <input type="text" class="form-control" id="cantidad" placeholder="Cantidad">
-                                <button mat-raised-button style="background-color: #4c8eb7; margin-left: 5px;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <line x1="12" y1="5" x2="12" y2="19" />
-                                        <line x1="5" y1="12" x2="19" y2="12" />
-                                    </svg>
+                            </form>  
+                                <div style="display: flex;" >
+                                    <input type="text" class="form-control" id="cantidad" placeholder="Cantidad" name="cantidad" [(ngModel)]="manufactura.cantidad" [ngModelOptions]="{standalone: true}">
+                                    <button mat-raised-button (click)="guardar()" style="background-color: #4c8eb7; margin-left: 5px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg>
                                 </button>                                
-                            </div>                      
+                            </div>  
+                                          
                         </div>                    
                     </div>
                 </div>
+
+                <div style="margin-top: 10px ;">
+                    <table *ngIf="manufacturas.length != 0" class="table align-middle mb-0 bg-white table-hover">
+                      <thead class="bg-light table-light">
+                          <tr class="text-th">
+                              <th>Producto</th>
+                              <th class="td-tx">Cantidad</th>
+                          </tr>
+                      </thead>
+                      <tbody *ngFor="let manufactura of manufacturas">   
+                          <tr >
+                              <td>{{manufactura.nombreProducto}}</td>
+                              <td>{{manufactura.cantidad}}</td>
+                          </tr>
+                      </tbody>
+              </table>
+              </div>
             </div>
            
             <div class="row">
