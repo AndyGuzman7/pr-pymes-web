@@ -1,5 +1,7 @@
 export class Producto {
-    productID:number
-    name:string
-    supplier:number
+    id:number;
+    nombre:string;
+    productID:number;
+    name:string;
+    supplier:number;
 }

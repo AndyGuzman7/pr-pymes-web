@@ -55,7 +55,8 @@ import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/n
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ComboboxEditableComponent } from './components/combobox-editable/combobox-editable.component';
-
+import { MatAutocomplete } from '@angular/material/autocomplete';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 @NgModule({
   declarations: [
     AppComponent,
@@ -113,7 +114,9 @@ import { ComboboxEditableComponent } from './components/combobox-editable/combob
     NgSelectModule,
     MatDialogModule,
     HttpClientModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatAutocompleteModule
   ],
   providers: [
     LoadScriptsService
