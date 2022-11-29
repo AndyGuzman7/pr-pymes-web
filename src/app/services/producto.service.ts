@@ -20,4 +20,8 @@ export class ProductoService  extends CommonService<Producto>{
     return this.http.get<Producto[]>(`${this.baseEndpoint}/manufactured`);
   }
 
+  public getProductsForPedido(): Observable<Producto[]>{
+    return this.http.get<Producto[]>(`${this.baseEndpoint}/pedidoProducto`);
+  }
+
 }

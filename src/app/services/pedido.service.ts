@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pedido } from '../models/pedido';
+import { Producto } from '../models/producto';
 import { CommonService } from './common.service';
 
 @Injectable({
@@ -10,6 +11,7 @@ import { CommonService } from './common.service';
 
 export class PedidoService extends CommonService<Pedido> {
   protected override baseEndpoint =  '/api/compras/pedidos';
+  private baseEndpointOther =  '/api/product/';
 
   constructor(http: HttpClient) {
     super(http);
@@ -17,6 +19,14 @@ export class PedidoService extends CommonService<Pedido> {
 
   public listadoPedidos(): Observable<Pedido[]>{
     return this.http.get<Pedido[]>(`${this.baseEndpoint}/listaPedidos`);
+  }
+
+  public getPedidoDetallePedido(): Observable<Object[]>{
+    return this.http.get<Object[]>(`${this.baseEndpoint}/detallePedido`);
+  }
+
+  public getProducts(): Observable<Producto[]>{
+    return this.http.get<Producto[]>(`${this.baseEndpointOther}/pedidoProducto`);
   }
 
 }

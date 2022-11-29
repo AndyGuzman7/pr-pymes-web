@@ -13,17 +13,20 @@
         <div class="row">
             <div class="col-md-6 cont-b">
                 <div class="cont">
+                    <!--
                     <div class="text-inline">
                         <p style="margin-right: 10px" class="tx">AUTOR/SOLICITANTE:</p>
                         <p>Ejemplo</p>
                     </div>
+                    
                     <div class="text-inline">
                         <p style="margin-right: 10px" class="tx">Descuentos:</p>
                         <p>Ejemplo</p>
                     </div>
+                    -->
                     <div class="text-inline">
                         <p style="margin-right: 10px" class="tx">CONDICIONES DE PAGO:</p>
-                        <p>Ejemplo</p>
+                        <input type="number" id="condicionesPago" name="condicionesPago" min="1" max="180">
                     </div>
                     <div class="text-inline">
                         <p style="margin-right: 10px" class="tx">TIPO DE PAGO:</p>
@@ -35,8 +38,12 @@
                     </div>
                     <div class="text-inline">
                         <p style="margin-right: 10px" class="tx">FECHA DE ENTREGA:</p>
-                        <p>Ejemplo</p>
+                        <div class="input-wrapper">
+                            <input type="date" class="form-control input-register" id="direccion"
+                                placeholder="Dirección">
+                        </div>
                     </div>
+                    <!--
                     <div class="text-inline">
                         <p style="margin-right: 10px" class="tx">TIEMPO DE ENTREGA EN DIAS:</p>
                         <p>Ejemplo</p>
@@ -45,6 +52,7 @@
                         <p style="margin-right: 10px" class="tx">PRODUCTOS:</p>
                         <p>Ejemplo</p>
                     </div>
+                    -->
                 </div>
             </div>
             <div class="col-md-6 cont-b">
@@ -65,10 +73,9 @@
                     <div class="text-inline border">
                         <p style="margin-left: 10px" class="tx">Añadir Producto</p>
                         <div  style="display: flex; " >
-                            <p class="p-m">Iva</p>
                             <p class="p-m">Cantidad</p>
                             <p class="p-m">Descuento</p>
-                            <p class="p-m">Base Imponible</p>   
+                            <p class="p-m">Precio Unitario</p>   
                         </div>
                     </div>                    
                 </div>
@@ -77,12 +84,22 @@
             <div>
                 <div class="cont">
                     <div class="text-inline border">
-                        
+                        <form class="example-form">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Assignee</mat-label>
+                                <input class="combobox" type="text" matInput [formControl]="myControl"
+                                    [matAutocomplete]="auto">
+                                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                        {{option.name}}
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </form>
                         <div style="display: flex;" >
-                            <input type="text" class="form-control" id="iva" placeholder="Iva">
                             <input type="text" class="form-control" id="cantidad" placeholder="Cantidad">
                             <input type="text" class="form-control" id="descuento" placeholder="Descuento">
-                            <input type="text" class="form-control" id="baseImponible" placeholder="Base">
+                            <input type="text" class="form-control" id="precioUnitario" placeholder="Precio">
                             <button mat-raised-button style="background-color: #4c8eb7; margin-left: 5px;">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -100,10 +117,9 @@
                     <div class="text-inline border">
                         <p style="margin-left: 10px" class="tx">Producto</p>
                         <div  style="display: flex; " >
-                            <p class="p-c">Iva</p>
                             <p class="p-c">Cantidad</p>
                             <p class="p-c">Descuento</p>
-                            <p class="p-c">Base Imponible</p>   
+                            <p class="p-c">Precio Unitario</p>   
                         </div>
                     </div>
                 </div>
