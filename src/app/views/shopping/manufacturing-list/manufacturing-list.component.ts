@@ -52,6 +52,8 @@ export class ManufacturingListComponent implements OnInit {
             manufacturas:orden.manufacturas
           }
         })
+console.log(productionManufacture);
+
 
         this.dataSource = new MatTableDataSource<Produccion>(productionManufacture);
       })

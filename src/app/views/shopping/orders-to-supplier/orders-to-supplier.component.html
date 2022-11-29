@@ -63,7 +63,7 @@
               </ng-container>
               <!-- Proveedor Column -->
               <ng-container matColumnDef="proveedor">
-                <th mat-header-cell *matHeaderCellDef> proveedor </th>
+                <th mat-header-cell *matHeaderCellDef> Proveedor </th>
                 <td mat-cell *matCellDef="let element"> {{element[1]}} </td>
               </ng-container>
               <!-- solicitante Column -->
@@ -80,18 +80,28 @@
               </ng-container>   
               <!-- fechaLlegada Column -->
               <ng-container matColumnDef="fechaLlegada">
-                <th mat-header-cell *matHeaderCellDef>fecha de Entrega</th>
+                <th mat-header-cell *matHeaderCellDef>Fecha de Entrega</th>
                 <td mat-cell *matCellDef="let element"> {{element[3]}} </td>
               </ng-container>   
               <!-- baseImponible Column -->
               <ng-container matColumnDef="baseImponible">
-                <th mat-header-cell *matHeaderCellDef>base Imponible</th>
+                <th mat-header-cell *matHeaderCellDef>Base Imponible</th>
                 <td mat-cell *matCellDef="let element"> {{element[4]}} </td>
               </ng-container>            
               <!-- estado Column -->
               <ng-container matColumnDef="estado">
                 <th mat-header-cell *matHeaderCellDef>estado</th>
-                <td mat-cell *matCellDef="let element"> {{element[5]}} </td>
+                
+                <td *matCellDef="let element">
+                  <p *ngIf="element[5] == 0" mat-cell >Borrado</p>
+                  <p *ngIf="element[5] == 1" mat-cell >Borrador</p>
+                  <p *ngIf="element[5] == 2" mat-cell >Validado</p>
+                  <p *ngIf="element[5] == 3" mat-cell >Aprobado</p>
+                  <p *ngIf="element[5] == 4" mat-cell >Pedido</p>
+                  <p *ngIf="element[5] == 5" mat-cell >Recibido y pagado</p>
+                  <p *ngIf="element[5] == 2" mat-cell >Anulado</p>
+                </td>
+                <!--0 = Borrado, 1=Barrador, 2: Validado,3=Aprobado,4=Pedido,5=Recibido,6= Anulado,7=Pagado-->
               </ng-container>
               <!-- estado Column -->
               <!--

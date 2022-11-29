@@ -54,6 +54,7 @@ import { SideMenuShoppingComponent } from './components/side-menu-shopping/side-
 import { NewSupplierOrderComponent } from './views/shopping/new-supplier-order/new-supplier-order.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ComboboxEditableComponent } from './components/combobox-editable/combobox-editable.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     OrderToSupplierComponent,
     NewSupplierOrderComponent,
     BudgetSheetComponent,
-    SideMenuShoppingComponent
+    SideMenuShoppingComponent,
+    ComboboxEditableComponent
   ],
   imports: [
     BrowserModule,
