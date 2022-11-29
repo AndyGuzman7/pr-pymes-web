@@ -45,14 +45,16 @@ implements OnInit {
       const idBudget =+ params.get('idBudget');
       if (idBudget) {
         this.service.ver(idBudget).subscribe(x => {
-          
+          this.model.id = idBudget;
           this.model = x;
-          console.log(this.model.proveedor.idProveedor)
           this.serviceSupplier.ver(this.model.proveedor.idProveedor).subscribe(s => {
             this.model.refProveedor = s.nombre;
+            console.log(this.model);
+      
           })
         })
       }
+      
     })
   }
 

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Pedido } from 'src/app/models/pedido';
@@ -27,7 +28,12 @@ const ELEMENT_DATA: Orders[] = [
 export class OrdersToSupplierComponent implements OnInit {
   dataSource: MatTableDataSource<Pedido>;
 
-  displayedColumns: string[] = ['referencia','proveedor','fechaPedido','fechaLlegada', 'baseImponible','estado','acciones'];
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  pageSizeOptions: number[] = [6, 20];
+
+  tabIndex = 0;
+
+  displayedColumns: string[] = ['referencia','proveedor','fechaLlegada', 'baseImponible','estado'];
   
   pedido: Pedido[];
 
@@ -38,15 +44,13 @@ export class OrdersToSupplierComponent implements OnInit {
     this.service.listadoPedidos().forEach(pedidos => {
       this.pedido = pedidos
       this.iniciarPaginador(); 
-      console.log(this.pedido);
     });
-    console.log("error");
   }
 
   iniciarPaginador(): void {
     this.dataSource = new MatTableDataSource<Pedido>(this.pedido);
-   // this.dataSource.paginator = this.paginator;
-    //this.paginator._intl.itemsPerPageLabel = 'Registros por página';
+  this.dataSource.paginator = this.paginator;
+   this.paginator._intl.itemsPerPageLabel = 'Registros por página';
   }
 
   applyFilter(event: Event) {

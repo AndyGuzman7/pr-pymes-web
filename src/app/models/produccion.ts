@@ -1,5 +1,5 @@
 import { Generic } from "./generic";
-import { Manufactura } from "./manufactura";
+import { Manufactura, ManufacturaConst } from "./manufactura";
 
 export class Produccion implements Generic {
     id:number;
@@ -30,10 +30,11 @@ export class Produccion implements Generic {
 
 export class ProduccionConst implements Generic {
     id:number;
+    idProduccion:number;
     nombre:string;
     estado:number;
-    fecha_produccion:Date;
-    ref_produccion:string;
+    fechaProduccion:Date;
+    refProduccion:string;
     update_date:Date;
-   
+    manufactura: ManufacturaConst[] = [];
 }

@@ -41,7 +41,7 @@ const routes: Routes = [
 
   //Pedido de compra
   {path: 'pedidos', component: OrdersToSupplierComponent},
-  {path: 'pedido', component: OrderToSupplierComponent}
+  {path: 'pedido/:idBudget', component: OrderToSupplierComponent}
 ];
 
 @NgModule({

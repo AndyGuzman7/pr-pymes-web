@@ -5,6 +5,7 @@ import { Supplier } from "./supplier";
 export class Budget implements Generic {
     id:number;
     idProveedor:number;
+    idPresupuesto:number;
     nombre:string;
     proveedor: Supplier;
     refPresupuesto:string;

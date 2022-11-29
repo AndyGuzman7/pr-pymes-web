@@ -18,7 +18,7 @@ export class Manufactura {
 export class ManufacturaConst {
     id:number;
     cantidad:number;
-    id_producto:number;
+    producto:number;
     id_produccion:number;
     nombreProducto:string;
     

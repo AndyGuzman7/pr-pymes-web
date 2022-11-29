@@ -20,7 +20,7 @@ export class ManufacturingListComponent implements OnInit {
 
   produccions: Produccion[];
 
-  displayedColumns: string[] = ['ref_produccion','fecha_produccion','productoNombre','cantidad','acciones'];
+  displayedColumns: string[] = ['ref_produccion','fecha_produccion','productoNombre','cantidad'];
   
   dataSource: MatTableDataSource<Produccion>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;

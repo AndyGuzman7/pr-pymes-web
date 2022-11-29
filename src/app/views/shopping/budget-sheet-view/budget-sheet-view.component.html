@@ -75,41 +75,10 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <table class="table align-middle mb-0 bg-white table-hover">
-                <thead class="bg-light table-light">
-                    <tr class="text-th">
-                        <th>Descripción</th>
-                        <th class="td-tx">Precio Unitario</th>
-                        <th class="td-tx">Cantidad</th>
-                        <th class="td-tx">Descuento</th>
-                        <th class="td-tx">Base Imponible</th>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let card of products">
-                    <tr>
-                        <td>
-                            <p class="fw-normal mb-1">{{ card.description }}</p>
-                        </td>
-                        <td class="td-tx">
-                            <p>{{ card.unit_price }}</p>
-                        </td>
-                        <td class="td-tx">
-                            <p>{{ card.unit_price }}</p>
-                        </td>
-                        <td class="td-tx">
-                            <p>{{ card.quantity }}</p>
-                        </td>
-                        <td class="td-tx">
-                            <p>{{ card.taxable_income }}</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        
         <div class="row">
             <div class="content-btn">
-                <button class="btn">Cerrar</button>
+                <a class="btn" [attr.href]="'/pedido/'+model.idPresupuesto" >Crear pedido</a>
             </div>
         </div>
     </div>

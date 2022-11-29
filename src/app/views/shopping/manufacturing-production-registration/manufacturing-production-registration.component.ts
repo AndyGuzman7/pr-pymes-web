@@ -5,8 +5,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable, startWith } from 'rxjs';
 import { Manufactura, ManufacturaConst } from 'src/app/models/manufactura';
 import { Produccion, ProduccionConst } from 'src/app/models/produccion';
+import { Production } from 'src/app/models/production';
 import { Producto } from 'src/app/models/producto';
 import { ProduccionService } from 'src/app/services/produccion.service';
+import { ProductionService } from 'src/app/services/production.service';
 import { ProductoService } from 'src/app/services/producto.service';
 import Swal from 'sweetalert2';
 import { CommonFormComponent } from '../../common-form.component';
@@ -17,13 +19,14 @@ import { CommonFormComponent } from '../../common-form.component';
   styleUrls: ['./manufacturing-production-registration.component.css']
 })
 export class ManufacturingProductionRegistrationComponent
-extends CommonFormComponent<ProduccionConst, ProduccionService> implements OnInit {
+extends CommonFormComponent<ProduccionConst, ProductionService> 
+implements OnInit {
 
   selectedProduct: string;
   manufacturas: ManufacturaConst[] = [];
   manufactura: ManufacturaConst;
   produccion: ProduccionConst;
-
+  product: Producto;
   //ComboBox
   products: Producto[];
   serviceProducto: ProductoService;
@@ -33,19 +36,19 @@ extends CommonFormComponent<ProduccionConst, ProduccionService> implements OnIni
   filteredOptions: Observable<Producto[]>;
   //Fin combobox
   
-  constructor(service: ProduccionService,router: Router,
+  constructor(service: ProductionService,router: Router,
     route: ActivatedRoute, serviceProducto: ProductoService) { 
     super(service, router, route);
     this.titulo = 'Registrar Proveedor';
-    this.redirect = '/suppliers';
-    this.model = this.produccion;
+    this.redirect = '/manufacturing';
+    this.model = new ProduccionConst();
     this.manufactura = new ManufacturaConst();
-    this.produccion = new ProduccionConst();
+    this.serviceProducto = serviceProducto;
     }
 
   override ngOnInit() {
     //Combobox
-    this.service.getProducts().subscribe(p => {
+    this.serviceProducto.getProducts().subscribe(p => {
       this.options = p;
       this.filteredOptions = this.myControl.valueChanges.pipe(
         startWith(''),
@@ -60,13 +63,29 @@ extends CommonFormComponent<ProduccionConst, ProduccionService> implements OnIni
   }
 
   public crearTransaccion(): void {
-    this.crear();
+    this.model.manufactura = this.manufacturas;
+    this.service.crear(this.model).subscribe(m => {
+      this.service.addManufacturas(this.manufacturas, m.idProduccion).subscribe(x => {
+        console.log(m);
+        console.log(x);
+        Swal.fire('Nuevo:', ` creado con éxito`, 'success');
+        this.router.navigate([this.redirect]);
+      })
+      
+    }, err => {
+      if(err.status === 400){
+        this.error = err.error;
+        console.log(this.error);
+      }
+    });
+   
   }
 
   guardar(){
     let p: Producto;
     p = this.myControl.value;
-    this.manufactura.id_producto = p.productID;
+    
+    this.manufactura.producto = p.productID;
     this.manufactura.nombreProducto = p.name;
     this.manufacturas.push(this.manufactura);
     this.manufactura = new ManufacturaConst();

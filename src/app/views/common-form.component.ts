@@ -34,7 +34,7 @@ export abstract class CommonFormComponent<E extends Generic, S extends CommonSer
     this.service.crear(this.model).subscribe(m => {
       console.log(this.model);
       console.log(m);
-      Swal.fire('Nuevo:', `${this.nombreModel} creado con éxito`, 'success');
+      Swal.fire('Nuevo:', ` creado con éxito`, 'success');
       this.router.navigate([this.redirect]);
     }, err => {
       if(err.status === 400){
@@ -47,7 +47,7 @@ export abstract class CommonFormComponent<E extends Generic, S extends CommonSer
   public editar(): void {
     this.service.editar(this.model).subscribe(m => {
       console.log(m);
-      Swal.fire('Modificado:', `${this.nombreModel} ${m.nombre} actualizado con éxito`, 'success');
+      Swal.fire('Modificado:', `actualizado con éxito`, 'success');
       this.router.navigate([this.redirect]);
     }, err => {
       if(err.status === 400){

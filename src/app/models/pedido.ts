@@ -4,16 +4,19 @@ import { Generic } from "./generic";
 
 export class Pedido implements Generic {
     id:number;
+    idPedido:number;
     nombre:string;
-    fecha_orden:Date;
-    condiciones_pago:number;
-    tipo_pago:number;
-    fecha_entrega:Date;
+    fechaOrden:Date;
+    condicionesPago:number;
+    tipoPago:number;
+    fechaEntrega:Date;
     nota:string;
     divisa:number;
     estado:number;
-    update_date:Date;
-    metodo_pedido:number;
+    updateDate:Date;
+    metodoPedido:number;
     presupuesto: Budget;
-    detalles_pedidos: DetallePedido[] = [];
+    idpresupuesto: number;
+    proveedor_id: number;
+    detalles_pedidos: DetallePedido[] = []; 
 }

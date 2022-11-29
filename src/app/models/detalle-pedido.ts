@@ -8,6 +8,6 @@ export class DetallePedido implements Generic {
     descuento:number;
     precio_unitario:number;
     pedido:Pedido;
-    id_producto:number;
+    idProducto:number;
 
 }

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Produccion } from '../models/produccion';
+import { Produccion, ProduccionConst } from '../models/produccion';
 import { CommonService } from './common.service';
 import { Observable } from 'rxjs';
 import { Producto } from '../models/producto';
@@ -10,7 +10,7 @@ import { ManufacturaConst } from '../models/manufactura';
   providedIn: 'root'
 })
 
-export class ProduccionService extends CommonService<Produccion> {
+export class ProduccionService extends CommonService<ProduccionConst> {
   protected override baseEndpoint =  '/api/compras/producciones';
   private baseEndpointOther =  '/api/product/';
   ///producciones/{id}/agregar-manufacturas
@@ -33,3 +33,4 @@ export class ProduccionService extends CommonService<Produccion> {
   }
 
 }
+
