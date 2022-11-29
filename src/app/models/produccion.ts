@@ -27,3 +27,13 @@ export class Produccion implements Generic {
             this.manufacturas = manufacturas
         }
 }
+
+export class ProduccionConst implements Generic {
+    id:number;
+    nombre:string;
+    estado:number;
+    fecha_produccion:Date;
+    ref_produccion:string;
+    update_date:Date;
+   
+}

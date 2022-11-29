@@ -1,12 +1,14 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable, startWith } from 'rxjs';
 import { Manufactura, ManufacturaConst } from 'src/app/models/manufactura';
-import { Produccion } from 'src/app/models/produccion';
+import { Produccion, ProduccionConst } from 'src/app/models/produccion';
 import { Producto } from 'src/app/models/producto';
 import { ProduccionService } from 'src/app/services/produccion.service';
 import { ProductoService } from 'src/app/services/producto.service';
+import Swal from 'sweetalert2';
 import { CommonFormComponent } from '../../common-form.component';
 
 @Component({
@@ -15,11 +17,12 @@ import { CommonFormComponent } from '../../common-form.component';
   styleUrls: ['./manufacturing-production-registration.component.css']
 })
 export class ManufacturingProductionRegistrationComponent
-extends CommonFormComponent<Produccion, ProduccionService> implements OnInit {
+extends CommonFormComponent<ProduccionConst, ProduccionService> implements OnInit {
 
   selectedProduct: string;
   manufacturas: ManufacturaConst[] = [];
   manufactura: ManufacturaConst;
+  produccion: ProduccionConst;
 
   //ComboBox
   products: Producto[];
@@ -35,7 +38,9 @@ extends CommonFormComponent<Produccion, ProduccionService> implements OnInit {
     super(service, router, route);
     this.titulo = 'Registrar Proveedor';
     this.redirect = '/suppliers';
+    this.model = this.produccion;
     this.manufactura = new ManufacturaConst();
+    this.produccion = new ProduccionConst();
     }
 
   override ngOnInit() {
@@ -51,6 +56,12 @@ extends CommonFormComponent<Produccion, ProduccionService> implements OnInit {
       );
     })
    //ComboBox
+
+  }
+
+  public crearTransaccion(): void {
+    this.crear();
+    
   }
 
   guardar(){

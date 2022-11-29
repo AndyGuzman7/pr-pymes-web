@@ -30,7 +30,7 @@ export abstract class CommonFormComponent<E extends Generic, S extends CommonSer
     })
   }
 
-  public crear(): void {
+  public crear():void {
     this.service.crear(this.model).subscribe(m => {
       console.log(this.model);
       console.log(m);
